@@ -9,6 +9,7 @@ class Faculty extends CI_Controller{
 	public function index(){
         $this->load->view('header_page');
 		$this->load->view('faculty_account');
+        $this->load->view('footer');
 	}
 }
 ?>

@@ -1,0 +1,64 @@
+*{
+	margin:0px;
+	padding:0px;
+
+}
+/*Top*/
+.logo img{
+	width: 100px;
+	margin-right: 15px;
+}
+.dangNhap {
+	margin-top: 30px;
+}
+.dangNhap img{
+	width: 40px;
+}
+#mainMenu nav{
+	background: #FFFFFF;
+	text-align: center;
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+	margin-bottom: 0px;
+}
+.red{
+	color: red;
+}
+
+/*Content*/
+#content{
+	height: 520px;
+}
+
+/*Footer*/
+#footer{
+	padding:20px 0px;
+	background: #34495E;
+}
+#footer a{
+	color: #FFFFFF;
+	text-transform: uppercase;;
+}
+
+
+/*Trang chủ*/
+.center{
+	background: #dfdfdf;
+	height: auto;
+	padding: 20px 0px;
+}
+#showTinTuc{
+	background: #FFFFFF;
+	height: 480px;
+}
+#tinTuc{
+	height: 480px;
+}
+
+/*Giới Thiệu*/
+#bmptn ul{
+	display: none;
+}
+#bmptn .submenu{
+	display: block;
+}
+

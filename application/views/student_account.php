@@ -7,6 +7,7 @@
 -->
 <html>
 <body class="container-fluid">
+<div id="content">
  <div id="center">
   <ul class="list-group col-sm-2">
    <li class="list-group-item">Phạm Minh Hoàng Linh</li>
@@ -18,6 +19,7 @@
   <div id="main" class="col-sm-10">
   </div>
  </div>
+</div>
 </body>
 <script src="public/js/javascript.js">
 </script>

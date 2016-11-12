@@ -13,6 +13,7 @@ class Student extends CI_Controller{
     public function index(){
         $this->load->view('header_page');
         $this->load->view('student_account');
+        $this->load->view('footer');
     }
 }
 ?>
