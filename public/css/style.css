@@ -1,2 +1,7 @@
-#account_head{
+a, a:hover, a:visited{
+    text-decoration: none;
+}
+#intro{
+    background: #ffffff;
+    min-height:480px;
 }

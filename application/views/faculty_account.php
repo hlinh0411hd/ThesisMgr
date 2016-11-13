@@ -14,9 +14,9 @@
 	</div>
 </div>
 </body>
-	<script src="public/js/javascript.js">
-	</script>
 	<script>
-		load('main','TeacherFunctionFaculty');
+		$(document).ready( function(){
+			load('main','TeacherFunctionFaculty');
+		});
 	</script>
 </html>

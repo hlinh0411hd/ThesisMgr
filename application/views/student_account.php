@@ -21,6 +21,4 @@
  </div>
 </div>
 </body>
-<script src="public/js/javascript.js">
-</script>
 </html>

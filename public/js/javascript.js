@@ -15,3 +15,10 @@ function enableInput(){
 	$("input").prop('disabled', false);
 	$("form button").css("display","block");
 }
+
+beforeElement="";
+function clicked(element){
+	$(beforeElement).css("background","#ffffff");
+	$(element).css("background","#e7e7e7");
+	beforeElement = element;
+}
