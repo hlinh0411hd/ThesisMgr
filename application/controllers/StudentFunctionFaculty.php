@@ -13,16 +13,16 @@ class StudentFunctionFaculty extends CI_Controller{
 	public function index(){
 		$data=$this->StudentFunctionFaculty_Model->getListStudent();
 		$data1["hello"]=$data;
-		$this->load->view('student_function_faculty',$data1);
+		$this->load->view('faculty/student_function_faculty',$data1);
 	}
 	
 	public function updateStudent(){
-		$this->load->view('update_student');
+		$this->load->view('faculty/update_student');
 	}
 	
 	public function singleupload(){
 		$data[0] = array($_GET['id'], $_GET['name'], $_GET['class'], $_GET['email'], $_GET['faculty']);
-		$this->StudentFunctionFaculty_Model->addStudent($data);
+        $listMail = $this->StudentFunctionFaculty_Model->addStudent($data);
 		$this->Mail_Model->send($listMail,"Test","Hihi");
 		redirect('../faculty', 'location');
 	}

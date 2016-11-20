@@ -12,6 +12,6 @@ class InfoFunctionStudent extends CI_Controller{
     }
 
     public function index(){
-        $this->load->view('info_function_student');
+        $this->load->view('student/info_function_student');
     }
 }

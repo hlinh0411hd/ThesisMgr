@@ -1,4 +1,4 @@
-<div id="content" class="center">
+<div id="content" class="center row">
     <div class="container">
         <div id="showTinTuc" class="col-sm-7">
         </div>

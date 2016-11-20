@@ -1,5 +1,5 @@
 <div id="content" class="center">
-    <div id="intro" class="container">
+    <div class="container">
         <div class="col-sm-4">
             <div class="panel panel-primary">
                 <div class="panel-heading"><?php echo $facultyName;?></div>
@@ -30,10 +30,13 @@
                                 ?>
                             </div>
                         </div>
-                        <li class="list-group-item"><a href="#"><span>Giảng viên</span></a></li>
+                        <li class="list-group-item"><a onclick="load('intro','Mainpage/teacherByFaculty/<?php echo $facultyId;?>')"><span>Giảng viên</span></a></li>
                     </ul>
                 </div>
             </div>
+
+        </div>
+        <div id="intro" class="col-sm-8">
 
         </div>
     </div>

@@ -11,11 +11,17 @@ class Mainpage extends CI_Controller {
         parent::__construct();
         $this->load->model('Faculty_Model');
         $this->load->model('Field_Model');
+        $this->load->model('Teacher_Model');
     }
 
     public function index(){
-        $this->load->view("header_page");
-        $this->load->view("mainpage");
+        $data = array(
+            'usernameSession' => $this->session->userdata("usernameSession"),
+            'userIdSession' => $this->session->userdata("userIdSession"),
+            'userTypeSession' => $this->session->userdata("userTypeSession")
+        );
+        $this->load->view("header_page", $data);
+        $this->load->view("mainpage/mainpage");
         $this->load->view("footer");
     }
 
@@ -27,11 +33,16 @@ class Mainpage extends CI_Controller {
             'facultyId' => $faculty,
             'facultyName' => $facultyName
         );
-        $this->load->view("faculty_mainpage", $data);
+        $this->load->view("mainpage/faculty_mainpage", $data);
     }
 
     public function field(){
         $data = $this->Field_Model->getAll();
-        $this->load->view('field_mainpage',$data);
+        $this->load->view('mainpage/field_mainpage',$data);
+    }
+
+    public function teacherByFaculty($facultyId){
+        $data['data'] = $this->Teacher_Model->getByFaculty($facultyId);
+        $this->load->view('mainpage/teacher_mainpage',$data);
     }
 }

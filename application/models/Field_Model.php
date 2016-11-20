@@ -24,5 +24,13 @@ class Field_Model extends CI_Model {
         );
         return $data;
     }
+
+    public function getName($fieldId){
+        $query = $this->db->select('fieldName')
+            ->from('fields')
+            ->where('fieldId', $fieldId)
+            ->get();
+        return $query->row_array()['fieldName'];
+    }
 }
 ?>

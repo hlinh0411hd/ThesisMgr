@@ -1,5 +1,5 @@
 <div id="content" class="center">
-    <div id="intro" class="container">
+    <div class="container">
         <div class="col-sm-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">Danh sách lĩnh vực nghiên cứu</div>
@@ -20,6 +20,9 @@
                     </ul>
                 </div>
             </div>
+        </div>
+        <div id="intro" class="col-sm-8">
+
         </div>
     </div>
 </div>

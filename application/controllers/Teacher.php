@@ -1,15 +1,16 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+
 /**
  * Created by PhpStorm.
  * User: Pham Minh Hoang Linh
- * Date: 11/12/2016
- * Time: 7:54 AM
+ * Date: 11/19/2016
+ * Time: 2:02 AM
  */
-class Student extends CI_Controller{
-    public function __construct(){
+class Teacher extends CI_Controller {
+    public function __construct() {
         parent::__construct();
     }
+
     public function index(){
         $data = array(
             'usernameSession' => $this->session->userdata("usernameSession"),
@@ -17,8 +18,7 @@ class Student extends CI_Controller{
             'userTypeSession' => $this->session->userdata("userTypeSession")
         );
         $this->load->view("header_page", $data);
-        $this->load->view('student/student_account');
+        $this->load->view('teacher/teacher_account');
         $this->load->view('footer');
     }
 }
-?>

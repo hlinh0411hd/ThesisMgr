@@ -8,8 +8,13 @@ class Faculty extends CI_Controller{
 	}
 	
 	public function index(){
-        $this->load->view('header_page');
-		$this->load->view('faculty_account');
+        $data = array(
+            'usernameSession' => $this->session->userdata("usernameSession"),
+            'userIdSession' => $this->session->userdata("userIdSession"),
+            'userTypeSession' => $this->session->userdata("userTypeSession")
+        );
+        $this->load->view("header_page", $data);
+		$this->load->view('faculty/faculty_account');
         $this->load->view('footer');
 	}
 

@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class StudentFunctionFaculty_Model extends CI_Model{
-	public function getListStudent(){
+	public function getList(){
 		$this->db->where('facultyId',100);
 		$query=$this->db->get('students');
 		return $query->result_array();

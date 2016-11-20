@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/user_guide/libraries/pagination.html
  */
-class CI_Pagination {
+class Pagination1 {
 
 	/**
 	 * Base URL
@@ -396,7 +396,7 @@ class CI_Pagination {
 	 *
 	 * @return	string
 	 */
-	public function create_links()
+	public function create_links($page)
 	{
 		// If our item count or per-page total is zero there is no need to continue.
 		// Note: DO NOT change the operator to === here!
@@ -580,13 +580,13 @@ class CI_Pagination {
 			if ($i === $base_page)
 			{
 				// First page
-				$output .= $this->prev_tag_open.'<li><a href="'.$first_url.'"'.$attributes.$this->_attr_rel('prev').'>'
+				$output .= $this->prev_tag_open.'<li><a  onclick="load(\'main\',\'pagination?page='.$page.'\')"'.$attributes.$this->_attr_rel('prev').'>'
 					.$this->prev_link.'</a></li>'.$this->prev_tag_close;
 			}
 			else
 			{
 				$append = $this->prefix.$i.$this->suffix;
-				$output .= $this->prev_tag_open.'<li><a href="'.$base_url.$append.'"'.$attributes.$this->_attr_rel('prev').'>'
+				$output .= $this->prev_tag_open.'<li><a onclick="load(\'main\',\'pagination/'.$append.'?page='.$page.'\')"'.$attributes.$this->_attr_rel('prev').'>'
 					.$this->prev_link.'</a></li>'.$this->prev_tag_close;
 			}
 
@@ -612,13 +612,13 @@ class CI_Pagination {
 					elseif ($i === $base_page)
 					{
 						// First page
-						$output .= $this->num_tag_open.'<li><a href="'.$first_url.'"'.$attributes.$this->_attr_rel('start').'>'
+						$output .= $this->num_tag_open.'<li><a onclick="load(\'main\',\'pagination?page='.$page.'\')"'.$attributes.$this->_attr_rel('start').'>'
 							.$loop.'</a></li>'.$this->num_tag_close;
 					}
 					else
 					{
 						$append = $this->prefix.$i.$this->suffix;
-						$output .= $this->num_tag_open.'<li><a href="'.$base_url.$append.'"'.$attributes.'>'
+						$output .= $this->num_tag_open.'<li><a onclick="load(\'main\',\'pagination/'.$append.'?page='.$page.'\')"'.$attributes.'>'
 							.$loop.'</a></li>'.$this->num_tag_close;
 					}
 				}
@@ -632,7 +632,7 @@ class CI_Pagination {
 
 			$attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, $this->cur_page + 1);
 
-			$output .= $this->next_tag_open.'<li><a href="'.$base_url.$this->prefix.$i.$this->suffix.'"'.$attributes
+			$output .= $this->next_tag_open.'<li><a onclick="load(\'main\',\'pagination/'.$this->prefix.$i.$this->suffix.'?page='.$page.'\')"'.$attributes
 				.$this->_attr_rel('next').'>'.$this->next_link.'</a></li>'.$this->next_tag_close;
 		}
 

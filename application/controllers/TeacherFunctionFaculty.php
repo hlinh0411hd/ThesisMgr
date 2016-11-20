@@ -13,16 +13,17 @@ class TeacherFunctionFaculty extends CI_Controller{
 	public function index(){
 		$data=$this->TeacherFunctionFaculty_Model->getListTeacher();
 		$data1["hello"]=$data;
-		$this->load->view('teacher_function_faculty',$data1);
+        $data1["number"] = (sizeof($data)-1)/50+1;
+		$this->load->view('faculty/teacher_function_faculty',$data1);
 	}
 	
 	public function updateTeacher(){
-		$this->load->view('update_teacher');
+		$this->load->view('faculty/update_teacher');
 	}
 	
 	public function singleupload(){
 		$data[0] = array($_GET['id'], $_GET['name'], $_GET['faculty'], $_GET['email']);
-		$this->TeacherFunctionFaculty_Model->addTeacher($data);
+        $listMail = $this->TeacherFunctionFaculty_Model->addTeacher($data);
 		$this->Mail_Model->send($listMail,"Test","Hihi");
 		redirect('../faculty', 'location');
 	}

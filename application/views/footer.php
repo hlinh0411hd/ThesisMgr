@@ -14,3 +14,5 @@
 
 <script src="public/js/javascript.js">
 </script>
+
+<script src="assets/iCheck/icheck.min.js"></script>
