@@ -14,4 +14,30 @@ class ResearchDirection_Model extends CI_Model {
             ->get();
         return $query->result_array();
     }
+
+    public function addNew($researchDirectionName, $teacherId){
+        $data = array(
+            'researchDirectionName' => $researchDirectionName,
+            'teacherId' => $teacherId
+        );
+        $this->db->insert('research_directions', $data);
+        $query = $this->db->select_max('researchDirectionId', 'id')
+            ->from('research_directions')
+            ->get();
+        return $query->row_array()['id'];
+    }
+
+    public function updateName($researchDirectionId, $reseachDirectionName, $teacherId){
+        $this->db->set('researchDirectionName', $reseachDirectionName);
+        $this->db->where(array(
+            'researchDirectionId' => $researchDirectionId,
+            'teacherId' => $teacherId
+        ));
+        $this->db->update('research_directions');
+    }
+
+    public function delete($researchDirectionId){
+        $this->db->where('researchDirectionId', $researchDirectionId);
+        $this->db->delete('research_directions');
+    }
 }

@@ -11,6 +11,7 @@ class ResearchFunctionTeacher extends CI_Controller {
         parent::__construct();
         $this->load->model('ResearchDirection_Model');
         $this->load->model('Field_Model');
+        $this->load->model('RelativeField_Model');
     }
 
     public function index(){
@@ -19,12 +20,30 @@ class ResearchFunctionTeacher extends CI_Controller {
             'userIdSession' => $this->session->userdata("userIdSession"),
             'userTypeSession' => $this->session->userdata("userTypeSession")
         );
-        $data['researchDirection'] = $this->ResearchDirection_Model->getByTeacherId($data['userIdSession']);
         $arr = $this->Field_Model->getAll();
         foreach ($arr as $b=>$a) {
             $data[$b] = $a;
         }
+        $this->initTree();
         $this->load->view('teacher/research_tree',$data);
+    }
+
+    public function initTree(){
+        $teacherId = $this->session->userdata("userIdSession");
+        $researchDirectionList = $this->ResearchDirection_Model->getByTeacherId($teacherId);
+        $relativeFieldList = array();
+        foreach ($researchDirectionList as $researchDirection){
+            $relativeFieldList[$researchDirection['researchDirectionId']] = $this->RelativeField_Model->getByResearchDirectionId($researchDirection['researchDirectionId']);
+        }
+        $data['relativeFieldList'] = $relativeFieldList;
+        $arr = $this->Field_Model->getAll();
+        foreach ($arr as $b=>$a) {
+            $data[$b] = $a;
+        }
+        foreach ($researchDirectionList as $item) {
+            $data['item'] = $item;
+            $this->load->view('teacher/branch_tree', $data);
+        }
     }
 
     public function addBranch(){
@@ -56,5 +75,39 @@ class ResearchFunctionTeacher extends CI_Controller {
         $fieldName = $this->Field_Model->getName($fieldId);
         $data['subfieldList'] = $arr['subfieldList'][$fieldName];
         $this->load->view('teacher/branch_subfield',$data);
+    }
+
+    public function saveTree(){
+        $teacherId = $this->session->userdata("userIdSession");
+        $researchDirectionName = "";
+        $fieldList = [];
+        $subfieldList = [];
+        extract($_POST);
+        $researchDirectionId = $this->ResearchDirection_Model->addNew($researchDirectionName, $teacherId);
+        echo $researchDirectionId;
+        foreach ($fieldList as $fieldId){
+            $this->RelativeField_Model->addNew($researchDirectionId, $fieldId['id']);
+        }
+    }
+
+    public function updateTree(){
+        $teacherId = $this->session->userdata("userIdSession");
+        $researchDirectionName = "";
+        $fieldList = [];
+        $subfieldList = [];
+        $researchDirectionId="";
+        $this->RelativeField_Model->delete($researchDirectionId);
+        $this->ResearchDirection_Model->updateName($researchDirectionId,$researchDirectionName,$teacherId);
+        foreach ($fieldList as $fieldId){
+            $this->RelativeField_Model->addNew($researchDirectionId, $fieldId['id']);
+        }
+    }
+
+    public function deleteTree(){
+        $researchDirectionId = "";
+        extract($_POST);
+        echo $researchDirectionId;
+        $this->RelativeField_Model->delete($researchDirectionId);
+        $this->ResearchDirection_Model->delete($researchDirectionId);
     }
 }

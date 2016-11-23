@@ -69,8 +69,11 @@ function addSubfieldBranch(branch, fieldId){
 }
 
 function enableInputTree(id){
-    id = '#' + id + ' input';
-    $(id).prop('disabled', false);
+    $(id + ' input').prop('disabled', false);
+    $(id + ' select').prop('disabled', false);
+    $(id + ' button').css('display','');
+    $(id + ' .form-group').css('display','');
+    $(id + ' #edit').css('display','none');
 }
 
 function deleteBranch(branch){
@@ -86,4 +89,58 @@ function createNew(form){
 function changeField(subfield,field){
     $(subfield).empty();
     $(subfield + "+button").attr("onclick","addSubfieldBranch('"+subfield+"',"+$(field).val()+")");
+}
+
+function saveTree(researchDirection){
+    var researchDirectionName = $(researchDirection + " #researchDirectionName").val();
+    var fieldList = [];
+    var subfieldList = [];
+    $(researchDirection + ' .field').each(function(){
+        var id = $(this).val();
+        fieldList.push({id:id});
+        $('#' + $(this).attr('id') + ' .subfield').each(function () {
+            subfieldList.push({id:$(this).val()});
+        });
+    });
+    var data = {
+        'researchDirectionName': researchDirectionName,
+        'fieldList': fieldList,
+        'subfieldList': subfieldList
+    };
+    console.log(JSON.stringify(data));
+    $.post("researchfunctionteacher/saveTree", data, function(data, status){
+        load('main','researchfunctionteacher');
+    });
+}
+function updateTree(researchDirection, researchDirectionId){
+    var researchDirectionName = $(researchDirection + " #researchDirectionName").val();
+    var fieldList = [];
+    var subfieldList = [];
+    $(researchDirection + ' .field').each(function(){
+        var id = $(this).val();
+        fieldList.push({id:id});
+        $('#' + $(this).attr('id') + ' .subfield').each(function () {
+            subfieldList.push({id:$(this).val()});
+        });
+    });
+    var data = {
+        'researchDirectionName': researchDirectionName,
+        'researchDirectionId': researchDirectionId,
+        'fieldList': fieldList,
+        'subfieldList': subfieldList
+    };
+    console.log(JSON.stringify(data));
+    $.post("researchfunctionteacher/updateTree", data, function(data, status){
+        load('main','researchfunctionteacher');
+    });
+}
+
+function deleteBranchTree(researchDirectionId){
+    var data = {
+        'researchDirectionId': researchDirectionId
+    };
+    alert(researchDirectionId);
+    $.post("researchfunctionteacher/deleteTree", data, function(data, status){
+        load('main','researchfunctionteacher');
+    });
 }
