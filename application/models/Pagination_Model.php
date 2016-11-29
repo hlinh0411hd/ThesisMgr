@@ -7,8 +7,9 @@ class Pagination_model extends CI_Model{
         parent::__construct();
     }
 
-    function a_fGetBooks($name, $perpage, $offset ){
+    function a_fGetBooks($name, $perpage, $offset, $condition ){
         $a_User	= $this->db->select()
+            ->where($condition)
             ->limit($perpage, $offset)
             ->get($name)
             ->result();

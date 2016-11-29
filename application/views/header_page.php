@@ -111,7 +111,13 @@
                         </li>
                         <li id="aaa"><a onclick="clicked(this);load('content','Mainpage/field')">Lĩnh vực nghiên cứu</a></li>
                         <li><a onclick="clicked(this);" href="#">Khóa luận</a></li>
-                        <li><a onclick="clicked(this);" href="#"><span class="red">Đăng kí đề tài</span></a></li>
+                        <li><a onclick="clicked(this); <?php
+                            if (!isset($userTypeSession) || $userTypeSession != 3) echo "";
+                                else echo "load('content','User/signUpThesis');";
+                            ?>"><span class="red"> <?php
+                                    if (!isset($userTypeSession) || $userTypeSession != 3) echo "<del>Đăng ký đề tài</del>";
+                                        else echo "Đăng ký đề tài";
+                                    ?></span></a></li>
                         <li><a onclick="clicked(this);" href="#">Liên hệ</a></li>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">

@@ -22,4 +22,8 @@ class User extends CI_Controller {
         $this->session->sess_destroy();
         redirect('../mainpage', 'refresh');
     }
+
+    public function signUpThesis(){
+        $this->load->view('student/sign_up_thesis');
+    }
 }

@@ -21,6 +21,7 @@ class Pagination extends CI_Controller{
     public function __construct(){
         parent::__construct();
         ob_start();
+        $this->condition = isset($_GET['condition'])? $_GET['condition']:"facultyId=".$this->session->userdata("userIdSession");
         $this->page = $_GET['page'];
         $this->load->helper(array('form', 'url'));
         $this->load->model('Pagination_Model');
@@ -29,8 +30,9 @@ class Pagination extends CI_Controller{
     public function index(){
         $directPage = $this -> page;
         $directModel = $this->listModel[$this->page];
+        $condition = $this->condition;
         $total = $this-> {$directModel}->getList();
-        $perpage	=  1; /* Số lượng hiển thị trên một page*/
+        $perpage	=  30; /* Số lượng hiển thị trên một page*/
 
         # Tải bộ thư viện Pagination Class của CodeIgniter
         $this->load->library('pagination1');
@@ -56,7 +58,7 @@ class Pagination extends CI_Controller{
         $offset  =  ($this->uri->segment(2)=='') ? 0 : $this->uri->segment(2);
 
         # Đẩy dữ liệu ra view
-        $a_Data['list'] =  $this->Pagination_Model->a_fGetBooks($this->listTable[$directPage],$perpage, $offset);
+        $a_Data['list'] =  $this->Pagination_Model->a_fGetBooks($this->listTable[$directPage],$perpage, $offset,$condition);
         $a_Data['pagination'] = $pagination;
         $this->load->view($this->listPage[$directPage], $a_Data);
     }

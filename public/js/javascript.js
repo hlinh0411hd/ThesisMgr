@@ -144,3 +144,45 @@ function deleteBranchTree(researchDirectionId){
         load('main','researchfunctionteacher');
     });
 }
+
+
+function searchStudent(){
+    var info = $('#info').val();
+    var type = $('#type option:selected').val();
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("resultSearch").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "StudentFunctionFaculty/search/" + info + "/" + type, true);
+    xhttp.send();
+
+};
+
+function allowStudent(studentId){
+    if ($('#checkAllow').prop("checked") == true){
+        $.get("studentfunctionfaculty/addAnAllowedStudent/" + studentId,function(data,status){
+        });
+    } else {
+        $.get("studentfunctionfaculty/deleteAnAllowedStudent/" + studentId);
+    }
+}
+
+function showHint(id, controller){
+    var teacherName = $("#" + id).val();
+    $("#" + id + "Id").val("0");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("#" + id + "List").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", controller + "/searchByName/" + id + "/" + teacherName, true);
+    xhttp.send();
+}
+
+function addValue(id, value, valueId){
+    $("#" + id).val(value);
+    $("#" + id + "Id").val(valueId);
+}

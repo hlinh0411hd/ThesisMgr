@@ -22,7 +22,7 @@ class TeacherFunctionFaculty extends CI_Controller{
 	}
 	
 	public function singleupload(){
-		$data[0] = array($_GET['id'], $_GET['name'], $_GET['faculty'], $_GET['email']);
+		$data[0] = array("",$_GET['id'], $_GET['name'], $_GET['faculty'], $_GET['mail']);
         $listMail = $this->TeacherFunctionFaculty_Model->addTeacher($data);
 		$this->Mail_Model->send($listMail,"Test","Hihi");
 		redirect('../faculty', 'location');
@@ -36,7 +36,7 @@ class TeacherFunctionFaculty extends CI_Controller{
 		
 	}
 	public function readExcel($file){
-		$property = array("Mã giảng viên", "Họ tên", "Khoa", "Email");
+		$property = array("STT", "Mã giảng viên", "Họ tên", "Khoa", "Email");
 		$data = $this->Excel_Model->read($file, $property);
 		if ($data!="error"){
 			$listMail = $this->TeacherFunctionFaculty_Model->addTeacher($data);

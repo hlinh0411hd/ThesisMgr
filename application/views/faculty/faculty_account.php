@@ -4,7 +4,7 @@
 	<div id="center">
         <div class="col-sm-3">
             <div class="panel panel-primary">
-                <div class="panel-heading"><span>Khoa Công nghệ Thông tin</span></div>
+                <div class="panel-heading"><span><?=$usernameSession?></span></div>
                 <div class="panel-body">
                     <ul class="menu-sidebar list-group">
                         <li class="list-group-item"><a onclick="load('main','pagination?page=teacher')">Giáo viên</a></li>

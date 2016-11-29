@@ -15,7 +15,7 @@
 				</div>
 				<div class="form-group">
 					<label for="email">Địa Chỉ Email</label>
-					<input type="email" class="form-control" id="email" name="name">
+					<input type="email" class="form-control" id="email" name="mail">
 				</div>
 				<div class="form-group">
 					<label for="faculty">Tên Khoa</label>

@@ -22,4 +22,12 @@ class Teacher_Model extends CI_Model {
                         ->get();
         return $query->row_array();
     }
+
+    public function searchByName($teacherName){
+        $query = $this->db->select()
+                    ->from('teacher')
+                    ->like('teacherName', $teacherName)
+                    ->get();
+        return $query->result_array();
+    }
 }

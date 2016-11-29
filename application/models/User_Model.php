@@ -43,6 +43,23 @@ class User_Model extends CI_Model {
             return "ok";
         }
 
+        $query = $this->db->select('*')
+            ->from('faculties')
+            ->where(array(
+                'facultyUsername' => $username,
+                'facultyPassword' => $password
+            ))
+            ->get();
+        if ($query->num_rows() > 0){
+            $result = $query->row_array();
+            $this->session->set_userdata(array(
+                'usernameSession' => $result['facultyName'],
+                'userIdSession' => $result['facultyId'],
+                'userTypeSession' => 1
+            ));
+            return "ok";
+        }
+
         return "error";
     }
 }
