@@ -1,8 +1,8 @@
 <div id="content" class="center row">
     <div class="container">
-        <div id="showTinTuc" class="col-sm-7">
+        <div id="showTinTuc" class="col-sm-8">
         </div>
-        <div id="tinTuc" class="col-sm-5">
+        <div id="tinTuc" class="col-sm-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">Tin Tức</div>
                 <div class="panel-body">

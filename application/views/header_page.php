@@ -103,14 +103,14 @@
                         <li class="dropdown">
                             <a id="introduction" href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/100')">Khoa Công nghệ Thông tin</a></li>
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/200')">Khoa Điện tử Viễn thông</a></li>
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/300')">Khoa Vật lý Kỹ thuật và Công nghệ Nano</a></li>
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/400')">Khoa Cơ học Kỹ thuật và Tự động hóa</a></li>
+                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/100')"><span>Khoa Công nghệ Thông tin</span></a></li>
+                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/200')"><span>Khoa Điện tử Viễn thông</span></a></li>
+                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/300')"><span>Khoa Vật lý Kỹ thuật và Công nghệ Nano</span></a></li>
+                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/400')"><span>Khoa Cơ học Kỹ thuật và Tự động hóa</span></a></li>
                             </ul>
                         </li>
-                        <li id="aaa"><a onclick="clicked(this);load('content','Mainpage/field')">Lĩnh vực nghiên cứu</a></li>
-                        <li><a onclick="clicked(this);" href="#">Khóa luận</a></li>
+                        <li id="aaa"><a onclick="clicked(this);load('content','Mainpage/field')"><span>Lĩnh vực nghiên cứu</span></a></li>
+                        <li><a onclick="clicked(this);" href="#"><span>Khóa luận</span></a></li>
                         <li><a onclick="clicked(this); <?php
                             if (!isset($userTypeSession) || $userTypeSession != 3) echo "";
                                 else echo "load('content','User/signUpThesis');";
@@ -122,7 +122,7 @@
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm...">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm..."> 
                         </div>
                     </form>
                 </div><!-- /.navbar-collapse -->

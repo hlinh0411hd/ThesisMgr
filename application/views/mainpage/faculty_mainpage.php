@@ -1,6 +1,6 @@
 <div id="content" class="center">
     <div class="container">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
             <div class="panel panel-primary">
                 <div class="panel-heading"><?php echo $facultyName;?></div>
                 <div class="panel-body">
@@ -36,7 +36,7 @@
             </div>
 
         </div>
-        <div id="intro" class="col-sm-8">
+        <div id="intro" class="col-sm-9">
 
         </div>
     </div>

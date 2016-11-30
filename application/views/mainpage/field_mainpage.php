@@ -7,7 +7,7 @@
                     <ul class="menu-sidebar list-group">
                         <?php
                             foreach ($fieldList as $field){
-                                echo "<li class='list-group-item'><a data-toggle='collapse' data-target='#level$field[fieldId]'>$field[fieldName]</a></li>";
+                                echo "<li class='list-group-item'><a data-toggle='collapse' data-target='#level$field[fieldId]'><span>$field[fieldName]</span></a></li>";
                                 echo "<div id='level$field[fieldId]' class='collapse'>";
                                 foreach ($subfieldList[$field['fieldName']] as $subfield){
                                     echo "<li class='list-group-item'>";

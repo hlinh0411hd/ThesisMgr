@@ -6,17 +6,23 @@
  */
 -->
 <html>
-<body class="container-fluid">
-<div id="content" class="row">
- <div id="center">
-  <ul class="list-group col-sm-2">
-   <li class="list-group-item">Phạm Minh Hoàng Linh</li>
-   <li class="list-group-item"><a onclick="load('main','InfoFunctionStudent')">Thông tin cá nhân</a></li>
-   <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')">Quá trình học tập</a></li>
-   <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=student')">Khóa luận</a></li>
-   <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')">Chức năng khác</a></li>
-  </ul>
-  <div id="main" class="col-sm-10">
+<body >
+<div id="content" class="center row">
+ <div class="container"> 
+ 	<div class="col-sm-2">
+	 	<div class="panel panel-primary clear-br" >
+		  <!-- Default panel contents -->
+		  <div class="panel-heading clear-br">Phạm Minh Hoàng Linh</div>
+			  <ul class="list-group ">
+			   <li class="list-group-item"><a onclick="load('main','InfoFunctionStudent')"><span>Thông tin cá nhân</span></a></li>
+			   <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')"><span>Quá trình học tập</span></a></li>
+			   <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=student')"><span>Khóa luận</span></a></li>
+			   <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chức năng khác</span></a></li>
+			  </ul>
+		</div>	
+ 	</div>
+  <div id="box_stdacc" class="col-sm-10">
+  	<div id="main"></div>
   </div>
  </div>
 </div>

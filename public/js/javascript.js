@@ -1,4 +1,3 @@
-
 $(function () {
 	$('input').iCheck({
 		checkboxClass: 'icheckbox_square-blue',
@@ -24,6 +23,7 @@ $(function () {
 		event.preventDefault();
 	});
 });
+
 function load(content, page){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange=function() {
@@ -37,9 +37,11 @@ function load(content, page){
 
 
 function enableInput(){
-	$("input").prop('disabled', false);
-	$("textarea").prop('disabled', false);
-	$("form button").css("display","block");
+	
+    $("#chinhsua-info-std").css("display","none");
+	$("#luu-info-std").css("display","block");
+    $("input").prop('disabled', false);
+    $("textarea").prop('disabled', false);
 }
 
 beforeElement="";
