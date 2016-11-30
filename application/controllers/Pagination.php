@@ -4,16 +4,19 @@ class Pagination extends CI_Controller{
 
     private $listPage = [
         'teacher' => 'faculty/teacher_function_faculty',
-        'student' => 'faculty/student_function_faculty'
+        'student' => 'faculty/student_function_faculty',
+        'thesis' => 'tpl/thesis'
     ];
 
     private $listModel = [
         'teacher' => 'TeacherFunctionFaculty_Model',
-        'student' => 'StudentFunctionFaculty_Model'
+        'student' => 'StudentFunctionFaculty_Model',
+        'thesis' => 'Thesis_Model'
     ];
     private $listTable = [
         'teacher' => 'teacher',
-        'student' => 'students'
+        'student' => 'students',
+        'thesis' => 'thesis'
     ];
 
     private $page;
@@ -21,11 +24,20 @@ class Pagination extends CI_Controller{
     public function __construct(){
         parent::__construct();
         ob_start();
-        $this->condition = isset($_GET['condition'])? $_GET['condition']:"facultyId=".$this->session->userdata("userIdSession");
+        if (isset($_GET['condition'])){
+            if ($_GET['condition'] == "tethesis"){
+                $this->condition = "teacherId=".$this->session->userdata("userIdSession");
+                $this->condition.= " OR coteacherId=".$this->session->userdata("userIdSession");
+            } else if ($_GET['condition'] == "student"){
+                $this->condition = "studentID = ".$this->session->userdata("userIdSession");
+            }
+        } else $this->condition = "facultyId=".$this->session->userdata("userIdSession");
         $this->page = $_GET['page'];
         $this->load->helper(array('form', 'url'));
         $this->load->model('Pagination_Model');
         $this->load->model($this->listModel[$this->page]);
+        $this->load->model('Student_Model');
+        $this->load->model('Teacher_Model');
     }
     public function index(){
         $directPage = $this -> page;
@@ -59,6 +71,14 @@ class Pagination extends CI_Controller{
 
         # Đẩy dữ liệu ra view
         $a_Data['list'] =  $this->Pagination_Model->a_fGetBooks($this->listTable[$directPage],$perpage, $offset,$condition);
+
+        if ($this->listTable[$directPage] == "thesis"){
+            foreach ($a_Data['list'] as $item) {
+                $item->studentName = $this->Student_Model->getById($item->studentId)['studentName'];
+                $item->teacherName = $this->Teacher_Model->getById($item->teacherId)['teacherName'];
+                $item->coteacherName = $this->Teacher_Model->getById($item->coteacherId)['teacherName'];
+            }
+        }
         $a_Data['pagination'] = $pagination;
         $this->load->view($this->listPage[$directPage], $a_Data);
     }

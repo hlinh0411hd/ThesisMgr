@@ -15,7 +15,7 @@ class Mail_Model extends CI_Model{
 		//cau hinh email va ten nguoi gui
 		$this->email->from('hlinh0411hd@gmail.com', 'Phạm Minh Hoàng Linh');
 		//cau hinh nguoi nhan
-		$this->email->cc($listMail);
+		$this->email->to($listMail);
 		 
 		$this->email->subject($subject);
 		$this->email->message($message);

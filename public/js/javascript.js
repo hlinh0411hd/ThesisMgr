@@ -186,3 +186,11 @@ function addValue(id, value, valueId){
     $("#" + id).val(value);
     $("#" + id + "Id").val(valueId);
 }
+
+function acceptThesis(thesisId){
+    $.get("thesis/accept/" + thesisId);
+}
+
+function denyThesis(thesisId){
+    $.get("thesis/deny/" + thesisId);
+}

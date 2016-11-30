@@ -8,6 +8,6 @@
 ?>
 <?php
     foreach ($list as $teacher){
-        echo "<li onclick='addValue(\"".$id."\",\"".$teacher['teacherName']."\",\"".$teacher['teacherId']."\")'>".$teacher['teacherName']."</li>";
+        echo "<li class='list-group-item' onclick='addValue(\"".$id."\",\"".$teacher['teacherName']."\",\"".$teacher['teacherId']."\")'>".$teacher['teacherName']."</li>";
     }
 ?>

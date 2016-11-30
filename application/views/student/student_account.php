@@ -13,7 +13,7 @@
    <li class="list-group-item">Phạm Minh Hoàng Linh</li>
    <li class="list-group-item"><a onclick="load('main','InfoFunctionStudent')">Thông tin cá nhân</a></li>
    <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')">Quá trình học tập</a></li>
-   <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')">Khóa luận</a></li>
+   <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=student')">Khóa luận</a></li>
    <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')">Chức năng khác</a></li>
   </ul>
   <div id="main" class="col-sm-10">
