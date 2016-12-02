@@ -6,6 +6,9 @@
 span{
 	cursor: pointer;
 }
+select{
+	margin-bottom: 5px;
+}
 
 .clear-br{
 	border-radius: 0px;
@@ -84,11 +87,20 @@ span{
 	margin-bottom: 0px;
 	border-radius: 0px;
 }
+.panel-heading{
+	border-radius: 0px;
+}
+.panel-body{
+	padding-bottom: 0px;
+}
 
-/*Student-account*/
-#box_stdacc{
+/*Student and -account*/
+.box-right{
 	background:#FFFFFF;
 	height: auto;
 	padding: 0px;
-	
+	min-height: 430px;
+}
+.glyphicon{
+	margin:0px 5px;
 }

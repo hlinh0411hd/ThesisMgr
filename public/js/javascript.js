@@ -37,9 +37,8 @@ function load(content, page){
 
 
 function enableInput(){
-	
-    $("#chinhsua-info-std").css("display","none");
-	$("#luu-info-std").css("display","block");
+    $(".chinhsua-info").css("display","none");
+	$(".luu-info").css("display","block");
     $("input").prop('disabled', false);
     $("textarea").prop('disabled', false);
 }
