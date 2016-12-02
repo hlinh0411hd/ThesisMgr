@@ -1,24 +1,24 @@
 <html>
 <body>
-<div id="content" class="row">
-	<div id="center">
-        <div class="col-sm-3">
-            <div class="panel panel-primary">
-                <div class="panel-heading"><span><?=$usernameSession?></span></div>
-                <div class="panel-body">
-                    <ul class="menu-sidebar list-group">
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=teacher')">Giáo viên</a></li>
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=student')">Sinh viên</a></li>
-                        <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')">Chương trình đào tạo</a></li>
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=thesis')">Khóa luận</a></li>
-                    </ul>
-                </div>
-            </div>
+    <div id="content" class="center row">
+     <div class="container"> 
+        <div class="col-sm-2">
+            <div class="panel panel-primary" >
+              <!-- Default panel contents -->
+              <div class="panel-heading"><?=$usernameSession?></div>
+                <ul class="menu-sidebar list-group">
+                    <li class="list-group-item"><a onclick="load('main','pagination?page=teacher')"><span>Giáo viên</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','pagination?page=student')"><span>Sinh viên</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chương trình đào tạo</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','pagination?page=thesis')"><span>Khóa luận</span></a></li>
+                </ul>
+            </div>  
         </div>
-		<div id="main" class="col-sm-9">
-		</div>
-	</div>
-</div>
+      <div class="box-right col-sm-10">
+        <div id="main"></div>
+      </div>
+     </div>
+    </div>
 </body>
 	<script>
 		$(document).ready( function(){

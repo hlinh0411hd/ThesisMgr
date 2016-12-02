@@ -10,6 +10,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="public/img/bluemarine_favicon.ico" type="image/x-icon" />
+    <title>Đại học Công Nghệ</title>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
@@ -31,11 +33,11 @@
             <p><b>Trường Đại học Công Nghệ - Đại học Quốc gia Hà Nội</b></p>
         </div>
         <div class="col-sm-6">
-            <div class="dangNhap pull-right">
+            <div class="dangNhap pull-right" style="margin-right: 48px;">
                 <?php
                 if (!isset($usernameSession)) echo '
                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-right:23px"><span>Đăng nhập</span></a>
-                <div class="hold-transition dropdown-menu"  style="margin: 0;padding-bottom: 0;padding-top: 0;margin-right:-98px">
+                <div class="hold-transition dropdown-menu"  style="margin: 0;padding-bottom: 0;padding-top: 0;margin-right:-50px">
                     <div id="login-form" class="login-box panel panel-primary" style="margin: 0;">
                         <p class="login-box-msg panel-heading" style="font-size: large;padding-top:15px">Đăng nhập</p>
                         <div class="login-box-body" style="margin: 0; border-radius: 4px">
@@ -76,7 +78,7 @@
                     else if ($userTypeSession == 2) echo 'teacher';
                     else echo 'faculty';
                     echo '">' . $usernameSession . '</a>
-                    <a href="user/logout">Đăng xuất</a>';
+                    <a href="user/logout"><span class="glyphicon glyphicon-log-out" style="color: #000000;" title="Đăng xuất"></span></a>';
                 }?>
             </div>
         </div>

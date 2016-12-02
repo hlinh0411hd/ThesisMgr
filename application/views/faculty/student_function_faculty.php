@@ -1,4 +1,3 @@
-<div class="center">
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Sinh viên</h3>
@@ -8,7 +7,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" style="font-size: 14;">
                 <thead>
                 <tr>
                     <th class="col-md-2">Mã Sinh Viên</th>
@@ -38,4 +37,3 @@
             <?php echo $pagination;?>
         </ul>
     </div>
-</div>

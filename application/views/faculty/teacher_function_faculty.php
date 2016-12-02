@@ -1,11 +1,10 @@
-<div class="center">
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Giảng viên</h3>
             <div class="pull-right"><button  onclick="load('main','TeacherFunctionFaculty/updateTeacher')" type="button" class="btn btn-primary btn-xs">Cập nhật danh sách</button></div>
         </div>
         <div class="panel-body">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" style="font-size: 14;">
                 <thead>
                 <tr>
                     <th class="col-md-2">Mã Giảng Viên</th>
@@ -33,4 +32,3 @@
         <?php echo $pagination;?>
         </ul>
     </div>
-</div>

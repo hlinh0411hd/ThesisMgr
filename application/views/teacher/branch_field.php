@@ -23,16 +23,16 @@ $r = rand(0,100000);
                 }
             ?>
         </select>
-        <button type="button" class="btn" onclick="deleteBranch('#field<?php echo $r; ?>')"
+        <button type="button" class="btn btn-danger" onclick="deleteBranch('#field<?php echo $r; ?>')"
             <?php
                 if (isset($relativeField)){
                     echo "style='display:none'";
                 }
-            ?>>Xoa</button>
+            ?>>Xóa</button>
     </div>
     <div class="col-sm-4">
         <div id="subfield_branch<?php echo $r; ?>"></div>
-        <button onclick="addSubfieldBranch('#subfield_branch<?php echo $r; ?>',1000)" type="button" class="btn"<?php
+        <button onclick="addSubfieldBranch('#subfield_branch<?php echo $r; ?>',1000)" type="button" class="btn btn-info"<?php
         if (isset($relativeField)){
             echo "style='display:none'";
         }

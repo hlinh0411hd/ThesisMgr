@@ -6,21 +6,21 @@
  * Time: 5:53 PM
  */
 ?>
-<div class="center">
+
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Khóa luận</h3>
         </div>
         <div class="panel-body">
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" style="font-size: 13;">
                 <thead>
                 <tr>
-                    <th class="col-md-2">Tên khóa luận</th>
                     <th class="col-md-2">Tên sinh viên</th>
+                    <th class="col-md-3">Tên khóa luận</th>
                     <th class="col-md-2">Giảng viên hướng dẫn</th>
-                    <th class="col-md-2">Giảng viên đồng hướng dẫn</th>
+                    <th class="col-md-2">GV đồng hướng dẫn</th>
                     <th class="col-md-2">Chi tiết</th>
-                    <th class="col-md-2">Đã được chấp nhận</th>
+                    <th class="col-md-1">Chấp nhận</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -45,12 +45,12 @@
                 <?php }?>
                 </tbody>
             </table>
+            <div class="pull-right">
+                <ul id="page_num" class="pagination pagination-sm">
+                    <?php echo $pagination;?>
+                </ul>
+            </div>
         </div>
-
+        
     </div>
-    <div class="pull-right">
-        <ul id="page_num" class="pagination pagination-sm">
-            <?php echo $pagination;?>
-        </ul>
-    </div>
-</div>
+    

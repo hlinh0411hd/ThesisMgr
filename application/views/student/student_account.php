@@ -10,9 +10,9 @@
 <div id="content" class="center row">
  <div class="container"> 
  	<div class="col-sm-2">
-	 	<div class="panel panel-primary clear-br" >
+	 	<div class="panel panel-primary" >
 		  <!-- Default panel contents -->
-		  <div class="panel-heading clear-br">Phạm Minh Hoàng Linh</div>
+		  <div class="panel-heading">Nguyễn Thanh Bình</div>
 			  <ul class="list-group ">
 			   <li class="list-group-item"><a onclick="load('main','InfoFunctionStudent')"><span>Thông tin cá nhân</span></a></li>
 			   <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')"><span>Quá trình học tập</span></a></li>
@@ -21,7 +21,7 @@
 			  </ul>
 		</div>	
  	</div>
-  <div id="box_stdacc" class="col-sm-10">
+  <div class="box-right col-sm-10">
   	<div id="main"></div>
   </div>
  </div>

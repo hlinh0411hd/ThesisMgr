@@ -17,7 +17,7 @@ $r = rand(0,100000);
             }
             ?>
         </select>
-        <button type="button" class="btn" onclick="deleteBranch('#subfield<?php echo $r; ?>')">Xoa</button>
+        <button type="button" class="btn btn-danger" onclick="deleteBranch('#subfield<?php echo $r; ?>')">Xóa</button>
     </div>
 </div>
 
