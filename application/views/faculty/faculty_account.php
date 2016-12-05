@@ -1,7 +1,7 @@
 <html>
 <body>
-<div id="content" class="row">
-	<div id="center">
+<div id="content" class="center row">
+	<div class="container">
         <div class="col-sm-2">
             <div class="panel panel-primary">
                 <div class="panel-heading"><span><?=$usernameSession?></span></div>
@@ -17,9 +17,10 @@
                 </div>
             </div>
         </div>
-		<div id="main" class="col-sm-10">
-		</div>
-	</div>
+        <div class="box-right col-sm-10">
+            <div id="main"></div>
+        </div>
+     </div>
 </div>
 </body>
 	<script>

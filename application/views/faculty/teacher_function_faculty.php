@@ -5,7 +5,7 @@
             <div class="pull-right"><button  onclick="load('main','TeacherFunctionFaculty/updateTeacher')" type="button" class="btn btn-primary btn-xs">Cập nhật danh sách</button></div>
         </div>
         <div class="panel-body">
-            <table id="myTable" class="table table-striped table-bordered">
+            <table id="myTable" class="table table-striped table-bordered" style="font-size: 14;">
                 <thead>
                 <tr>
                     <th class="col-md-2">Mã Giảng Viên</th>

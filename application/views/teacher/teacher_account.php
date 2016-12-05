@@ -6,18 +6,24 @@
  * Time: 2:04 AM
  */
 ?>
-<body class="container-fluid">
-<div id="content" class="row">
-    <div id="center">
-        <ul class="list-group col-sm-2">
-            <li class="list-group-item">Phạm Minh Hoàng Linh</li>
-            <li class="list-group-item"><a onclick="load('main','InfoFunctionTeacher')">Thông tin cá nhân</a></li>
-            <li class="list-group-item"><a onclick="load('main','ResearchFunctionTeacher')">Lĩnh vực nghiên cứu</a></li>
-            <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=tethesis')">Khóa luận</a></li>
-            <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')">Chức năng khác</a></li>
-        </ul>
-        <div id="main" class="col-sm-10">
+<body>
+    <div id="content" class="center row">
+     <div class="container"> 
+        <div class="col-sm-2">
+            <div class="panel panel-primary" >
+              <!-- Default panel contents -->
+              <div class="panel-heading">Nguyễn Thanh Bình</div>
+                  <ul class="list-group ">
+                    <li class="list-group-item"><a onclick="load('main','InfoFunctionTeacher')"><span>Thông tin cá nhân</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','ResearchFunctionTeacher')"><span>Lĩnh vực nghiên cứu</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=tethesis')"><span>Khóa luận</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chức năng khác</span></a></li>              
+                </ul>
+            </div>  
         </div>
+      <div class="box-right col-sm-10">
+        <div id="main"></div>
+      </div>
+     </div>
     </div>
-</div>
 </body>

@@ -6,7 +6,7 @@
  * Time: 5:53 PM
  */
 ?>
-<div class="center">
+
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Khóa luận</h3>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <table id="myTable" class="table table-striped table-bordered">
+            <table id="myTable" class="table table-striped table-bordered" style="font-size: 13;">
                 <thead>
                 <tr>
                     <th class="col-md-1">Tên khóa luận</th>
@@ -69,12 +69,12 @@
                 <?php }?>
                 </tbody>
             </table>
+            <div class="pull-right">
+                <ul id="page_num" class="pagination pagination-sm">
+                    <?php echo $pagination;?>
+                </ul>
+            </div>
         </div>
 
     </div>
-    <div class="pull-right">
-        <ul id="page_num" class="pagination pagination-sm">
-            <?php echo $pagination;?>
-        </ul>
-    </div>
-</div>
+

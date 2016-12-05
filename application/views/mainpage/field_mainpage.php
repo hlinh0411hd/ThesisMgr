@@ -11,7 +11,7 @@
                                 echo "<div id='level$field[fieldId]' class='collapse'>";
                                 foreach ($subfieldList[$field['fieldName']] as $subfield){
                                     echo "<li class='list-group-item'>";
-                                    echo "<a><span>&nbsp;&nbsp;&nbsp;&nbsp;$subfield[subfieldName]</span></a>";
+                                    echo "<a><span> <span class='glyphicon glyphicon-arrow-right'></span>$subfield[subfieldName]</span></a>";
                                     echo "</li>";
                                 }
                                 echo "</div>";

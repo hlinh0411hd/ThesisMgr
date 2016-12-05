@@ -9,22 +9,22 @@
                         <li id="bmptn" class="list-group-item"> <a data-toggle="collapse" data-target="#level1"><span>Bộ môn và phòng thí nghiệm</span></a>
                         </li>
                         <div id="level1" class="collapse">
-                            <li class="list-group-item"><a data-toggle="collapse" data-target="#level21"><span>&nbsp;&nbsp;&nbsp;&nbsp;Các bộ môn</span></a></li>
+                            <li class="list-group-item"><a data-toggle="collapse" data-target="#level21"><span><span class='glyphicon glyphicon-arrow-right'></span>Các bộ môn</span></a></li>
                             <div id="level21" class="collapse">
                             <?php
                                 foreach ($departmentList as $department){
                                     echo "<li class='list-group-item'>";
-                                    echo "<a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$department[departmentName]</span></a>";
+                                    echo "<a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;$department[departmentName]</span></a>";
                                     echo "</li>";
                                 }
                             ?>
                             </div>
-                            <li class="list-group-item"><a data-toggle="collapse" data-target="#level22"><span>&nbsp;&nbsp;&nbsp;&nbsp;Các phòng thí nghiệm</span></a></li>
+                            <li class="list-group-item"><a data-toggle="collapse" data-target="#level22"><span><span class='glyphicon glyphicon-arrow-right'></span>Các phòng thí nghiệm</span></a></li>
                             <div id="level22" class="collapse">
                                 <?php
                                 foreach ($laboratoryList as $laboratory){
                                     echo "<li class='list-group-item'>";
-                                    echo "<a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$laboratory[laboratoryName]</span></a>";
+                                    echo "<a><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;$laboratory[laboratoryName]</span></a>";
                                     echo "</li>";
                                 }
                                 ?>

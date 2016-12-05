@@ -31,7 +31,7 @@ extract($item);
                     }
                 ?>
             </div>
-            <button type="button" class="btn" onclick="addFieldBranch('#field_branch<?php echo $r; ?>');"
+            <button type="button" class="btn btn-info" onclick="addFieldBranch('#field_branch<?php echo $r; ?>');"
                 <?php
                 if (isset($researchDirectionName)){
                     echo 'style="display:none"';
@@ -46,14 +46,14 @@ extract($item);
             echo 'style="display:none"';
         }?>
         >
-        <button type="button" class="btn" onclick="deleteBranch('#renew<?php echo $r; ?>')">Xoa</button>
-        <button type="button" class="btn" onclick="<?php
+        <button type="button" class="btn btn-danger" onclick="deleteBranch('#renew<?php echo $r; ?>')">Xóa</button>
+        <button type="button" class="btn btn-success" onclick="<?php
             if (isset($researchDirectionName)){
                 echo "updateTree('#renew".$r."',".$researchDirectionId.")";
             } else {
                 echo "saveTree('#renew".$r."')";
             }
-        ?>">Luu</button>
+        ?>">Lưu</button>
     </div>
     <div id="edit"<?php
     if (!isset($researchDirectionName)){
@@ -62,5 +62,6 @@ extract($item);
         <button class='btn' onclick='enableInputTree("#renew<?php echo $r; ?>")'>Chỉnh sửa</button>
         <button class='btn' onclick='deleteBranchTree(<?php echo $researchDirectionId;?>)'>Xóa</button>
     </div>
+    <hr/>
 
 </form>

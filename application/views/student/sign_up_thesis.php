@@ -36,15 +36,15 @@
         <input type="text" class="form-control" onkeyup="showHint('coteacher','teacher')" name="coteacher" id="coteacher">
         <ul id="coteacherList" class="list-group">
 
-        </ul>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" name="coteacherId" id="coteacherId">
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary">Đăng ký</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="form-group">
-        <input type="hidden" class="form-control" name="coteacherId" id="coteacherId">
-    </div>
-    <div class="form-group text-center">
-        <button class="btn">Đăng ký</button>
-    </div>
-</form>
-</div>
-</div>
 </div>
