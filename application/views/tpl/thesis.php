@@ -10,17 +10,24 @@
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Khóa luận</h3>
+            <div class="pull-right">
+                <button  onclick="" type="button" class="btn btn-primary btn-xs">Xuất đề nghị khóa luận</button>
+                <button  onclick="remindProtectionFile()" type="button" class="btn btn-primary btn-xs">Nhắc nộp hồ sơ</button>
+                <button  onclick="" type="button" class="btn btn-primary btn-xs">Xuất danh sách sinh viên</button>
+                <button  onclick="" type="button" class="btn btn-primary btn-xs">Xuất đề nghị bảo vệ</button>
+            </div>
         </div>
         <div class="panel-body">
-            <table class="table table-striped table-bordered">
+            <table id="myTable" class="table table-striped table-bordered">
                 <thead>
                 <tr>
-                    <th class="col-md-2">Tên khóa luận</th>
-                    <th class="col-md-2">Tên sinh viên</th>
-                    <th class="col-md-2">Giảng viên hướng dẫn</th>
-                    <th class="col-md-2">Giảng viên đồng hướng dẫn</th>
-                    <th class="col-md-2">Chi tiết</th>
-                    <th class="col-md-2">Đã được chấp nhận</th>
+                    <th class="col-md-1">Tên khóa luận</th>
+                    <th class="col-md-1">Tên sinh viên</th>
+                    <th class="col-md-1">Thời gian đăng ký</th>
+                    <th class="col-md-1">Trạng thái</th>
+                    <th class="col-md-1">Chi tiết</th>
+                    <th class="col-md-1">Đã nộp hồ sơ</th>
+                    <th class='col-md-1'>Khác</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,19 +35,36 @@
                     <tr>
                         <td><?php echo $sz_User->thesisName;?></td>
                         <td><?php echo $sz_User->studentName;?></td>
-                        <td><?php echo $sz_User->teacherName;?></td>
-                        <td><?php echo $sz_User->coteacherName;?></td>
-                        <td><?php echo $sz_User->thesisDescription;?></td>
+                        <td><?php echo $sz_User->created_at;?></td>
                         <td><?php
-                            if ($this->session->userdata('userTypeSession') == 2){
-                                if ($sz_User->accepted==0){
-                                    echo "<button onclick='acceptThesis(".$sz_User->thesisId.")' class='btn'>Chấp nhận</button> <button onclick='denyThesis(".$sz_User->thesisId.")' class='btn'>Hủy</button>";
-                                } else {
-                                    echo "Đã chấp nhận";
-                                }
-                            } else
                             echo $sz_User->accepted==0? "chưa":"chấp nhận";
+                            echo "<br>";
+                            echo $sz_User->isClosed==0? "mở":"đóng";
+                            echo "<br>";
+                            echo $sz_User->isSuccess==0? "chưa bảo vệ":"đã bảo vệ";
                         ?></td>
+                        <td><?php echo "<a>Xem chi tiết</a>";?></td>
+                        <td><input type="checkbox"
+                                <?= $sz_User->protectionFile!=0? "checked":"";?>
+                                <?= $this->session->userdata('userTypeSession') != 1? "disabled":"onchange='checkedProtectionFile(".$sz_User->thesisId.")'";?>
+                            >
+                        </td>
+                        <?php
+                        if ($this->session->userdata('userTypeSession') == 2){
+                            echo "<td>";
+                            if ($sz_User->accepted==0){
+                                echo "<button onclick='acceptThesis(".$sz_User->thesisId.")' class='btn'>Chấp nhận</button> <button onclick='denyThesis(".$sz_User->thesisId.")' class='btn'>Hủy</button>";
+                            } else {
+                                echo "Đã chấp nhận";
+                            }
+                            echo "</td>";
+                        } else
+                        if ($this->session->userdata('userTypeSession') == 1){
+                            echo "<td><button class='btn'>Chỉnh sửa</button> <button class='btn'>Đóng</button></td>";
+                        } else if ($this->session->userdata('userTypeSession') == 3){
+                            echo "<td><button onclick='load(\"main\",\"request/edit/".$sz_User->thesisId."\")' class='btn'>Yêu cầu chỉnh sửa</button><br><button onclick='load(\"main\", \"request/addRequest/2/".$sz_User->thesisId."\")' class='btn'>Yêu cầu rút</button></td>";
+                        }
+                        ?>
                     </tr>
                 <?php }?>
                 </tbody>

@@ -19,4 +19,7 @@
 	"require-dev": {
 		"mikey179/vfsStream": "1.1.*"
 	}
+	"require": {
+		"phpoffice/phpword": "v0.13.*"
+	}
 }

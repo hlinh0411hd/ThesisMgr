@@ -7,7 +7,7 @@
  */
 ?>
 
-<table class="table">
+<table id="myTable" class="table">
     <thead>
     <?php
         foreach ($header as $key => $value){

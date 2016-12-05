@@ -111,4 +111,30 @@ class Test extends CI_Controller {
 		print_r($arraydata);
 		echo '</pre>';
 	}
+
+	public function writeWord(){
+        $this->load->library('Word');
+        $phpword = new Word();
+        $section = $phpword->createSection(array('orientation'=>'landscape'));
+
+        // Add text elements
+        $section->addText('Hello World!');
+        $section->addTextBreak(1);
+
+        $section->addText('I am inline styled.', array('name'=>'Verdana', 'color'=>'006699'));
+        $section->addTextBreak(1);
+
+        $phpword->addFontStyle('rStyle', array('bold'=>true, 'italic'=>true, 'size'=>16));
+        $phpword->addParagraphStyle('pStyle', array('align'=>'center', 'spaceAfter'=>100));
+        $section->addText('I am styled by two style definitions.', 'rStyle', 'pStyle');
+        $section->addText('I have only a paragraph style definition.', null, 'pStyle');
+
+        $filename='just_some_random_name.docx'; //save our document as this file name
+        header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+
+        $objWriter = PHPWord_IOFactory::createWriter($phpword, 'Word2007');
+        $objWriter->save('php://output');
+    }
 }

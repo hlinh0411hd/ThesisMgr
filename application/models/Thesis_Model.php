@@ -11,8 +11,8 @@ class Thesis_Model extends CI_Model {
         $this->db->insert('thesis',$data);
     }
 
-    public function getList(){
-        $this->db->where('facultyId',$this->session->userdata("userIdSession"));
+    public function getList($condition){
+        $this->db->where($condition);
         $query=$this->db->get('thesis');
         return $query->result_array();
     }
@@ -35,4 +35,11 @@ class Thesis_Model extends CI_Model {
             ->get();
         return $query->row_array();
     }
+
+    public function update($thesisId, $data){
+        $this->db->set($data)
+            ->where('thesisId', $thesisId)
+            ->update('thesis');
+    }
+
 }

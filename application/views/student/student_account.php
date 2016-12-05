@@ -17,13 +17,13 @@
 			   <li class="list-group-item"><a onclick="load('main','InfoFunctionStudent')"><span>Thông tin cá nhân</span></a></li>
 			   <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')"><span>Quá trình học tập</span></a></li>
 			   <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=student')"><span>Khóa luận</span></a></li>
-			   <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chức năng khác</span></a></li>
+			   <li class="list-group-item"><a onclick="load('main','pagination?page=request&condition=student');"><span>Danh sách yêu cầu</span></a></li>
 			  </ul>
 		</div>	
  	</div>
-  <div id="box_stdacc" class="col-sm-10">
-  	<div id="main"></div>
-  </div>
+    <div id="box_stdacc" class="col-sm-10">
+        <div id="main"></div>
+    </div>
  </div>
 </div>
 </body>

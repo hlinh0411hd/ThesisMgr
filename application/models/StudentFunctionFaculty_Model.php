@@ -2,8 +2,8 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class StudentFunctionFaculty_Model extends CI_Model{
-    public function getList(){
-        $this->db->where('facultyId',$this->session->userdata("userIdSession"));
+    public function getList($condition){
+        $this->db->where($condition);
         $query=$this->db->get('students');
         return $query->result_array();
     }

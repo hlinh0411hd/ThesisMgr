@@ -5,18 +5,24 @@ class Pagination extends CI_Controller{
     private $listPage = [
         'teacher' => 'faculty/teacher_function_faculty',
         'student' => 'faculty/student_function_faculty',
-        'thesis' => 'tpl/thesis'
+        'thesis' => 'tpl/thesis',
+        'request' => 'tpl/request',
+        'council' => 'tpl/council'
     ];
 
     private $listModel = [
         'teacher' => 'TeacherFunctionFaculty_Model',
         'student' => 'StudentFunctionFaculty_Model',
-        'thesis' => 'Thesis_Model'
+        'thesis' => 'Thesis_Model',
+        'request' => 'Request_Model',
+        'council' => 'Council_Model'
     ];
     private $listTable = [
         'teacher' => 'teacher',
         'student' => 'students',
-        'thesis' => 'thesis'
+        'thesis' => 'thesis',
+        'request' => 'request',
+        'council' => 'council'
     ];
 
     private $page;
@@ -43,7 +49,7 @@ class Pagination extends CI_Controller{
         $directPage = $this -> page;
         $directModel = $this->listModel[$this->page];
         $condition = $this->condition;
-        $total = $this-> {$directModel}->getList();
+        $total = $this-> {$directModel}->getList($condition);
         $perpage	=  30; /* Số lượng hiển thị trên một page*/
 
         # Tải bộ thư viện Pagination Class của CodeIgniter

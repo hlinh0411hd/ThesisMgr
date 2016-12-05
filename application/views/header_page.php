@@ -15,7 +15,9 @@
     <script src="assets/js/bootstrap.js"></script>
     <!-- iCheck -->
     <link rel="stylesheet" href="assets/iCheck/square/blue.css">
+    <link rel="stylesheet" href="assets/DataTables/datatables.css">
     <script src="assets/iCheck/icheck.min.js"></script>
+    <script src="assets/DataTables/datatables.js"></script>
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" type='text/css' href="public/css/style.css">
     <link rel="stylesheet" type='text/css' href="public/css/uet.css">

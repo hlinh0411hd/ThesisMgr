@@ -14,4 +14,10 @@ class Student_Model extends CI_Model {
             ->get();
         return $query->row_array();
     }
+
+    public function getList($condition){
+        $this->db->where($condition);
+        $query=$this->db->get('students');
+        return $query->result_array();
+    }
 }

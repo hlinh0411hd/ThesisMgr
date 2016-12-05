@@ -56,7 +56,7 @@ select{
 
 /*Trang chủ*/
 .center{
-	background: #dfdfdf;
+	/*background: #dfdfdf;*/
 	height: auto;
 	padding: 20px 0px;
 }
@@ -97,7 +97,7 @@ select{
 /*Student and -account*/
 .box-right{
 	background:#FFFFFF;
-	height: auto;
+	min-height: 520px;
 	padding: 0px;
 	min-height: 430px;
 }

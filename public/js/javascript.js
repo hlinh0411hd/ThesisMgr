@@ -22,6 +22,7 @@ $(function () {
 
 		event.preventDefault();
 	});
+
 });
 
 function load(content, page){
@@ -29,6 +30,9 @@ function load(content, page){
 	xhttp.onreadystatechange=function() {
 		if (this.readyState == 4 && this.status == 200) {
 			document.getElementById(content).innerHTML = this.responseText;
+            $(document).ready(function(){
+                $('#myTable').DataTable();
+            });
 		}
 	};
 	xhttp.open("GET", page, true);
@@ -176,7 +180,7 @@ function showHint(id, controller){
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange=function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("#" + id + "List").innerHTML = this.responseText;
+            document.getElementById(id + "List").innerHTML = this.responseText;
         }
     };
     xhttp.open("GET", controller + "/searchByName/" + id + "/" + teacherName, true);
@@ -194,4 +198,43 @@ function acceptThesis(thesisId){
 
 function denyThesis(thesisId){
     $.get("thesis/deny/" + thesisId);
+}
+
+function exportRequest(requestId){
+    $.get("request/exportRequest/" + requestId);
+}
+
+function confirmRequest(requestId){
+    $.get("request/confirmRequest/" + requestId);
+}
+
+function denyRequest(requestId){
+    $.get("request/denyRequest/" + requestId);
+}
+
+function checkedProtectionFile(thesisId){
+    $.get("thesis/checkedProtectionFile/" + thesisId);
+}
+
+function remindProtectionFile(){
+    $.get("thesis/remindProtectionFile");
+}
+
+function addCouncilRow(){
+    $.get("council/addCouncilRow", function (data, status){
+        $('#councilTable').append(data);
+    });
+}
+
+function addCouncil(id){
+    var teacherId = $("#" + id + " #teacherId").val();
+    var position = $("#" + id + " #position").val();
+    var note = $("#" + id + " #note").val();
+    var data ={
+        'teacherId':teacherId,
+        'position':position,
+        'note':note
+    };
+    alert(data);
+    $.get("council/addCouncil", data);
 }

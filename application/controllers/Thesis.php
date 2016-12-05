@@ -44,4 +44,27 @@ class Thesis extends CI_Controller {
         $this->Thesis_Model->deny($thesisId);
         $this->Mail_Model->send($studentMail, "Test", "Denied Thesis");
     }
+
+    public function checkedProtectionFile($thesisId){
+        $data = array(
+            'protectionFile' => 1
+        );
+        $this->Thesis_Model->update($thesisId, $data);
+    }
+
+    public function remindProtectionFile(){
+        $condition = array(
+            'protectionFile' => 0,
+            'facultyId' => $this->session->userdata('userIdSession')
+        );
+        $list = $this->Thesis_Model->getList($condition);
+        $listMail = array();
+        foreach ($list as $thesis) {
+            $studentId = $thesis['studentId'];
+            array_push($listMail, $this->Student_Model->getById($studentId)['studentMail']);
+        }
+        $subject = "Test";
+        $message = "Remind submit protection file";
+        $this->Mail_Model->send($listMail, $subject, $message);
+    }
 }
