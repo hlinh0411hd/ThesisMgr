@@ -39,6 +39,7 @@ select{
 /*Content*/
 #content{
 	min-height: 520px;
+	background: #dfdfdf;
 }
 .container{
 	width: 94%;
@@ -63,7 +64,7 @@ select{
 
 #showTinTuc{
 	background: #FFFFFF;
-	height: 480px;
+	min-height: 480px;
 }
 #tinTuc{
 	height: 480px;
@@ -99,7 +100,7 @@ select{
 	background:#FFFFFF;
 	min-height: 520px;
 	padding: 0px;
-	min-height: 430px;
+	height: 430px;
 }
 .glyphicon{
 	margin:0px 5px;
