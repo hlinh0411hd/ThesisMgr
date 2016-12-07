@@ -11,6 +11,8 @@ class Thesis extends CI_Controller {
         parent::__construct();
         $this->load->model('Thesis_Model');
         $this->load->model('Student_Model');
+        $this->load->model('Teacher_Model');
+        $this->load->model('Reviewer_Model');
         $this->load->model('Mail_Model');
         $this->load->helper('url');
     }
@@ -66,5 +68,21 @@ class Thesis extends CI_Controller {
         $subject = "Test";
         $message = "Remind submit protection file";
         $this->Mail_Model->send($listMail, $subject, $message);
+    }
+    public function detail($thesisId){
+        $thesis = $this->Thesis_Model->getById($thesisId);
+        $thesis['studentName'] = $this->Student_Model->getById($thesis['studentId'])['studentName'];
+        $thesis['teacherName'] = $this->Teacher_Model->getById($thesis['teacherId'])['teacherName'];
+        $thesis['coteacherName'] = $this->Teacher_Model->getById($thesis['coteacherId'])['teacherName'];
+        $condition = array(
+            'thesisId' => $thesis['thesisId']
+        );
+        $listReviewer = $this->Reviewer_Model->getList($condition);
+        foreach ($listReviewer as $item) {
+            $item['teacherName'] = $this->Teacher_Model->getById($item['teacherId'])['teacherName'];
+        }
+        $data['thesis'] = $thesis;
+        $data['reviewers'] = $listReviewer;
+        $this->load->view('tpl/thesis_detail',$data);
     }
 }

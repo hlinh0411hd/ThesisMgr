@@ -11,6 +11,7 @@ class Council extends CI_Controller {
         parent::__construct();
         $this->load->model('Teacher_Model');
         $this->load->model('Council_Model');
+        $this->load->helper('url');
     }
 
     public function index(){
@@ -29,6 +30,17 @@ class Council extends CI_Controller {
     }
 
     public function addCouncil(){
-        var_dump(1);
+        $teacherId = "";
+        $position = "";
+        $note = "";
+        extract($_GET);
+        $data = array(
+            'teacherId' => $teacherId,
+            'position' => $position,
+            'note' => $note,
+            'facultyId' => $this->session->userdata('userIdSession')
+        );
+        $this->Council_Model->addCouncil($data);
+        redirect('../faculty', 'refresh');
     }
 }

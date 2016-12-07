@@ -19,6 +19,7 @@ class StudentFunctionFaculty_Model extends CI_Model{
                 'studentMail' => $student[5],
                 'password' => "11111111",
             );
+            if ($data['studentId'] == null) break;
             $this->db->where('studentId',$student[1]);
             $query = $this->db->get('students');
             if ($query->num_rows()>0){

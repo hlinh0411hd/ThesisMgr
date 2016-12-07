@@ -6,13 +6,13 @@
  * Time: 7:38 AM
  */
 ?>
-<table id="councilTable" class="table">
-    <tr>
-        <td class="col-sm-4">Giảng viên</td>
-        <td class="col-sm-2">Chức vụ</td>
-        <td class="col-sm-4">Ghi chú</td>
-        <td class="col-sm-2">Khác</td>
-    </tr>
+<table id="myTable" class="table">
+    <thead>
+        <th class="col-sm-4">Giảng viên</th>
+        <th class="col-sm-2">Chức vụ</th>
+        <th class="col-sm-4">Ghi chú</th>
+        <th class="col-sm-2">Khác</th>
+    </thead>
     <?php foreach ($list as $council) {?>
         <tr>
             <td><?= $council['teacherName'];?></td>

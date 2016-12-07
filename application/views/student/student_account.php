@@ -12,7 +12,7 @@
  	<div class="col-sm-2">
 	 	<div class="panel panel-primary" >
 		  <!-- Default panel contents -->
-		  <div class="panel-heading">Nguyễn Thanh Bình</div>
+		  <div class="panel-heading"><?= $usernameSession;?></div>
 			  <ul class="list-group ">
 			   <li class="list-group-item"><a onclick="load('main','InfoFunctionStudent')"><span>Thông tin cá nhân</span></a></li>
 			   <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')"><span>Quá trình học tập</span></a></li>

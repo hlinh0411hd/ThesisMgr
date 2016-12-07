@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <table id="myTable" class="table table-striped table-bordered" style="font-size: 13;">
+            <table id="myTable" class="table table-striped table-bordered" style="font-size: 13px;">
                 <thead>
                 <tr>
                     <th class="col-md-1">Tên khóa luận</th>
@@ -43,7 +43,7 @@
                             echo "<br>";
                             echo $sz_User->isSuccess==0? "chưa bảo vệ":"đã bảo vệ";
                         ?></td>
-                        <td><?php echo "<a>Xem chi tiết</a>";?></td>
+                        <td><?php echo "<a onclick='load(\"main\",\"Thesis/detail/".$sz_User->thesisId."\")'>Xem chi tiết</a>";?></td>
                         <td><input type="checkbox"
                                 <?= $sz_User->protectionFile!=0? "checked":"";?>
                                 <?= $this->session->userdata('userTypeSession') != 1? "disabled":"onchange='checkedProtectionFile(".$sz_User->thesisId.")'";?>

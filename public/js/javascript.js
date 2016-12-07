@@ -222,7 +222,7 @@ function remindProtectionFile(){
 
 function addCouncilRow(){
     $.get("council/addCouncilRow", function (data, status){
-        $('#councilTable').append(data);
+        $('#main').append(data);
     });
 }
 
@@ -235,6 +235,6 @@ function addCouncil(id){
         'position':position,
         'note':note
     };
-    alert(data);
+    alert(teacherId + " " + position);
     $.get("council/addCouncil", data);
 }

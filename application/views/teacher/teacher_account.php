@@ -12,7 +12,7 @@
         <div class="col-sm-2">
             <div class="panel panel-primary" >
               <!-- Default panel contents -->
-              <div class="panel-heading"><?php echo $usernameSession;?></div>
+              <div class="panel-heading"><?= $usernameSession;?></div>
                   <ul class="list-group ">
                     <li class="list-group-item"><a onclick="load('main','InfoFunctionTeacher')"><span>Thông tin cá nhân</span></a></li>
                     <li class="list-group-item"><a onclick="load('main','ResearchFunctionTeacher')"><span>Lĩnh vực nghiên cứu</span></a></li>

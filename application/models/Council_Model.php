@@ -13,4 +13,8 @@ class Council_Model extends CI_Model {
         $query=$this->db->get('council');
         return $query->result_array();
     }
+
+    public function addCouncil($data){
+        $this->db->insert('council',$data);
+    }
 }
