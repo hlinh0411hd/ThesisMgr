@@ -1,4 +1,4 @@
-<div id="content" class="center">
+<div id="content">
     <div class="container">
         <div class="col-sm-4">
             <div class="panel panel-primary">
