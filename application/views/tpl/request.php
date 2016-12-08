@@ -6,7 +6,6 @@
  * Time: 3:00 PM
  */
 ?>
-<div class="center">
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Khóa luận</h3>
@@ -54,6 +53,4 @@
                 </tbody>
             </table>
         </div>
-
     </div>
-</div>

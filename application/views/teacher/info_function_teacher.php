@@ -7,7 +7,7 @@
  */
 ?>
 
-<div class="panel panel-default col-sm-12">
+<div class="panel panel-default col-sm-12" style="padding-bottom: 10px;">
     <div class="panel-heading">
         <h3 class="panel-title">Thông tin cá nhân</h3> 
         <div class="pull-right">
@@ -61,6 +61,13 @@
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="col-sm-6" style="border-left: 1px solid #dfdfdf; min-height: 400px;">
+            <center> 
+                <div class="ratio img-responsive img-circle" style="background-image: url(public/img/avt.jpg); width: 270px; height: 270px;"></div>
+            </center>
+            <center> <button class="btn btn-success btn-avatar" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
+
         </div>
     </div>
 </div>

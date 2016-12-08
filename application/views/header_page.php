@@ -80,8 +80,8 @@
                     else if ($userTypeSession == 2) echo 'teacher';
                     else echo 'faculty';
                     echo '">' . $usernameSession . '</a>
-                    <a href="user/logout"><span class="glyphicon glyphicon-log-out" style="color: #000000;" title="Đăng xuất"></span></a>';
-                }?>
+                    <a href="user/logout" class="btn ratio" style="background-image: url(public/img/avt.jpg); border-radius: 50%; width:45px; height:45px;"></a>';
+                    }?>
             </div>
         </div>
     </div>
