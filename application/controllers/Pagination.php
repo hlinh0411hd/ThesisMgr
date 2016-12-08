@@ -49,34 +49,9 @@ class Pagination extends CI_Controller{
         $directPage = $this -> page;
         $directModel = $this->listModel[$this->page];
         $condition = $this->condition;
-        $total = $this-> {$directModel}->getList($condition);
-        $perpage	=  30; /* Số lượng hiển thị trên một page*/
-
-        # Tải bộ thư viện Pagination Class của CodeIgniter
-        $this->load->library('pagination1');
-        $config['total_rows']  =  sizeof($total);
-        $config['per_page']  =  $perpage;
-        $config['next_link'] =  'Next »';
-        $config['prev_link'] =  '« Prev';
-        $config['num_tag_open'] =  '';
-        $config['num_tag_close'] =  '';
-        $config['num_links']	=  5;
-        $config['cur_tag_open'] =  '<li class="active"><a class="currentpage">';
-        $config['cur_tag_close'] =  '</a></li>';
-        $config['base_url'] =  base_url().'/pagination/';
-        $config['uri_segment']	 =  2;
-
-        # Khởi tạo phân trang
-        $this->pagination1->initialize($config);
-
-        # Tạo link phân trang
-        $pagination =  $this->pagination1->create_links($directPage);
-
-        # Lấy offset
-        $offset  =  ($this->uri->segment(2)=='') ? 0 : $this->uri->segment(2);
 
         # Đẩy dữ liệu ra view
-        $a_Data['list'] =  $this->Pagination_Model->a_fGetBooks($this->listTable[$directPage],$perpage, $offset,$condition);
+        $a_Data['list'] =  $this->Pagination_Model->a_fGetBooks($this->listTable[$directPage],$condition);
 
         if ($this->listTable[$directPage] == "thesis"){
             foreach ($a_Data['list'] as $item) {
@@ -85,7 +60,6 @@ class Pagination extends CI_Controller{
                 $item->coteacherName = $this->Teacher_Model->getById($item->coteacherId)['teacherName'];
             }
         }
-        $a_Data['pagination'] = $pagination;
         $this->load->view($this->listPage[$directPage], $a_Data);
     }
 }

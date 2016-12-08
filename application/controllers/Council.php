@@ -11,6 +11,7 @@ class Council extends CI_Controller {
         parent::__construct();
         $this->load->model('Teacher_Model');
         $this->load->model('Council_Model');
+        $this->load->model('Faculty_Model');
         $this->load->helper('url');
     }
 
@@ -41,6 +42,28 @@ class Council extends CI_Controller {
             'facultyId' => $this->session->userdata('userIdSession')
         );
         $this->Council_Model->addCouncil($data);
-        redirect('../faculty', 'refresh');
+    }
+
+    public function searchByName($id = "", $name = ""){
+        if ($id == "teacher"){
+            $data = $this->Teacher_Model->searchByName($name);
+            $list['list'] = array();
+            foreach ($data as $datum) {
+                $facultyName = $this->Faculty_Model->getName($datum['facultyId']);
+                $isReviewer = $this->Council_Model->getByTeacherId($datum['teacherId']);
+                if ($isReviewer != ""){
+                    array_push($list['list'], array(
+                        'teacherId' => $datum['teacherId'],
+                        'teacherName' => $datum['teacherName'] . " - " . $facultyName
+                    ));
+                }
+            }
+            $list['id'] = $id;
+            $this->load->view('tpl/list_teacher', $list);
+        }
+    }
+
+    public function deleteCouncil($councilId){
+        $this->Council_Model->deleteCouncil($councilId);
     }
 }

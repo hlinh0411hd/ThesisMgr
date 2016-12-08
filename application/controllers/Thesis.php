@@ -78,11 +78,12 @@ class Thesis extends CI_Controller {
             'thesisId' => $thesis['thesisId']
         );
         $listReviewer = $this->Reviewer_Model->getList($condition);
+        $data['thesis'] = $thesis;
+        $data['reviewers'] = array();
         foreach ($listReviewer as $item) {
             $item['teacherName'] = $this->Teacher_Model->getById($item['teacherId'])['teacherName'];
+            array_push($data['reviewers'],$item);
         }
-        $data['thesis'] = $thesis;
-        $data['reviewers'] = $listReviewer;
         $this->load->view('tpl/thesis_detail',$data);
     }
 }

@@ -235,6 +235,38 @@ function addCouncil(id){
         'position':position,
         'note':note
     };
-    alert(teacherId + " " + position);
-    $.get("council/addCouncil", data);
+    $.get("council/addCouncil", data, function(){
+        load('main','council');
+    });
+}
+
+function addReviewerBranch(){
+    $.get("reviewer/addReviewerBranch", function (data, status){
+        $('#listTeacher').append(data);
+    });
+}
+
+
+function addReviewer(id){
+    var teacherId = $("#" + id + " #teacherId").val();
+    var thesisId = $("#thesisId").val();
+    var data ={
+        'teacherId':teacherId,
+        'thesisId':thesisId
+    };
+    $.get("reviewer/addReviewer", data, function(){
+        load('main','Thesis/detail/'+thesisId);
+    });
+}
+
+function deleteCouncil(councilId){
+    $.get("council/deleteCouncil/"+councilId, function(){
+        load('main','council');
+    });
+}
+
+function deleteReviewer(reviewerId, thesisId){
+    $.get("reviewer/deleteReviewer/"+reviewerId, function(){
+        load('main','Thesis/detail/'+thesisId);
+    });
 }

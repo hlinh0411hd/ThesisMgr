@@ -21,7 +21,7 @@
         <label class="control-label">Tóm tắt</label>
         <textarea class="form-control" name="thesisDescription" id="thesisDescription" rows="10"><?= $thesisDescription; ?></textarea>
     </div>
-    <div class="form-group" onfocusout="load('teacherList','index')">
+    <div class="form-group" onfocusout="setTimeout(function(){load('teacherList','index');},100)">
         <label class="control-label">Giảng viên hướng dẫn</label>
         <input type="text" class="form-control" onkeyup="showHint('teacher','teacher')" name="teacher" id="teacher" value="<?= $teacherName?>">
         <ul id="teacherList" class="list-group">
@@ -31,7 +31,7 @@
     <div class="form-group">
         <input type="hidden" class="form-control" name="teacherId" id="teacherId" value="<?= $teacherId;?>">
     </div>
-    <div class="form-group" onfocusout="load('coteacherList','index')">
+    <div class="form-group" onfocusout="setTimeout(function(){load('teacherList','index');},100)">
         <label class="control-label">Giảng viên đồng hướng dẫn</label>
         <input type="text" class="form-control" onkeyup="showHint('coteacher','teacher')" name="coteacher" id="coteacher" value="<?= $coteacherName;?>">
         <ul id="coteacherList" class="list-group">

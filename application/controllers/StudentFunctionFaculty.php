@@ -48,7 +48,7 @@ class StudentFunctionFaculty extends CI_Controller{
     }
 
 	public function readExcel($file){
-		$property = array("STT", "MSSV", "Họ và tên","Khoa", "Lớp", "Email");
+		$property = array("STT", "MSSV", "Họ tên","Khoa", "Lớp", "Email");
 		$data = $this->Excel_Model->read($file, $property);
 		if ($data!="error"){
 			$listMail = $this->StudentFunctionFaculty_Model->addStudent($data);
@@ -77,7 +77,6 @@ class StudentFunctionFaculty extends CI_Controller{
             var_dump($listMail);
             $this->Mail_Model->send($listMail,"Test","AllowedSignIn");
         }
-        var_dump($data);
     }
 
     public function deleteAnAllowedStudent($studentId){

@@ -43,11 +43,13 @@ class Excel_Model extends CI_Model{
 		$highestColumn = $objWorksheet->getHighestColumn();
 		$highestColumnIndex = PHPExcel_Cell::columnIndexFromString($highestColumn);
 		$arraydata = array();
+		echo $highestColumnIndex;
 		if ($highestColumnIndex!=sizeof($property)){
 			return "error";
 		}
 		for ($i = 0; $i < $highestColumnIndex; ++$i){
 			if ($objWorksheet->getCellByColumnAndRow($i,1)->getValue()!=$property[$i]){
+                echo $objWorksheet->getCellByColumnAndRow($i,1)->getValue();
 				return "error";
 			}
 		}
@@ -57,6 +59,7 @@ class Excel_Model extends CI_Model{
 			{
 				$value=$objWorksheet->getCellByColumnAndRow($col, $row)->getValue();
 				$arraydata[$row-2][$col]=$value;
+
 			}
 		}
 		return $arraydata;

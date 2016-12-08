@@ -43,9 +43,5 @@
         </div>
 
     </div>
-    <div class="pull-right">
-        <ul id="page_num" class="pagination pagination-sm">
-            <?php echo $pagination;?>
-        </ul>
-    </div>
+
 </div>

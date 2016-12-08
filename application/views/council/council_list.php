@@ -25,7 +25,7 @@
                 }
             ?></td>
             <td><?= $council['note'];?></td>
-            <td><button class="btn">Xóa</button></td>
+            <td><button onclick="deleteCouncil(<?= $council['councilId'];?>)" class="btn">Xóa</button></td>
         </tr>
     <?php }?>
 </table>

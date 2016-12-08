@@ -98,10 +98,13 @@ select{
 /*Student and -account*/
 .box-right{
 	background:#FFFFFF;
-	min-height: 520px;
+	min-height: 430px;
 	padding: 0px;
-	height: 430px;
 }
 .glyphicon{
 	margin:0px 5px;
+}
+
+#main{
+	min-height: 520px;
 }

@@ -12,4 +12,13 @@ class Reviewer_Model extends CI_Model {
         $query=$this->db->get('reviewer');
         return $query->result_array();
     }
+
+    public function addReviewer($data){
+        $this->db->insert('reviewer',$data);
+    }
+
+    public function deleteReviewer($reviewerId){
+        $this->db->where('reviewerId', $reviewerId);
+        $this->db->delete('reviewer');
+    }
 }
