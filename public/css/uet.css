@@ -108,3 +108,11 @@ select{
 #main{
 	min-height: 520px;
 }
+
+/* Image Circle */
+.ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
