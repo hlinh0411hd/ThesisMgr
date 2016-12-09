@@ -18,7 +18,8 @@ class Mainpage extends CI_Controller {
         $data = array(
             'usernameSession' => $this->session->userdata("usernameSession"),
             'userIdSession' => $this->session->userdata("userIdSession"),
-            'userTypeSession' => $this->session->userdata("userTypeSession")
+            'userTypeSession' => $this->session->userdata("userTypeSession"),
+            'userAvatarSession' => $this->session->userdata("userAvatarSession")
         );
         $this->load->view("header_page", $data);
         $this->load->view("mainpage/mainpage");

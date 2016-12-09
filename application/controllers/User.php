@@ -26,4 +26,8 @@ class User extends CI_Controller {
     public function signUpThesis(){
         $this->load->view('student/sign_up_thesis');
     }
+
+    public function loginForm(){
+        $this->load->view('login_box.php');
+    }
 }

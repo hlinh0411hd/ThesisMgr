@@ -27,7 +27,7 @@
     <link rel="stylesheet" type='text/css' href="public/css/AdminLTE.min.css">
 </head>
 <div id="top">
-    <div class="container">
+    <div class="container row">
         <div class="logo col-sm-6">
             <a class="pull-left" href="./mainpage">
                 <img class="media-object " src="public/img/Logo_UET.jpg" alt="LoGo">
@@ -36,44 +36,12 @@
             <p><b>Trường Đại học Công Nghệ - Đại học Quốc gia Hà Nội</b></p>
         </div>
         <div class="col-sm-6">
-            <div class="dangNhap pull-right" style="margin-right: 48px;">
+            <div id="loginBox" class="dangNhap pull-right" style="margin-right: 48px;">
                 <?php
                 if (!isset($usernameSession)) echo '
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-right:23px"><span>Đăng nhập</span></a>
-                <div class="hold-transition dropdown-menu"  style="margin: 0;padding-bottom: 0;padding-top: 0;margin-right:-50px">
-                    <div id="login-form" class="login-box panel panel-primary" style="margin: 0;">
-                        <p class="login-box-msg panel-heading" style="font-size: large;padding-top:15px">Đăng nhập</p>
-                        <div class="login-box-body" style="margin: 0; border-radius: 4px">
-                            <form id="login_form" class="panel-body" action="#" method="post">
-                                <div class="form-group has-feedback">
-                                    <input id="username" name="username" type="text" class="form-control" placeholder="Tên đăng nhập">
-                                    <span class="glyphicon glyphicon-user form-control-feedback"></span>
-                                </div>
-                                <div class="form-group has-feedback">
-                                    <input id="password" name="password" type="password" class="form-control" placeholder="Password">
-                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-8">
-                                        <div class="checkbox icheck">
-                                            <label>
-                                                <input type="checkbox"> Remember Me
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <!-- /.col -->
-                                    <div class="col-xs-4">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                            </form>
-
-                            <a href="#">I forgot my password</a><br>
-
-                        </div>
-                        <!-- /.login-box-body -->
-                    </div>
+                <a onclick="setTimeout(function(){load(\'login\',\'user/loginForm\')}, 100);" class="btn btn-primary " style="margin-right:23px"><span>Đăng nhập</span></a>
+                <div id="login" style="z-index: 10000;position: absolute;left:49%">
+                    
                 </div>';
                 else {
                     echo '<a href="';
@@ -81,7 +49,7 @@
                     else if ($userTypeSession == 2) echo 'teacher';
                     else echo 'faculty';
                     echo '">' . $usernameSession . '</a>
-                    <a href="user/logout" class="btn ratio" style="background-image: url(public/img/avt.jpg); border-radius: 50%; width:45px; height:45px;"></a>';
+                    <a href="user/logout" class="btn ratio" style="background-image: url('.$userAvatarSession.'); border-radius: 50%; width:45px; height:45px;"></a>';
                     }?>
             </div>
         </div>

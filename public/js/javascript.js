@@ -5,25 +5,45 @@ $(function () {
 		increaseArea: '20%' // optional
 	});
 
-	$('#login_form').submit(function (event){
-        var username = $('#username').val();
-        var password = $('#password').val();
-
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange=function() {
-            if (this.readyState == 4 && this.status == 200) {
-                if (this.responseText == "ok"){
-                    window.location.replace("mainpage");
-                }
-            }
-        };
-        xhttp.open("GET", "user/login/" + username + "/" + password, true);
-        xhttp.send();
-
-		event.preventDefault();
-	});
-
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#login').length) {
+            setTimeout(function(){
+                load('login','index');
+            }, 50);
+        }
+    });
+    //
+    // $('body').click(function(){
+	 //    setTimeout(function(){
+	 //        load('login','index');
+    //     }, 500);
+    // });
+    //
+    // $('#login').click(function(){
+	 //    return false;
+    // });
 });
+
+
+
+function login(){
+    var username = $('#username').val();
+    var password = $('#password').val();
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange=function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if (this.responseText == "ok"){
+                window.location.replace("mainpage");
+            } else {
+                document.getElementById("loginError").innerHTML = "Tên đăng nhập hoặc mật khẩu sai";
+            }
+        }
+    };
+    xhttp.open("GET", "user/login/" + username + "/" + password, true);
+    xhttp.send();
+
+};
 
 function load(content, page){
 	var xhttp = new XMLHttpRequest();

@@ -20,6 +20,7 @@ class User_Model extends CI_Model {
             $this->session->set_userdata(array(
                 'usernameSession' => $result['studentName'],
                 'userIdSession' => $result['studentId'],
+                'userAvatarSession' => $result['avatar'],
                 'userTypeSession' => 3
             ));
             return "ok";
@@ -38,6 +39,7 @@ class User_Model extends CI_Model {
             $this->session->set_userdata(array(
                 'usernameSession' => $result['teacherName'],
                 'userIdSession' => $result['teacherId'],
+                'userAvatarSession' => $result['avatar'],
                 'userTypeSession' => 2
             ));
             return "ok";
@@ -55,6 +57,7 @@ class User_Model extends CI_Model {
             $this->session->set_userdata(array(
                 'usernameSession' => $result['facultyName'],
                 'userIdSession' => $result['facultyId'],
+                'userAvatarSession' => $result['avatar'],
                 'userTypeSession' => 1
             ));
             return "ok";
