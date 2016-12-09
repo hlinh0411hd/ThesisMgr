@@ -6,11 +6,26 @@
  * Time: 8:02 PM
  */
 ?>
-
-<div id="thesisDetail" class="center container">
+<div id="thesisDetail">
     <input type="hidden" class="form-control" name="thesisId" id="thesisId" value="<?= $thesis['thesisId']?>">
-    <h2>Khoá luận: <?= $thesis['thesisName']?></h2>
-    <h3>Sinh viên: <?= $thesis['studentName']?></h3>
+    <div id="bang-thong-tin" class="panel panel-default">
+        <div class="panel-heading">
+            <h2 class="panel-title">Khoá luận: <?= $thesis['thesisName']?></h2>
+        </div>
+        <div class="panel-body">
+            <h3>Sinh viên: <?= $thesis['studentName']?></h3>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+    <h2></h2>
+
     <div class="row">
         <div class="col-sm-6">
             <h4>Giảng viên hướng dẫn:</h4>

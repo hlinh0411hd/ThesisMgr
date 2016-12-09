@@ -5,16 +5,16 @@
         <div class="col-sm-2">
             <div class="panel panel-primary">
                 <div class="panel-heading"><?=$usernameSession?></div>
-                <div class="panel-body">
+                
                     <ul class="menu-sidebar list-group">
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=teacher')">Giáo viên</a></li>
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=student')">Sinh viên</a></li>
-                        <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')">Chương trình đào tạo</a></li>
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=thesis')">Khóa luận</a></li>
-                        <li class="list-group-item"><a onclick="load('main','pagination?page=request')">Danh sách yêu cầu</a></li>
-                        <li class="list-group-item"><a onclick="load('main','council')">Hội đồng bảo vệ</a></li>
+                        <li class="list-group-item"><a onclick="load('main','pagination?page=teacher')"><span>Giáo viên</span></a></li>
+                        <li class="list-group-item"><a onclick="load('main','pagination?page=student')"><span>Sinh viên</span></a></li>
+                        <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chương trình đào tạo</span></a></li>
+                        <li class="list-group-item"><a onclick="load('main','pagination?page=thesis')">K<span>hóa luận</span></a></li>
+                        <li class="list-group-item"><a onclick="load('main','pagination?page=request')"><span>Danh sách yêu cầu</span></a></li>
+                        <li class="list-group-item"><a onclick="load('main','council')"><span>Hội đồng bảo vệ</span></a></li>
                     </ul>
-                </div>
+                
             </div>
         </div>
         <div class="box-right col-sm-10">

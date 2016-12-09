@@ -1,4 +1,4 @@
-<div class="center">
+
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Giảng viên</h3>
@@ -20,12 +20,11 @@
                         <td><?php echo $sz_User->teacherId;?></td>
                         <td><?php echo $sz_User->teacherName;?></td>
                         <td><?php echo $sz_User->departmentId;?></td>
-                        <td><?php echo 'xxx';?></td>
+                        <td><?php echo '<a><span class="glyphicon glyphicon-list-alt"></span></a>';?></td>
                     </tr>
                 <?php }?>
                 </tbody>
+
             </table>
         </div>
-
     </div>
-</div>

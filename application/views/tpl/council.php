@@ -2,11 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: Pham Minh Hoang Linh
+ * Date: 12/5/2016
+ * Time: 7:24 AM
+ */
+?>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Pham Minh Hoang Linh
  * Date: 12/3/2016
  * Time: 3:00 PM
  */
 ?>
-<div id="content" class="center container">
+
+
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Khóa luận</h3>
@@ -36,4 +45,3 @@
 
     </div>
 
-</div>

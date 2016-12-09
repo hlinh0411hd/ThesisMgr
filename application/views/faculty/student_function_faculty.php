@@ -1,4 +1,4 @@
-<div class="center">
+
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Danh sách Sinh viên</h3>
@@ -33,4 +33,4 @@
         </div>
 
     </div>
-</div>
+
