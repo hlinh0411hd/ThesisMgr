@@ -16,8 +16,6 @@
             <h4>Giảng viên hướng dẫn:</h4>
             <p><?= $thesis['teacherName'];?></p>
             <p><?= $thesis['coteacherName'];?></p>
-            <h5>Tóm tắt</h5>
-            <p><?= $thesis['thesisDescription'];?></p>
         </div>
         <div class="col-sm-6">
             <h4>Giảng viên phản biện</h4>
@@ -39,7 +37,11 @@
             ?>
         </div>
     </div>
+
+    <h5>Tóm tắt</h5>
+    <p><?= $thesis['thesisDescription'];?></p>
     <h4>Phản biện</h4>
+    <div id="reviewer">
     <table class="table table-bordered">
         <thead>
             <th class="col-sm-4">Giảng viên phản biện</th>
@@ -52,4 +54,10 @@
             </tr>
         <?php } ?>
     </table>
+    </div>
+    <?php
+    if ($this->session->userdata('userTypeSession') == 1){
+        echo "<button onclick='load(\"reviewer\",\"reviewer/edit/".$thesis['thesisId']."\");$(this).hide();' class='btn'>Thêm ý kiến phản biện</button>";
+    }
+    ?>
 </div>

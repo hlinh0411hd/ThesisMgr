@@ -21,4 +21,10 @@ class Reviewer_Model extends CI_Model {
         $this->db->where('reviewerId', $reviewerId);
         $this->db->delete('reviewer');
     }
+
+    public function updateReviewer($reviewerId, $reviewer){
+        $this->db->set('reviewer', $reviewer);
+        $this->db->where('reviewerId', $reviewerId);
+        $this->db->update('reviewer');
+    }
 }

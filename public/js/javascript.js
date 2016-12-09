@@ -270,3 +270,15 @@ function deleteReviewer(reviewerId, thesisId){
         load('main','Thesis/detail/'+thesisId);
     });
 }
+
+function editReviewer(thesisId){
+    var n = $('#reviewer textarea').length;
+    for (var i = 0; i < n; i++){
+        var data = {
+            'reviewerId':$('#reviewer textarea')[i].id,
+            'reviewer':$('#reviewer textarea')[i].value
+        };
+        $.get("reviewer/updateReviewer", data);
+    }
+    load('main','Thesis/detail/'+thesisId);
+}
