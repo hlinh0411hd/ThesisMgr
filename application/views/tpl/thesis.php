@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -21,12 +22,13 @@
             <table id="myTable" class="table table-striped table-bordered" style="font-size: 13px;">
                 <thead>
                 <tr>
-                    <th class="col-md-2">Tên khóa luận</th>
+                    <th class="col-md-3">Tên khóa luận</th>
                     <th class="col-md-2">Tên sinh viên</th>
                     <th class="col-md-2">Thời gian đăng ký</th>
-                    <th class="col-md-2">Trạng thái</th>
+                    <th class="col-md-1">Trạng thái</th>
+                    <th class="col-md-1"></th>
                     <th class="col-md-1">Chi tiết</th>
-                    <th class="col-md-2">Đã nộp hồ sơ</th>
+                    <th class="col-md-1">Hồ sơ</th>
                     <th class='col-md-1'>Khác</th>
                 </tr>
                 </thead>
@@ -36,13 +38,8 @@
                         <td><?php echo $sz_User->thesisName;?></td>
                         <td><?php echo $sz_User->studentName;?></td>
                         <td><?php echo $sz_User->created_at;?></td>
-                        <td><?php
-                            echo $sz_User->accepted==0? "chưa":"chấp nhận";
-                            echo "<br>";
-                            echo $sz_User->isClosed==0? "mở":"đóng";
-                            echo "<br>";
-                            echo $sz_User->isSuccess==0? "chưa bảo vệ":"đã bảo vệ";
-                        ?></td>
+                        <td><?php echo $sz_User->accepted==0? "chưa":"chấp nhận";?></td>
+                        <td><?php echo $sz_User->isSuccess==0? "chưa bảo vệ":"đã bảo vệ";?></td>
                         <td><?php echo "<a onclick='load(\"main\",\"Thesis/detail/".$sz_User->thesisId."\")'><span class='glyphicon glyphicon-list-alt'></a>";?></td>
                         <td><input type="checkbox"
                                 <?= $sz_User->protectionFile!=0? "checked":"";?>
@@ -58,9 +55,9 @@
                                 echo "Đã chấp nhận";
                             }
                             echo "</td>";
-                        } else
+                        } else 
                         if ($this->session->userdata('userTypeSession') == 1){
-                            echo "<td><button class='btn'>Chỉnh sửa</button> <button class='btn'>Đóng</button></td>";
+                            echo "<td><a href='#'><span style='color:green;' class='glyphicon glyphicon-edit'></span></a> <a href='#'><span style='color:red;' class='glyphicon glyphicon-remove'></span></a></td>";
                         } else if ($this->session->userdata('userTypeSession') == 3){
                             echo "<td><button onclick='load(\"main\",\"request/edit/".$sz_User->thesisId."\")' class='btn'>Yêu cầu chỉnh sửa</button><br><button onclick='load(\"main\", \"request/addRequest/2/".$sz_User->thesisId."\")' class='btn'>Yêu cầu rút</button></td>";
                         }
@@ -68,8 +65,8 @@
                     </tr>
                 <?php }?>
                 </tbody>
+
             </table>
         </div>
 
     </div>
-

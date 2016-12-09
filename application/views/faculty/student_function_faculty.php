@@ -24,13 +24,13 @@
                         <td><?php echo $sz_User->studentId;?></td>
                         <td><?php echo $sz_User->studentName;?></td>
                         <td><?php echo $sz_User->studentClass;?></td>
-                        <td><?php echo 'xxx';?></td>
+                        <td><?php echo '<a href="#"><span style="color: blue;" class="glyphicon glyphicon-list-alt"></span></a>';?></td>
                         <td><input type="checkbox" <?= $sz_User->thesisAllowed==1? "checked":"" ?> disabled></td>
                     </tr>
                 <?php }?>
                 </tbody>
+
             </table>
         </div>
 
     </div>
-
