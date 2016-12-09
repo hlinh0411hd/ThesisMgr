@@ -18,13 +18,6 @@
 
     </div>
 </div>
-
-
-
-
-
-
-    <h2></h2>
     <div class="row">
         <div class="col-sm-6">
             <h4>Giảng viên hướng dẫn:</h4>
@@ -68,9 +61,6 @@
             </tr>
         <?php } ?>
     </table>
-<<<<<<< HEAD
-
-=======
     </div>
     <?php
     if ($this->session->userdata('userTypeSession') == 1){
@@ -78,4 +68,3 @@
     }
     ?>
 </div>
->>>>>>> 7e8f694a8a0b8cf491726be6a476051b94692eba

@@ -15,9 +15,7 @@
         <tr>
             <td><?= $reviewer['teacherName'];?></td>
             <td>
-                <textarea id="<?= $reviewer['reviewerId'];?>" class="form-control">
-                    <?= $reviewer['reviewer'];?>
-                </textarea>
+                <textarea id="<?= $reviewer['reviewerId'];?>" class="form-control"><?= $reviewer['reviewer'];?></textarea>
             </td>
         </tr>
     <?php } ?>
