@@ -14,7 +14,7 @@
               <!-- Default panel contents -->
               <div class="panel-heading"><?= $usernameSession;?></div>
                   <ul class="list-group ">
-                    <li class="list-group-item"><a onclick="load('main','InfoFunctionTeacher')"><span>Thông tin cá nhân</span></a></li>
+                    <li class="list-group-item"><a onclick="load('main','Teacher/info')"><span>Thông tin cá nhân</span></a></li>
                     <li class="list-group-item"><a onclick="load('main','ResearchFunctionTeacher')"><span>Lĩnh vực nghiên cứu</span></a></li>
                     <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=tethesis')"><span>Khóa luận</span></a></li>
                     <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chức năng khác</span></a></li>              

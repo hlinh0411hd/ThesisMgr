@@ -11,6 +11,9 @@ class Teacher extends CI_Controller {
         parent::__construct();
         $this->load->model('Teacher_Model');
         $this->load->model('Faculty_Model');
+        $this->load->model('Department_Model');
+        $this->load->model('Faculty_Model');
+        $this->load->model('Laboratory_Model');
     }
 
     public function index(){
@@ -37,5 +40,34 @@ class Teacher extends CI_Controller {
         }
         $list['id'] = $id;
         $this->load->view('tpl/list_teacher', $list);
+    }
+
+    public function info(){
+        $data = $this->Teacher_Model->getById($this->session->userdata("userIdSession"));
+        $data['departments'] = $this->Department_Model->getByFaculty($data['facultyId']);
+        $data['laboratories'] = $this->Laboratory_Model->getByFaculty($data['facultyId']);
+        $data['faculties'] = $this->Faculty_Model->getAll();
+        $this->load->view('teacher/info_function_teacher',$data);
+    }
+
+    public function updateInfo(){
+        $teacherName = "";
+        $facultyId = "";
+        $departmentId = "";
+        $laboratoryId = "";
+        $teacherMail = "";
+        $teacherPhone = "";
+        $teacherInfo = "";
+        extract($_GET);
+        $data = array(
+            'teacherName'=> $teacherName,
+            'facultyId'=> $facultyId,
+            'departmentId'=> $departmentId,
+            'laboratoryId'=> $laboratoryId,
+            'teacherMail'=> $teacherMail,
+            'teacherPhone'=> $teacherPhone,
+            'teacherInfo'=> $teacherInfo
+        );
+        $this->Teacher_Model->update($this->session->userdata('userIdSession'), $data);
     }
 }

@@ -20,6 +20,11 @@ class Faculty_Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getAll(){
+        $query = $this->db->get('faculties');
+        return $query->result_array();
+    }
+
     public function getLaboratory($facultyId){
         $this->db->where('facultyId', $facultyId);
         $query = $this->db->get('laboratories');

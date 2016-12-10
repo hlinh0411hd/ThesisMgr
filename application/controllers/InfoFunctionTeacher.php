@@ -16,10 +16,6 @@ class InfoFunctionTeacher extends CI_Controller{
     }
 
     public function index(){
-        $data = $this->Teacher_Model->getById($this->session->userdata("userIdSession"));
-        $data['departmentName'] = $this->Department_Model->getName($data['departmentId']);
-        $data['facultyName'] = $this->Faculty_Model->getName($data['facultyId']);
-        $data['laboratoryName'] = $this->Laboratory_Model->getName($data['laboratoryId']);
-        $this->load->view('teacher/info_function_teacher',$data);
+
     }
 }

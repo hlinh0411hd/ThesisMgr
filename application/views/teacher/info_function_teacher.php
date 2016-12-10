@@ -10,15 +10,15 @@
 
 <div class="panel panel-default col-sm-12" style="padding-bottom: 10px;">
     <div class="panel-heading">
-        <h3 class="panel-title">Thông tin cá nhân</h3> 
+        <h3 class="panel-title">Thông tin cá nhân</h3>
         <div class="pull-right">
             <button type="button" class="btn btn-primary btn-sm chinhsua-info" onclick="enableInput()">Chỉnh sửa</button>
-            <button class="btn btn-primary btn-sm luu-info" style="display:none;" >&nbsp;&nbsp;Lưu &nbsp;&nbsp;lại&nbsp;&nbsp;&nbsp; </button>
+            <button onclick="updateInfoTeacher()" class="btn btn-primary btn-sm luu-info" style="display:none;" >Lưu</button>
         </div>
     </div>
     <div class="panel-body">
         <div class="col-sm-6">
-            <form actioc="InfoFunctionTeacher/update">
+            <form>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Họ và tên:</label>
                     <div class="col-sm-9">
@@ -28,19 +28,40 @@
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Khoa</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="faculty" id="faculty" value="<?php echo $facultyName;?>" disabled>
+                        <select class="form-control" name="facultyId" id="facultyId" disabled>
+                            <option value="0"></option>
+                            <?php foreach ($faculties as $faculty){?>
+                                <option value="<?= $faculty['facultyId'];?>" <?= $facultyId == $faculty['facultyId']? "selected":"";?>>
+                                    <?= $faculty['facultyName'];?>
+                                </option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Bộ môn</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="department" id="department" value="<?php echo $departmentName;?>" disabled>
+                        <select class="form-control" name="departmentId" id="departmentId" disabled>
+                            <option value="0"></option>
+                            <?php foreach ($departments as $department){?>
+                                <option value="<?= $department['departmentId'];?>" <?= $departmentId == $department['departmentId']? "selected":"";?>>
+                                    <?= $department['departmentName'];?>
+                                </option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Phòng thí nghiệm</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="laboratory" id="laboratory" value="<?php echo $laboratoryName;?>" disabled>
+                        <select class="form-control" name="laboratoryId" id="laboratoryId" disabled>
+                            <option value="0"></option>
+                            <?php foreach ($laboratories as $laboratory){?>
+                                <option value="<?= $laboratory['laboratoryId'];?>" <?= $laboratoryId == $laboratory['laboratoryId']? "selected":"";?>>
+                                    <?= $laboratory['laboratoryName'];?>
+                                </option>
+                            <?php }?>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -58,16 +79,16 @@
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Thông tin</label>
                     <div class="col-sm-9">
-                        <textarea type="text" class="form-control" name="phone" id="phone" disabled><?php echo $teacherInfo;?></textarea>
+                        <textarea type="text" class="form-control" name="info" id="info" disabled><?php echo $teacherInfo;?></textarea>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col-sm-6" style="border-left: 1px solid #dfdfdf; min-height: 400px;">
             <center> 
-                <div class="ratio img-responsive img-circle" style="background-image: url(public/img/avt.jpg); width: 270px; height: 270px;"></div>
+                <div class="ratio img-responsive img-circle" style="background-image: url(<?= $avatar;?>); width: 270px; height: 270px;"></div>
             </center>
-            <center> <button class="btn btn-success btn-avatar" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
+            <center> <button class="btn btn-success btn-avatar" style="margin-top: 25px;">Thay đổi ảnh</button></center>
 
         </div>
     </div>

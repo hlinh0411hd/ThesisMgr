@@ -66,6 +66,29 @@ function enableInput(){
 	$(".btn-avatar").css("display","block");
     $("input").prop('disabled', false);
     $("textarea").prop('disabled', false);
+    $("select").prop('disabled', false);
+}
+
+function updateInfoTeacher(){
+    var teacherName = $('#name').val();
+    var facultyId = $('#facultyId').val();
+    var departmentId = $('#departmentId').val();
+    var laboratoryId = $('#laboratoryId').val();
+    var teacherMail = $('#email').val();
+    var teacherPhone = $('#phone').val();
+    var teacherInfo = $('#info').val();
+    var data = {
+        'teacherName': teacherName,
+        'facultyId': facultyId,
+        'departmentId': departmentId,
+        'laboratoryId': laboratoryId,
+        'teacherMail': teacherMail,
+        'teacherPhone': teacherPhone,
+        'teacherInfo': teacherInfo
+    };
+    $.get("teacher/updateInfo", data, function(){
+        load('main','Teacher/info');
+    });
 }
 
 beforeElement="";

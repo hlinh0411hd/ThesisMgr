@@ -30,4 +30,10 @@ class Teacher_Model extends CI_Model {
                     ->get();
         return $query->result_array();
     }
+
+    public function update($teacherId, $data){
+        $this->db->set($data)
+            ->where('teacherId', $teacherId)
+            ->update('teacher');
+    }
 }
