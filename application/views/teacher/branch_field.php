@@ -31,7 +31,9 @@ $r = rand(0,100000);
             ?>>Xóa</button>
     </div>
     <div class="col-sm-4">
-        <div id="subfield_branch<?php echo $r; ?>"></div>
+        <div id="subfield_branch<?php echo $r; ?>">
+
+        </div>
         <button onclick="addSubfieldBranch('#subfield_branch<?php echo $r; ?>',1000)" type="button" class="btn btn-info"<?php
         if (isset($relativeField)){
             echo "style='display:none'";

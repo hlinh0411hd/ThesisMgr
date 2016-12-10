@@ -158,6 +158,7 @@ function saveTree(researchDirection){
     };
     console.log(JSON.stringify(data));
     $.post("researchfunctionteacher/saveTree", data, function(data, status){
+        alert(data);
         load('main','researchfunctionteacher');
     });
 }
@@ -188,7 +189,6 @@ function deleteBranchTree(researchDirectionId){
     var data = {
         'researchDirectionId': researchDirectionId
     };
-    alert(researchDirectionId);
     $.post("researchfunctionteacher/deleteTree", data, function(data, status){
         load('main','researchfunctionteacher');
     });

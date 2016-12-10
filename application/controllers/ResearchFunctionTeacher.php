@@ -12,6 +12,8 @@ class ResearchFunctionTeacher extends CI_Controller {
         $this->load->model('ResearchDirection_Model');
         $this->load->model('Field_Model');
         $this->load->model('RelativeField_Model');
+        $this->load->model('RelativeSubfield_Model');
+        $this->load->model('Subfield_Model');
     }
 
     public function index(){
@@ -32,6 +34,7 @@ class ResearchFunctionTeacher extends CI_Controller {
         $teacherId = $this->session->userdata("userIdSession");
         $researchDirectionList = $this->ResearchDirection_Model->getByTeacherId($teacherId);
         $relativeFieldList = array();
+        $relativeSubfieldList = array();
         foreach ($researchDirectionList as $researchDirection){
             $relativeFieldList[$researchDirection['researchDirectionId']] = $this->RelativeField_Model->getByResearchDirectionId($researchDirection['researchDirectionId']);
         }
@@ -84,11 +87,16 @@ class ResearchFunctionTeacher extends CI_Controller {
         $subfieldList = [];
         extract($_POST);
         $researchDirectionId = $this->ResearchDirection_Model->addNew($researchDirectionName, $teacherId);
-        echo $researchDirectionId;
+        var_dump($subfieldList);
         foreach ($fieldList as $fieldId){
             $this->RelativeField_Model->addNew($researchDirectionId, $fieldId['id']);
         }
+        foreach ($subfieldList as $subfieldId){
+            $subfield = $this->Subfield_Model->getById($subfieldId['id']);
+            $this->RelativeSubfield_Model->addNew($researchDirectionId, $subfield['subfieldId'], $subfield['fieldId']);
+        }
     }
+
 
     public function updateTree(){
         $teacherId = $this->session->userdata("userIdSession");
@@ -107,7 +115,6 @@ class ResearchFunctionTeacher extends CI_Controller {
         $researchDirectionId = "";
         extract($_POST);
         echo $researchDirectionId;
-        $this->RelativeField_Model->delete($researchDirectionId);
         $this->ResearchDirection_Model->delete($researchDirectionId);
     }
 }
