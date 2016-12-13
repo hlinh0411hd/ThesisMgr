@@ -44,12 +44,23 @@
                     
                 </div>';
                 else {
-                    echo '<a href="';
-                    if ($userTypeSession == 3) echo 'student';
+
+                    echo '<div class="btn-group">
+                        <span class="dropdown-toggle" data-toggle="dropdown">';
+                          echo '<span class="btn btn-primary ratio" style="background-image: url('.$userAvatarSession.'); border-radius: 50%; width:45px; height:45px;"></span>
+                        </span>
+                        <div class="panel panel-info dropdown-menu" style="border-radius:5px; left:-10px;">
+                          <div class="panel-body" style="padding-bottom:10px;">
+                            <a href="'; 
+                          if ($userTypeSession == 3) echo 'student';
                     else if ($userTypeSession == 2) echo 'teacher';
                     else echo 'faculty';
-                    echo '">' . $usernameSession . '</a>
-                    <a href="user/logout" class="btn ratio" style="background-image: url('.$userAvatarSession.'); border-radius: 50%; width:45px; height:45px;"></a>';
+                    echo '"><span class="glyphicon glyphicon-user"></span>Hồ sơ</a>
+                          </div>
+                          <div class="panel-footer"><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span>Đăng xuất</a></div>
+                        </div>    
+                    </div>';
+                   
                     }?>
             </div>
         </div>
