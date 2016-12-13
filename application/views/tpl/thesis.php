@@ -27,11 +27,11 @@
                     <th class="col-md-3">Tên khóa luận</th>
                     <th class="col-md-2">Tên sinh viên</th>
                     <th class="col-md-2">Thời gian đăng ký</th>
-                    <th class="col-md-1">Trạng thái</th>
+                    <th class="col-md-1">Tr. thái</th>
                     <th class="col-md-1">Bảo vệ</th>
                     <th class="col-md-1">Chi tiết</th>
                     <th class="col-md-1">Hồ sơ</th>
-                    <th class='col-md-1'>Khác</th>
+                    <th class='col-md-1'>Chấp nhận sinh viên</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -40,28 +40,35 @@
                         <td><?php echo $sz_User->thesisName;?></td>
                         <td><?php echo $sz_User->studentName;?></td>
                         <td><?php echo $sz_User->created_at;?></td>
-                        <td><?php echo $sz_User->accepted==0? "chưa":"chấp nhận";?></td>
-                        <td><?php echo $sz_User->isSuccess==0? "chưa bảo vệ":"đã bảo vệ";?></td>
-                        <td><?php echo "<a onclick='load(\"main\",\"Thesis/detail/".$sz_User->thesisId."\")'><span class='glyphicon glyphicon-list-alt'></a>";?></td>
-                        <td><input type="checkbox"
+                        <td><center><input type="checkbox" 
+                            <?php echo $sz_User->accepted==0? "":"checked";?>
+                            <?= $this->session->userdata('userTypeSession') != 1? "disabled":"";?>
+                         /></center></td>
+                        <td><center><input type="checkbox" 
+                            <?php echo $sz_User->isSuccess==0? "":"checked";?> 
+                            <?= $this->session->userdata('userTypeSession') != 1? "disabled":"";?>
+                         /></center></td>
+                            
+                        <td><center><?php echo "<a onclick='load(\"main\",\"Thesis/detail/".$sz_User->thesisId."\")'><span class='glyphicon glyphicon-list-alt'></a>";?></center></td>
+                        <td><center><input type="checkbox"
                                 <?= $sz_User->protectionFile!=0? "checked":"";?>
                                 <?= $this->session->userdata('userTypeSession') != 1? "disabled":"onchange='checkedProtectionFile(".$sz_User->thesisId.")'";?>
-                            >
+                            ></center>
                         </td>
                         <?php
                         if ($this->session->userdata('userTypeSession') == 2){
                             echo "<td>";
                             if ($sz_User->accepted==0){
-                                echo "<button onclick='acceptThesis(".$sz_User->thesisId.")' class='btn'>Chấp nhận</button> <button onclick='denyThesis(".$sz_User->thesisId.")' class='btn'>Hủy</button>";
+                                echo "<a onclick='acceptThesis(".$sz_User->thesisId.")'><span style='color:#dfdfdf;' class='glyphicon glyphicon-ok' title='Chấp nhận'> </a> <a onclick='denyThesis(".$sz_User->thesisId.")'><span style='color:red;' class='glyphicon glyphicon-remove' title='Hủy'> </span></a>";
                             } else {
-                                echo "Đã chấp nhận";
+                                echo "<a onclick='acceptThesis(".$sz_User->thesisId.")'><span style='color:green;' class='glyphicon glyphicon-ok' title='Chấp nhận'> </a> <a onclick='denyThesis(".$sz_User->thesisId.")'><span style='color:#dfdfdf;' class='glyphicon glyphicon-remove' title='Hủy'> </span></a>";
                             }
                             echo "</td>";
                         } else 
                         if ($this->session->userdata('userTypeSession') == 1){
-                            echo "<td><a href='#'><span style='color:green;' class='glyphicon glyphicon-edit'></span></a> <a href='#'><span style='color:red;' class='glyphicon glyphicon-remove'></span></a></td>";
+                            echo "<td><center><a href='#'><span style='color:green;' class='glyphicon glyphicon-edit' title='Chỉnh sửa'> </span></a> <a href='#'><span style='color:red;' class='glyphicon glyphicon-remove' title='Hủy'></span></a></center></td>";
                         } else if ($this->session->userdata('userTypeSession') == 3){
-                            echo "<td><button onclick='load(\"main\",\"request/edit/".$sz_User->thesisId."\")' class='btn'>Yêu cầu chỉnh sửa</button><br><button onclick='load(\"main\", \"request/addRequest/2/".$sz_User->thesisId."\")' class='btn'>Yêu cầu rút</button></td>";
+                            echo "<td><center><a onclick='load(\"main\",\"request/edit/".$sz_User->thesisId."\")'><span style='color:green;' class='glyphicon glyphicon-edit' title='Đề xuất chỉnh sửa'></span></a><a onclick='load(\"main\", \"request/addRequest/2/".$sz_User->thesisId."\")'><span style='color:red;' class='glyphicon glyphicon-remove' title='Đề xuất hủy'></span></a></center></td>";
                         }
                         ?>
                     </tr>
