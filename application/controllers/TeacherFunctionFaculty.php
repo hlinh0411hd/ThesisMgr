@@ -34,12 +34,16 @@ class TeacherFunctionFaculty extends CI_Controller{
 			$this->readExcel($data['file_name']);
 		}
 	}
+	
 	public function readExcel($file){
 		$property = array("STT", "Mã giảng viên", "Họ tên", "Khoa", "Email");
 		$data = $this->Excel_Model->read($file, $property);
 		if ($data!="error"){
 			$listMail = $this->TeacherFunctionFaculty_Model->addTeacher($data);
-			$this->Mail_Model->send($listMail,"Test","Add Teacher");
+            foreach ($listMail as $item) {
+                $this->Mail_Model->send($item,"Test","Add Teacher");
+                //var_dump($item);
+			}
 		}
 		redirect('../faculty', 'location');
 	}

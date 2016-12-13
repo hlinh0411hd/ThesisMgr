@@ -12,6 +12,8 @@ class Mainpage extends CI_Controller {
         $this->load->model('Faculty_Model');
         $this->load->model('Field_Model');
         $this->load->model('Teacher_Model');
+		$this->load->model('Student_Model');
+		$this->load->model('Thesis_Model');
     }
 
     public function index(){
@@ -41,6 +43,25 @@ class Mainpage extends CI_Controller {
         $data = $this->Field_Model->getAll();
         $this->load->view('mainpage/field_mainpage',$data);
     }
+	
+	public function thesis(){
+		$data = $this->Thesis_Model->getList("1=1");
+		$array['list'] = array();
+		foreach ($data as $item){
+			$temp = array(
+				'thesisName' => $item['thesisName'],
+				'studentName' => $this->Student_Model->getName($item['studentId']),
+				'created_at' => $item['created_at'],
+				'accepted' => $item['accepted'],
+				'isSuccess' => $item['isSuccess'],
+				'thesisId' => $item['thesisId'],
+				'protectionFile' => $item['protectionFile']
+			);
+			array_push($array['list'], $temp);
+			
+		}
+		$this->load->View('mainpage/thesis_mainpage',$array);
+	}
 
     public function teacherByFaculty($facultyId){
         $data['data'] = $this->Teacher_Model->getByFaculty($facultyId);

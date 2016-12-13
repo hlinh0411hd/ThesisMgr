@@ -44,12 +44,23 @@
                     
                 </div>';
                 else {
-                    echo '<a href="';
-                    if ($userTypeSession == 3) echo 'student';
+
+                    echo '<div class="btn-group">
+                        <span class="dropdown-toggle" data-toggle="dropdown">';
+                          echo '<span class="btn btn-primary ratio" style="background-image: url('.$userAvatarSession.'); border-radius: 50%; width:45px; height:45px;"></span>
+                        </span>
+                        <div class="panel panel-info dropdown-menu" style="border-radius:5px; left:-10px;">
+                          <div class="panel-body" style="padding-bottom:10px;">
+                            <a href="'; 
+                          if ($userTypeSession == 3) echo 'student';
                     else if ($userTypeSession == 2) echo 'teacher';
                     else echo 'faculty';
-                    echo '">' . $usernameSession . '</a>
-                    <a href="user/logout" class="btn ratio" style="background-image: url('.$userAvatarSession.'); border-radius: 50%; width:45px; height:45px;"></a>';
+                    echo '"><span class="glyphicon glyphicon-user"></span>Hồ sơ</a>
+                          </div>
+                          <div class="panel-footer"><a href="user/logout"><span class="glyphicon glyphicon-log-out"></span>Đăng xuất</a></div>
+                        </div>    
+                    </div>';
+                   
                     }?>
             </div>
         </div>
@@ -76,22 +87,22 @@
                         <li class="dropdown">
                             <a id="introduction" href="#" class="dropdown-toggle" data-toggle="dropdown">Giới thiệu <b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/100')"><span>Khoa Công nghệ Thông tin</span></a></li>
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/200')"><span>Khoa Điện tử Viễn thông</span></a></li>
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/300')"><span>Khoa Vật lý Kỹ thuật và Công nghệ Nano</span></a></li>
-                                <li><a onclick="clicked('#introduction');load('content','Mainpage/faculty/400')"><span>Khoa Cơ học Kỹ thuật và Tự động hóa</span></a></li>
+                                <li><a onClick="clicked('#introduction');load('content','Mainpage/faculty/100')"><span>Khoa Công nghệ Thông tin</span></a></li>
+                                <li><a onClick="clicked('#introduction');load('content','Mainpage/faculty/200')"><span>Khoa Điện tử Viễn thông</span></a></li>
+                                <li><a onClick="clicked('#introduction');load('content','Mainpage/faculty/300')"><span>Khoa Vật lý Kỹ thuật và Công nghệ Nano</span></a></li>
+                                <li><a onClick="clicked('#introduction');load('content','Mainpage/faculty/400')"><span>Khoa Cơ học Kỹ thuật và Tự động hóa</span></a></li>
                             </ul>
                         </li>
-                        <li id="aaa"><a onclick="clicked(this);load('content','Mainpage/field')"><span>Lĩnh vực nghiên cứu</span></a></li>
-                        <li><a onclick="clicked(this);" href="#"><span>Khóa luận</span></a></li>
-                        <li><a onclick="clicked(this); <?php
+                        <li id="aaa"><a onClick="clicked(this);load('content','Mainpage/field')"><span>Lĩnh vực nghiên cứu</span></a></li>
+                        <li><a onClick="clicked(this);load('content','Mainpage/thesis')"><span>Khóa luận</span></a></li>
+                        <li><a onClick="clicked(this); <?php
                             if (!isset($userTypeSession) || $userTypeSession != 3) echo "";
                                 else echo "load('content','User/signUpThesis');";
                             ?>"><span class="red"> <?php
                                     if (!isset($userTypeSession) || $userTypeSession != 3) echo "<del>Đăng ký đề tài</del>";
                                         else echo "Đăng ký đề tài";
                                     ?></span></a></li>
-                        <li><a onclick="clicked(this);" href="#">Liên hệ</a></li>
+                        <li><a onClick="clicked(this);" href="#">Liên hệ</a></li>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">

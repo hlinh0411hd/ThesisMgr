@@ -25,7 +25,7 @@ class Mail_Model extends CI_Model{
 		if ( ! $this->email->send())
 		{
 			// Generate error
-			return $this->email->print_debugger();
+			return $listMail;
 		}else{
 			return 'Gửi email thành công';
 		}
