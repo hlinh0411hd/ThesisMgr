@@ -186,11 +186,6 @@ CREATE TABLE `relative_fields` (
 -- Dumping data for table `relative_fields`
 --
 
-INSERT INTO `relative_fields` (`researchDirectionId`, `fieldId`) VALUES
-(27, 1000),
-(27, 5000),
-(28, 1000),
-(28, 3000);
 
 -- --------------------------------------------------------
 
@@ -208,13 +203,6 @@ CREATE TABLE `relative_subfields` (
 -- Dumping data for table `relative_subfields`
 --
 
-INSERT INTO `relative_subfields` (`researchDirectionId`, `fieldId`, `subfieldId`) VALUES
-(27, 1000, 1003),
-(27, 1000, 1008),
-(27, 5000, 5005),
-(28, 1000, 1001),
-(28, 3000, 3001),
-(28, 3000, 3005);
 
 -- --------------------------------------------------------
 
@@ -267,9 +255,6 @@ CREATE TABLE `research_directions` (
 -- Dumping data for table `research_directions`
 --
 
-INSERT INTO `research_directions` (`researchDirectionId`, `teacherId`, `researchDirectionName`, `researchDirectionsDescription`) VALUES
-(27, 1, 'Computer Science', NULL),
-(28, 1, 'Web Development', NULL);
 
 -- --------------------------------------------------------
 

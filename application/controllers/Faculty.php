@@ -10,7 +10,8 @@ class Faculty extends CI_Controller{
 	public function index(){
         $data = array(
             'usernameSession' => $this->session->userdata("usernameSession"),
-            'userIdSession' => $this->session->userdata("userIdSession"),
+            'userAvatarSession' => $this->session->userdata("userAvatarSession"),
+            'userSession' => $this->session->userdata("userIdSession"),
             'userTypeSession' => $this->session->userdata("userTypeSession")
         );
         $this->load->view("header_page", $data);

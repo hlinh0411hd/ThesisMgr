@@ -40,7 +40,10 @@ class TeacherFunctionFaculty extends CI_Controller{
 		$data = $this->Excel_Model->read($file, $property);
 		if ($data!="error"){
 			$listMail = $this->TeacherFunctionFaculty_Model->addTeacher($data);
-			$this->Mail_Model->send($listMail,"Test","Add Teacher");
+            foreach ($listMail as $item) {
+                $this->Mail_Model->send($item,"Test","Add Teacher");
+                //var_dump($item);
+			}
 		}
 		redirect('../faculty', 'location');
 	}

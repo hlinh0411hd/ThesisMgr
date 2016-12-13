@@ -19,7 +19,7 @@ class TeacherFunctionFaculty_Model extends CI_Model{
 				'teacherMail' => $teacher[4],
 				'password' => "11111111",
 			);
-			if ($data['teacherId']==null) break;
+			if ($data['teacherId']==null || $data['teacherId'] == "") break;
 			$this->db->where('teacherId',$teacher[1]);
 			$query = $this->db->get('teacher');
 			if ($query->num_rows()>0){
