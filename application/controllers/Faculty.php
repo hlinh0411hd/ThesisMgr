@@ -5,6 +5,7 @@ class Faculty extends CI_Controller{
 	public function __construct(){
 		parent::__construct();
         $this->load->model('Faculty_Model');
+        $this->load->model('ThesisRegisterTime_Model');
 	}
 	
 	public function index(){
@@ -25,6 +26,24 @@ class Faculty extends CI_Controller{
 
     public function laboratory($facultyId){
         $data["laboratoryList"] = $this->Faculty_Model->getLaboratory($facultyId);
+    }
+
+    public function thesisRegister(){
+        $data = $this->ThesisRegisterTime_Model->getByFaculty($this->session->userdata('userIdSession'));
+        $this->load->view('faculty/thesis_register', $data);
+    }
+
+    public function saveTimeRegister(){
+        $facultyId = "";
+        $startDate = $endDate = $startTime = $endTime = "";
+        extract($_GET);
+        $data = array(
+            'startDate' => $startDate,
+            'startTime' => $startTime,
+            'endDate' => $endDate,
+            'endTime' => $endTime
+        );
+        $this->ThesisRegisterTime_Model->update($facultyId, $data);
     }
 }
 ?>

@@ -12,8 +12,8 @@
     <div class="panel-heading">
         <h3 class="panel-title">Thông tin cá nhân</h3>
         <div class="pull-right">
-            <button type="button" class="btn btn-primary btn-sm chinhsua-info" onclick="enableInput()">Chỉnh sửa</button>
-            <button onclick="updateInfoTeacher()" class="btn btn-primary btn-sm luu-info" style="display:none;" >Lưu</button>
+            <button type="button" class="btn btn-primary btn-sm chinhsua-info" id="chinhsua-info" onclick="enableInput()">Chỉnh sửa</button>
+            <button onclick="updateInfoTeacher()" class="btn btn-primary btn-sm luu-info" id="luu-info" style="display:none;" >Lưu</button>
         </div>
     </div>
     <div class="panel-body">
@@ -29,7 +29,7 @@
                     <label class="control-label col-sm-3">Khoa</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="facultyId" id="facultyId" disabled>
-                            <option value="0"></option>
+                            <option value=""></option>
                             <?php foreach ($faculties as $faculty){?>
                                 <option value="<?= $faculty['facultyId'];?>" <?= $facultyId == $faculty['facultyId']? "selected":"";?>>
                                     <?= $faculty['facultyName'];?>
@@ -42,7 +42,7 @@
                     <label class="control-label col-sm-3">Bộ môn</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="departmentId" id="departmentId" disabled>
-                            <option value="0"></option>
+                            <option value=""></option>
                             <?php foreach ($departments as $department){?>
                                 <option value="<?= $department['departmentId'];?>" <?= $departmentId == $department['departmentId']? "selected":"";?>>
                                     <?= $department['departmentName'];?>
@@ -55,7 +55,7 @@
                     <label class="control-label col-sm-3">Phòng thí nghiệm</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="laboratoryId" id="laboratoryId" disabled>
-                            <option value="0"></option>
+                            <option value=""></option>
                             <?php foreach ($laboratories as $laboratory){?>
                                 <option value="<?= $laboratory['laboratoryId'];?>" <?= $laboratoryId == $laboratory['laboratoryId']? "selected":"";?>>
                                     <?= $laboratory['laboratoryName'];?>
@@ -88,8 +88,7 @@
             <center> 
                 <div class="ratio img-responsive img-circle" style="background-image: url(<?= $avatar;?>); width: 270px; height: 270px;"></div>
             </center>
-            <center> <button class="btn btn-success btn-avatar" style="margin-top: 25px;">Thay đổi ảnh</button></center>
-
+            <center> <button id="btn-avatar" class="btn btn-success" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
         </div>
     </div>
 </div>

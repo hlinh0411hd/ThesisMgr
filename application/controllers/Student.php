@@ -34,5 +34,30 @@ class Student extends CI_Controller{
         $data['consultant'] = $this->Teacher_Model->getById($data['consultant']);
         $this->load->view('student/info_function_student',$data);
     }
+
+
+
+    public function updateInfo(){
+        $studentName = "";
+        $studentGender = "";
+        $studentBirthday = "";
+        $studentClass = "";
+        $studentPhone = "";
+        $studentMail = "";
+        $facultyId = "";
+        $consultant = "";
+        extract($_GET);
+        $data = array(
+            'studentName'=> $studentName,
+            'studentGender'=> $studentGender,
+            'studentBirthday'=> $studentBirthday,
+            'studentClass'=> $studentClass,
+            'studentPhone'=> $studentPhone,
+            'studentMail'=> $studentMail,
+            'facultyId'=> $facultyId,
+            'consultant'=> $consultant
+        );
+        $this->Student_Model->update($this->session->userdata('userIdSession'), $data);
+    }
 }
 ?>

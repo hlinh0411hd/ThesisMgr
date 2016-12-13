@@ -12,12 +12,12 @@
         <h3 class="panel-title">Thông tin cá nhân</h3> 
         <div class="pull-right">
             <button id="chinhsua-info" type="button" class="btn btn-primary btn-sm" onclick="enableInput()">Chỉnh sửa</button>
-            <button id="luu-info" class="btn btn-primary btn-sm" style="display:none;" >Lưu</button>
+            <button id="luu-info" class="btn btn-primary btn-sm" onclick="updateInfoStudent()" style="display:none;" >Lưu</button>
         </div>
     </div>
     <div class="panel-body">
         <div class="col-sm-6">
-            <form role="form" action="InfoFunctionStudent/update">
+            <form>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Họ và tên:</label>
                     <div class="col-sm-9">
@@ -28,10 +28,10 @@
                     <label class="control-label col-sm-3">Giới tính:</label>
                     <div class="col-sm-9 radio-inline">
                         <div class="radio">
-                            <label><input type="radio" name="gender" id="gender" <?= $studentGender=="nam"? "checked":""?> disabled>Nam</label>
+                            <label><input type="radio" name="gender" id="gender" value="nam" <?= $studentGender=="nam"? "checked":""?> disabled>Nam</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="gender" id="gender" <?= $studentGender=="nam"? "":"checked"?> disabled>Nữ</label>
+                            <label><input type="radio" name="gender" id="gender" value="nu"  <?= $studentGender=="nam"? "":"checked"?> disabled>Nữ</label>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row" onfocusout="setTimeout(function(){load('teacherList','index');},100)">
+                <div class="form-group row" onfocusout="setTimeout(function(){load('consultantList','index');},100)">
                     <label class="control-label col-sm-3">Cố vấn học tập:</label>
                     <div class="col-sm-9">
                     <input type="text" class="form-control" name="consultant" id="consultant" onkeyup="showHint('consultant','teacher')" disabled value="<?= $consultant['teacherName'];?>">
@@ -87,6 +87,12 @@
                     <input type="hidden" class="form-control" name="consultantId" id="consultantId" value="<?= $consultant['teacherId'];?>">
                 </div>
             </form>
+        </div>
+        <div class="col-sm-6" style="border-left: 1px solid #dfdfdf; min-height: 400px;">
+            <center> 
+                <div class="ratio img-responsive img-circle" style="background-image: url(<?= $avatar;?>); width: 270px; height: 270px;"></div>
+            </center>
+            <center> <button id="btn-avatar" class="btn btn-success" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
         </div>
     </div>
 </div>
