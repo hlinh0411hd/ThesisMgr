@@ -44,6 +44,8 @@ class Pagination extends CI_Controller{
         $this->load->model($this->listModel[$this->page]);
         $this->load->model('Student_Model');
         $this->load->model('Teacher_Model');
+		$this->load->model('Department_Model');
+		$this->load->model('Laboratory_Model');
     }
     public function index(){
         $directPage = $this -> page;
@@ -59,7 +61,12 @@ class Pagination extends CI_Controller{
                 $item->teacherName = $this->Teacher_Model->getById($item->teacherId)['teacherName'];
                 $item->coteacherName = $this->Teacher_Model->getById($item->coteacherId)['teacherName'];
             }
-        }
+        } else if($this->listTable[$directPage]=="teacher"){
+			foreach ($a_Data['list'] as $item) {
+				$item->departmentName = $this->Department_Model->getById($item->departmentId)['departmentName'];
+				$item->laboratoryName = $this->Laboratory_Model->getById($item->laboratoryId)['laboratoryName'];
+            }
+		}
         $this->load->view($this->listPage[$directPage], $a_Data);
     }
 }

@@ -7,13 +7,19 @@ class TeacherFunctionFaculty extends CI_Controller{
 		$this->load->model('TeacherFunctionFaculty_Model');
 		$this->load->model('Excel_Model');
 		$this->load->model('Mail_Model');
+		$this->load->model('Department_Model');
 		$this->load->helper('url');
 	}
 	
 	public function index(){
 		$data=$this->TeacherFunctionFaculty_Model->getListTeacher();
-		$data1["hello"]=$data;
-        $data1["number"] = (sizeof($data)-1)/50+1;
+		/*$data1["hello"]=$data;
+        $data1["number"] = (sizeof($data)-1)/50+1;*/
+		$data1['hello'] = array();
+		foreach($data as $item){
+			$item['departmentName'] = $this->Department_Model->getById($item['departmentId'])['departmentName'];
+			array_push($data1['hello'], $item);
+		}
 		$this->load->view('faculty/teacher_function_faculty',$data1);
 	}
 	

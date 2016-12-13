@@ -3,5 +3,6 @@ a, a:hover, a:visited{
 }
 #intro{
     background: #ffffff;
+	padding: 0px;
     min-height:480px;
 }

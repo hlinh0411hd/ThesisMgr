@@ -22,4 +22,12 @@ class Department_Model extends CI_Model {
             ->get();
         return $query->result_array();
     }
+	
+	public function getById($departmentId){
+        $query = $this->db->select('*')
+            ->from('departments')
+            ->where('departmentId', $departmentId)
+            ->get();
+        return $query->row_array();
+    }
 }

@@ -21,4 +21,11 @@ class Laboratory_Model extends CI_Model {
             ->get();
         return $query->result_array();
     }
+	public function getById($laboratoryId){
+        $query = $this->db->select('*')
+            ->from('laboratories')
+            ->where('laboratoryId', $laboratoryId)
+            ->get();
+        return $query->row_array();
+    }
 }
