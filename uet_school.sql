@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2016 at 07:23 AM
+-- Generation Time: Dec 13, 2016 at 04:20 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -41,10 +41,9 @@ CREATE TABLE `council` (
 INSERT INTO `council` (`councilId`, `teacherId`, `position`, `note`, `facultyId`) VALUES
 (2, 5, 3, '', 100),
 (3, 6, 2, '', 100),
-(8, 2, 3, '', 100),
 (10, 1, 1, '', 100),
 (12, 3, 3, '', 100),
-(13, 4, 2, 'oo', 100);
+(14, 9, 3, 'Boss', 100);
 
 -- --------------------------------------------------------
 
@@ -98,18 +97,19 @@ CREATE TABLE `faculties` (
   `facultyDepartment` varchar(200) NOT NULL,
   `facultyPhone` varchar(50) NOT NULL,
   `facultyUsername` varchar(45) NOT NULL,
-  `facultyPassword` varchar(45) DEFAULT NULL
+  `facultyPassword` varchar(45) DEFAULT NULL,
+  `avatar` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng Khoa (facultyDean: trưởng khoa: lấy id từ giáo viên; facultyDeparment:văn phòng khoa)';
 
 --
 -- Dumping data for table `faculties`
 --
 
-INSERT INTO `faculties` (`facultyId`, `facultyName`, `facultyDean`, `facultyDepartment`, `facultyPhone`, `facultyUsername`, `facultyPassword`) VALUES
-(100, 'Khoa Công nghệ Thông tin', 1, 'Văn phòng Khoa Công nghệ thông tin – Trường Đại học Công nghệ – ĐHQGHN', '(04)37547064', 'CNTT', '11111111'),
-(200, 'Khoa Điện tử Viễn thông', 2, 'Văn phòng khoa Điện tử – Viễn thông', '(84-4) 3754 9338', 'DTVT', '11111111'),
-(300, 'Khoa Vật lý Kỹ thuật và Công nghệ Nano', 3, 'Khoa Vật lý kỹ thuật và Công nghệ nano, Phòng E2.2 – Nhà E4 144 đường Xuân Thủy, quận Cầu Giấy, Hà Nội', '(04) 3754 9429', 'VLCN', '11111111'),
-(400, 'Khoa Cơ học kỹ thuật và Tự động hóa', 4, 'Văn phòng khoa Cơ học kỹ thuật và Tự động hóa, Trường Đại học Công Nghệ, ĐHQGHN', '04.37549431', 'CHTD', '11111111');
+INSERT INTO `faculties` (`facultyId`, `facultyName`, `facultyDean`, `facultyDepartment`, `facultyPhone`, `facultyUsername`, `facultyPassword`, `avatar`) VALUES
+(100, 'Khoa Công nghệ Thông tin', 1, 'Văn phòng Khoa Công nghệ thông tin – Trường Đại học Công nghệ – ĐHQGHN', '(04)37547064', 'CNTT', '11111111', NULL),
+(200, 'Khoa Điện tử Viễn thông', 2, 'Văn phòng khoa Điện tử – Viễn thông', '(84-4) 3754 9338', 'DTVT', '11111111', NULL),
+(300, 'Khoa Vật lý Kỹ thuật và Công nghệ Nano', 3, 'Khoa Vật lý kỹ thuật và Công nghệ nano, Phòng E2.2 – Nhà E4 144 đường Xuân Thủy, quận Cầu Giấy, Hà Nội', '(04) 3754 9429', 'VLCN', '11111111', NULL),
+(400, 'Khoa Cơ học kỹ thuật và Tự động hóa', 4, 'Văn phòng khoa Cơ học kỹ thuật và Tự động hóa, Trường Đại học Công Nghệ, ĐHQGHN', '04.37549431', 'CHTD', '11111111', NULL);
 
 -- --------------------------------------------------------
 
@@ -187,14 +187,34 @@ CREATE TABLE `relative_fields` (
 --
 
 INSERT INTO `relative_fields` (`researchDirectionId`, `fieldId`) VALUES
-(8, 2000),
-(8, 10000),
-(9, 2000),
-(9, 1000),
-(1, 4000),
-(1, 1000),
-(2, 5000),
-(2, 1000);
+(27, 1000),
+(27, 5000),
+(28, 1000),
+(28, 3000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `relative_subfields`
+--
+
+CREATE TABLE `relative_subfields` (
+  `researchDirectionId` int(11) NOT NULL,
+  `fieldId` int(11) NOT NULL,
+  `subfieldId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `relative_subfields`
+--
+
+INSERT INTO `relative_subfields` (`researchDirectionId`, `fieldId`, `subfieldId`) VALUES
+(27, 1000, 1003),
+(27, 1000, 1008),
+(27, 5000, 5005),
+(28, 1000, 1001),
+(28, 3000, 3001),
+(28, 3000, 3005);
 
 -- --------------------------------------------------------
 
@@ -248,11 +268,8 @@ CREATE TABLE `research_directions` (
 --
 
 INSERT INTO `research_directions` (`researchDirectionId`, `teacherId`, `researchDirectionName`, `researchDirectionsDescription`) VALUES
-(1, 1, 'Web Development', NULL),
-(2, 1, 'Game Design', NULL),
-(7, 1, 'Computer Science', NULL),
-(8, 1, 'Computer Science', NULL),
-(9, 1, 'Web Development', NULL);
+(27, 1, 'Computer Science', NULL),
+(28, 1, 'Web Development', NULL);
 
 -- --------------------------------------------------------
 
@@ -273,10 +290,10 @@ CREATE TABLE `reviewer` (
 --
 
 INSERT INTO `reviewer` (`reviewerId`, `thesisId`, `teacherId`, `reviewer`, `created_at`) VALUES
-(1, 2, 5, NULL, '2016-12-07 15:45:09'),
-(2, 2, 2, NULL, '2016-12-07 16:19:42'),
-(4, 10, 5, NULL, '2016-12-07 16:20:44'),
-(5, 10, 2, NULL, '2016-12-07 16:21:09');
+(1, 2, 5, 'Đồng ngu nhỉ?  ', '2016-12-07 15:45:09'),
+(4, 10, 5, 'Bình ngu =))', '2016-12-07 16:20:44'),
+(9, 10, 9, 'T cũng thế', '2016-12-08 07:58:23'),
+(10, 2, 3, 'Ukm', '2016-12-08 16:43:25');
 
 -- --------------------------------------------------------
 
@@ -288,10 +305,10 @@ CREATE TABLE `students` (
   `studentId` int(11) NOT NULL,
   `studentName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `studentBirthday` date NOT NULL,
-  `studentGender` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `studentGender` varchar(10) CHARACTER SET utf8 NOT NULL DEFAULT 'nam',
   `studentClass` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `studentPhone` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `studentImage` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   `consultant` int(11) NOT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `facultyId` int(11) NOT NULL,
@@ -303,64 +320,64 @@ CREATE TABLE `students` (
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentGender`, `studentClass`, `studentPhone`, `studentImage`, `consultant`, `password`, `facultyId`, `studentMail`, `thesisAllowed`) VALUES
-(14020022, 'Nguyễn Hoàng Biên', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B2,"@vnu.edu.vn")', 0),
-(14020025, 'Nguyễn Thanh Bình', '0000-00-00', '', 'K59-CB', '', '', 0, '11111111', 200, '14020025@vnu.edu.vn', 0),
-(14020042, 'Nguyễn Thành Công', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B3,"@vnu.edu.vn")', 0),
-(14020056, 'Nguyễn Mạnh Cường', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B5,"@vnu.edu.vn")', 0),
-(14020066, 'Hà Hồng Duyên', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B6,"@vnu.edu.vn")', 0),
-(14020084, 'Trần Đình Dương', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B7,"@vnu.edu.vn")', 0),
-(14020091, 'Nguyễn Văn Đại', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B8,"@vnu.edu.vn")', 0),
-(14020102, 'Trần Xuân Đạt', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B9,"@vnu.edu.vn")', 0),
-(14020116, 'Dương Xuân Đồng', '0000-00-00', '', 'K59-CB', '', '', 0, '11111111', 100, '14020116@vnu.edu.vn', 1),
-(14020123, 'Phạm Minh Đức', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B10,"@vnu.edu.vn")', 0),
-(14020131, 'Đàm Thị Hà', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B11,"@vnu.edu.vn")', 0),
-(14020139, 'Hoàng Văn Hải', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B12,"@vnu.edu.vn")', 0),
-(14020169, 'Nguyễn Minh Hiếu', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B14,"@vnu.edu.vn")', 0),
-(14020170, 'Nguyễn Quang Hiếu', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B15,"@vnu.edu.vn")', 0),
-(14020180, 'Tô Mạnh Hiệp', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B13,"@vnu.edu.vn")', 0),
-(14020225, 'Phạm Quang Hưng', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B16,"@vnu.edu.vn")', 0),
-(14020234, 'Nguyễn Đức Khanh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B17,"@vnu.edu.vn")', 0),
-(14020266, 'Tô Hiến Long', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B21,"@vnu.edu.vn")', 0),
-(14020268, 'Đinh Tiến Lộc', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B22,"@vnu.edu.vn")', 0),
-(14020303, 'Nguyễn Văn Minh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B24,"@vnu.edu.vn")', 0),
-(14020335, 'Nguyễn Văn Nhật', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B26,"@vnu.edu.vn")', 0),
-(14020337, 'Hoàng Ngọc Như', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B28,"@vnu.edu.vn")', 0),
-(14020340, 'Nguyễn Đình Phi', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B29,"@vnu.edu.vn")', 0),
-(14020341, 'Dương Quốc Phong', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B30,"@vnu.edu.vn")', 0),
-(14020411, 'Trần Minh Thanh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B33,"@vnu.edu.vn")', 0),
-(14020424, 'Vũ Tiến Thành', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B34,"@vnu.edu.vn")', 0),
-(14020426, 'Phan Thế Thảo', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B35,"@vnu.edu.vn")', 0),
-(14020436, 'Trần Việt Thắng', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B36,"@vnu.edu.vn")', 0),
-(14020450, 'Đỗ Ngọc Hoài Thu', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B37,"@vnu.edu.vn")', 0),
-(14020452, 'Nguyễn Đức Thuần', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B39,"@vnu.edu.vn")', 0),
-(14020470, 'Trần Viết Tiệp', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B40,"@vnu.edu.vn")', 0),
-(14020477, 'Trần Đức Toàn', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B41,"@vnu.edu.vn")', 0),
-(14020485, 'Nguyễn Văn Tranh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B43,"@vnu.edu.vn")', 0),
-(14020513, 'Lý Văn Tuấn', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B46,"@vnu.edu.vn")', 0),
-(14020515, 'Ngô Phương Tuấn', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B47,"@vnu.edu.vn")', 0),
-(14020520, 'Trần Minh Tuấn', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B48,"@vnu.edu.vn")', 0),
-(14020521, 'Vũ Minh Tuấn', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B49,"@vnu.edu.vn")', 0),
-(14020525, 'Trần Thị Ánh Tuyết', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B50,"@vnu.edu.vn")', 0),
-(14020538, 'Nguyễn Bá Tú', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B45,"@vnu.edu.vn")', 0),
-(14020549, 'Lại Thị Thảo Vân', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B52,"@vnu.edu.vn")', 0),
-(14020557, 'Nguyễn Huy Vinh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B53,"@vnu.edu.vn")', 0),
-(14020560, 'Chu Thừa Vũ', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B54,"@vnu.edu.vn")', 0),
-(14020562, 'Lê Tuấn Vũ', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B55,"@vnu.edu.vn")', 0),
-(14020568, 'Lê Thị Xuân', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B56,"@vnu.edu.vn")', 0),
-(14020577, 'Bùi Quang Cường', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B4,"@vnu.edu.vn")', 0),
-(14020598, 'Trần Hữu Minh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B25,"@vnu.edu.vn")', 0),
-(14020601, 'Trương Thị Nhung', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B27,"@vnu.edu.vn")', 0),
-(14020611, 'Bạch Văn Thuần', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B38,"@vnu.edu.vn")', 0),
-(14020613, 'Phan Thị Hà Trang', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B42,"@vnu.edu.vn")', 0),
-(14020614, 'Nguyễn Ngọc Trung', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B44,"@vnu.edu.vn")', 0),
-(14020629, 'Vũ Thùy Linh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B19,"@vnu.edu.vn")', 0),
-(14020630, 'Dương Tiến Mạnh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B23,"@vnu.edu.vn")', 0),
-(14020633, 'Đỗ Văn Quang', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B31,"@vnu.edu.vn")', 0),
-(14020669, 'Nguyễn Việt Long', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B20,"@vnu.edu.vn")', 0),
-(14020675, 'Trần Minh Quân', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B32,"@vnu.edu.vn")', 0),
-(14020685, 'Vũ Nam Tước', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B51,"@vnu.edu.vn")', 0),
-(14020752, 'Phạm Minh Hoàng Linh', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B18,"@vnu.edu.vn")', 0);
+INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentGender`, `studentClass`, `studentPhone`, `avatar`, `consultant`, `password`, `facultyId`, `studentMail`, `thesisAllowed`) VALUES
+(14020022, 'Nguyễn Hoàng Biên', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B2,"@vnu.edu.vn")', 0),
+(14020025, 'Nguyễn Thanh Bình', '0000-00-00', '', 'K59-CB', '', NULL, 0, '11111111', 200, '14020025@vnu.edu.vn', 0),
+(14020042, 'Nguyễn Thành Công', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B3,"@vnu.edu.vn")', 0),
+(14020056, 'Nguyễn Mạnh Cường', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B5,"@vnu.edu.vn")', 0),
+(14020066, 'Hà Hồng Duyên', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B6,"@vnu.edu.vn")', 0),
+(14020084, 'Trần Đình Dương', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B7,"@vnu.edu.vn")', 0),
+(14020091, 'Nguyễn Văn Đại', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B8,"@vnu.edu.vn")', 0),
+(14020102, 'Trần Xuân Đạt', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B9,"@vnu.edu.vn")', 0),
+(14020116, 'Dương Xuân Đồng', '0000-00-00', '', 'K59-CB', '', NULL, 0, '11111111', 100, '14020116@vnu.edu.vn', 1),
+(14020123, 'Phạm Minh Đức', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B10,"@vnu.edu.vn")', 0),
+(14020131, 'Đàm Thị Hà', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B11,"@vnu.edu.vn")', 0),
+(14020139, 'Hoàng Văn Hải', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B12,"@vnu.edu.vn")', 0),
+(14020169, 'Nguyễn Minh Hiếu', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B14,"@vnu.edu.vn")', 0),
+(14020170, 'Nguyễn Quang Hiếu', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B15,"@vnu.edu.vn")', 0),
+(14020180, 'Tô Mạnh Hiệp', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B13,"@vnu.edu.vn")', 0),
+(14020225, 'Phạm Quang Hưng', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B16,"@vnu.edu.vn")', 0),
+(14020234, 'Nguyễn Đức Khanh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B17,"@vnu.edu.vn")', 0),
+(14020266, 'Tô Hiến Long', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B21,"@vnu.edu.vn")', 0),
+(14020268, 'Đinh Tiến Lộc', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B22,"@vnu.edu.vn")', 0),
+(14020303, 'Nguyễn Văn Minh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B24,"@vnu.edu.vn")', 0),
+(14020335, 'Nguyễn Văn Nhật', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B26,"@vnu.edu.vn")', 0),
+(14020337, 'Hoàng Ngọc Như', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B28,"@vnu.edu.vn")', 0),
+(14020340, 'Nguyễn Đình Phi', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B29,"@vnu.edu.vn")', 0),
+(14020341, 'Dương Quốc Phong', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B30,"@vnu.edu.vn")', 0),
+(14020411, 'Trần Minh Thanh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B33,"@vnu.edu.vn")', 0),
+(14020424, 'Vũ Tiến Thành', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B34,"@vnu.edu.vn")', 0),
+(14020426, 'Phan Thế Thảo', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B35,"@vnu.edu.vn")', 0),
+(14020436, 'Trần Việt Thắng', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B36,"@vnu.edu.vn")', 0),
+(14020450, 'Đỗ Ngọc Hoài Thu', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B37,"@vnu.edu.vn")', 0),
+(14020452, 'Nguyễn Đức Thuần', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B39,"@vnu.edu.vn")', 0),
+(14020470, 'Trần Viết Tiệp', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B40,"@vnu.edu.vn")', 0),
+(14020477, 'Trần Đức Toàn', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B41,"@vnu.edu.vn")', 0),
+(14020485, 'Nguyễn Văn Tranh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B43,"@vnu.edu.vn")', 0),
+(14020513, 'Lý Văn Tuấn', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B46,"@vnu.edu.vn")', 0),
+(14020515, 'Ngô Phương Tuấn', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B47,"@vnu.edu.vn")', 0),
+(14020520, 'Trần Minh Tuấn', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B48,"@vnu.edu.vn")', 0),
+(14020521, 'Vũ Minh Tuấn', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B49,"@vnu.edu.vn")', 0),
+(14020525, 'Trần Thị Ánh Tuyết', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B50,"@vnu.edu.vn")', 0),
+(14020538, 'Nguyễn Bá Tú', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B45,"@vnu.edu.vn")', 0),
+(14020549, 'Lại Thị Thảo Vân', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B52,"@vnu.edu.vn")', 0),
+(14020557, 'Nguyễn Huy Vinh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B53,"@vnu.edu.vn")', 0),
+(14020560, 'Chu Thừa Vũ', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B54,"@vnu.edu.vn")', 0),
+(14020562, 'Lê Tuấn Vũ', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B55,"@vnu.edu.vn")', 0),
+(14020568, 'Lê Thị Xuân', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B56,"@vnu.edu.vn")', 0),
+(14020577, 'Bùi Quang Cường', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B4,"@vnu.edu.vn")', 0),
+(14020598, 'Trần Hữu Minh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B25,"@vnu.edu.vn")', 0),
+(14020601, 'Trương Thị Nhung', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B27,"@vnu.edu.vn")', 0),
+(14020611, 'Bạch Văn Thuần', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B38,"@vnu.edu.vn")', 0),
+(14020613, 'Phan Thị Hà Trang', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B42,"@vnu.edu.vn")', 0),
+(14020614, 'Nguyễn Ngọc Trung', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B44,"@vnu.edu.vn")', 0),
+(14020629, 'Vũ Thùy Linh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B19,"@vnu.edu.vn")', 0),
+(14020630, 'Dương Tiến Mạnh', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B23,"@vnu.edu.vn")', 0),
+(14020633, 'Đỗ Văn Quang', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B31,"@vnu.edu.vn")', 0),
+(14020669, 'Nguyễn Việt Long', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B20,"@vnu.edu.vn")', 0),
+(14020675, 'Trần Minh Quân', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B32,"@vnu.edu.vn")', 0),
+(14020685, 'Vũ Nam Tước', '0000-00-00', '', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B51,"@vnu.edu.vn")', 0),
+(14020752, 'Phạm Minh Hoàng Linh', '1996-11-04', 'nam', 'K59-CLC', '', NULL, 0, '11111111', 100, '=CONCATENATE(B18,"@vnu.edu.vn")', 0);
 
 -- --------------------------------------------------------
 
@@ -484,22 +501,24 @@ CREATE TABLE `teacher` (
   `teacherPhone` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `facultyId` int(11) NOT NULL,
-  `laboratoryId` int(11) DEFAULT NULL
+  `laboratoryId` int(11) DEFAULT NULL,
+  `avatar` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`teacherId`, `teacherName`, `teacherMail`, `departmentId`, `teacherInfo`, `teacherImage`, `teacherPhone`, `password`, `facultyId`, `laboratoryId`) VALUES
-(1, 'Phạm Minh Hoàng Linh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '', 100, NULL),
-(2, 'Phạm Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
-(3, 'Phạm Minh Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
-(4, 'Phạm Minh Hoàng', '14020752@vnu.edu.vn', 201, NULL, '', '', '11111111', 200, NULL),
-(5, 'Dương Xuân Đồng', 'dongdx96@gmail.com', 301, NULL, '', '', '11111111', 300, NULL),
-(6, 'Nguyễn Thanh Bình', 'thanhbinh7099@gmail.com', 401, NULL, '', '', '11111111', 400, NULL),
-(7, 'Phạm Quang Hưng', '14020225@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
-(8, 'Nguyễn Huy Vinh', '14020557@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL);
+INSERT INTO `teacher` (`teacherId`, `teacherName`, `teacherMail`, `departmentId`, `teacherInfo`, `teacherImage`, `teacherPhone`, `password`, `facultyId`, `laboratoryId`, `avatar`) VALUES
+(1, 'Phạm Minh Hoàng Linh', 'hlinh0411hd@gmail.com', 102, 'ahihi', '', '', '', 100, 0, 'upload/avatar/hl.jpg'),
+(2, 'Phạm Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL, NULL),
+(3, 'Phạm Minh Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL, NULL),
+(4, 'Phạm Minh Hoàng', '14020752@vnu.edu.vn', 201, NULL, '', '', '11111111', 200, NULL, NULL),
+(5, 'Dương Xuân Đồng', 'dongdx96@gmail.com', 301, NULL, '', '', '11111111', 300, NULL, NULL),
+(6, 'Nguyễn Thanh Bình', 'thanhbinh7099@gmail.com', 401, NULL, '', '', '11111111', 400, NULL, NULL),
+(7, 'Phạm Quang Hưng', '14020225@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL, NULL),
+(8, 'Nguyễn Huy Vinh', '14020557@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL, NULL),
+(9, 'Phan Thị Hà Trang', 'trangcute@gmail.com', 101, NULL, '', '', '11111111', 100, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -572,7 +591,15 @@ ALTER TABLE `laboratories`
 -- Indexes for table `relative_fields`
 --
 ALTER TABLE `relative_fields`
-  ADD KEY `fk_f_teacher_idx` (`fieldId`);
+  ADD KEY `fk_f_teacher_idx` (`fieldId`),
+  ADD KEY `fk_rd_idx` (`researchDirectionId`);
+
+--
+-- Indexes for table `relative_subfields`
+--
+ALTER TABLE `relative_subfields`
+  ADD KEY `fk_field_idx` (`fieldId`),
+  ADD KEY `fk_rd_idx` (`researchDirectionId`);
 
 --
 -- Indexes for table `request`
@@ -629,7 +656,7 @@ ALTER TABLE `thesis`
 -- AUTO_INCREMENT for table `council`
 --
 ALTER TABLE `council`
-  MODIFY `councilId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `councilId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `request`
 --
@@ -639,12 +666,12 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `research_directions`
 --
 ALTER TABLE `research_directions`
-  MODIFY `researchDirectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `researchDirectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `reviewer`
 --
 ALTER TABLE `reviewer`
-  MODIFY `reviewerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `reviewerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `thesis`
 --
@@ -670,7 +697,13 @@ ALTER TABLE `laboratories`
 -- Constraints for table `relative_fields`
 --
 ALTER TABLE `relative_fields`
-  ADD CONSTRAINT `fk_f_teacher` FOREIGN KEY (`fieldId`) REFERENCES `fields` (`fieldId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_rrd` FOREIGN KEY (`researchDirectionId`) REFERENCES `research_directions` (`researchDirectionId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `relative_subfields`
+--
+ALTER TABLE `relative_subfields`
+  ADD CONSTRAINT `fk_rd` FOREIGN KEY (`researchDirectionId`) REFERENCES `research_directions` (`researchDirectionId`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `research_directions`
