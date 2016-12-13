@@ -33,7 +33,6 @@ class TeacherFunctionFaculty extends CI_Controller{
 		if ($data!="error"){
 			$this->readExcel($data['file_name']);
 		}
-		
 	}
 	public function readExcel($file){
 		$property = array("STT", "Mã giảng viên", "Họ tên", "Khoa", "Email");

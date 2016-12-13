@@ -23,7 +23,6 @@
 				</div>
 				<button type="submit" class="btn btn-primary pull-right">Thêm</button>
 			</form>
-
 		</div>
 		<div class="col-sm-6" style="border-left: 1px solid #dfdfdf; height: 430px;">
 			<form action="TeacherFunctionFaculty/multiupload" method="post" enctype="multipart/form-data">

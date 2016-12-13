@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.3
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 08, 2016 at 07:23 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th12 13, 2016 lúc 05:21 CH
+-- Phiên bản máy phục vụ: 5.6.20
+-- Phiên bản PHP: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,104 +17,105 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `uet_school`
+-- Cơ sở dữ liệu: `uet_school`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `council`
+-- Cấu trúc bảng cho bảng `council`
 --
 
 CREATE TABLE `council` (
   `councilId` int(11) NOT NULL,
-  `teacherId` int(11) NOT NULL,
+  `teacherId` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `position` int(11) NOT NULL,
   `note` mediumtext COLLATE utf8_unicode_ci,
   `facultyId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `council`
+-- Đang đổ dữ liệu cho bảng `council`
 --
 
 INSERT INTO `council` (`councilId`, `teacherId`, `position`, `note`, `facultyId`) VALUES
-(2, 5, 3, '', 100),
-(3, 6, 2, '', 100),
-(8, 2, 3, '', 100),
-(10, 1, 1, '', 100),
-(12, 3, 3, '', 100),
-(13, 4, 2, 'oo', 100);
+(2, '5', 3, '', 100),
+(3, '6', 2, '', 100),
+(8, '2', 3, '', 100),
+(10, '1', 1, '', 100),
+(12, '3', 3, '', 100),
+(13, '4', 2, 'oo', 100);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departments`
+-- Cấu trúc bảng cho bảng `departments`
 --
 
 CREATE TABLE `departments` (
   `departmentId` int(11) NOT NULL,
   `facultyId` int(11) NOT NULL,
   `departmentName` varchar(100) NOT NULL,
-  `departmentHead` int(11) NOT NULL,
+  `departmentHead` varchar(11) NOT NULL,
   `departmentAddress` varchar(200) NOT NULL,
   `departmentPhone` varchar(50) NOT NULL,
   `departmentWeb` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng các bộ môn (departmentHead: trưởng bộ môn)';
 
 --
--- Dumping data for table `departments`
+-- Đang đổ dữ liệu cho bảng `departments`
 --
 
 INSERT INTO `departments` (`departmentId`, `facultyId`, `departmentName`, `departmentHead`, `departmentAddress`, `departmentPhone`, `departmentWeb`) VALUES
-(101, 100, 'Các Hệ thống thông tin', 0, '305 – E3 – 144 Xuân Thuỷ – Cầu Giấy – Hà Nội', '84 4 37547813', 'http://uet.vnu.edu.vn/httt/'),
-(102, 100, 'Công nghệ phần mềm', 0, '', '', ''),
-(103, 100, 'Khoa học máy tính', 0, '', '', ''),
-(104, 100, 'Khoa học và kỹ thuật tính toán', 0, '', '', ''),
-(105, 100, 'Mạng và truyền thông máy tính', 0, '', '', ''),
-(201, 200, 'Hệ thống viễn thông', 0, '', '', ''),
-(202, 200, 'Thông tin vô tuyến', 0, '', '', ''),
-(203, 200, 'Điện tử và kỹ thuật máy tính', 0, '', '', ''),
-(204, 200, 'Vi cơ điện tử và vi cơ hệ thống', 0, '', '', ''),
-(301, 300, 'Vật liệu và linh kiện từ tính Nano', 0, '', '', ''),
-(302, 300, 'Vật liệu và linh kiện bán dẫn Nano', 0, '', '', ''),
-(303, 300, 'Công nghệ Nano sinh học', 0, '', '', ''),
-(304, 300, 'Công nghệ quang tử', 0, '', '', ''),
-(401, 400, 'Công nghệ biển và môi trường', 0, '', '', ''),
-(402, 400, 'Công nghệ cơ điện tử', 0, '', '', ''),
-(403, 400, 'Công nghệ hàng không vũ trụ', 0, '', '', ''),
-(404, 400, 'Thủy khí công nghiệp và môi trường', 0, '', '', '');
+(101, 100, 'Các Hệ thống thông tin', '0', '305 – E3 – 144 Xuân Thuỷ – Cầu Giấy – Hà Nội', '84 4 37547813', 'http://uet.vnu.edu.vn/httt/'),
+(102, 100, 'Công nghệ phần mềm', '0', '', '', ''),
+(103, 100, 'Khoa học máy tính', '0', '', '', ''),
+(104, 100, 'Khoa học và kỹ thuật tính toán', '0', '', '', ''),
+(105, 100, 'Mạng và truyền thông máy tính', '0', '', '', ''),
+(201, 200, 'Hệ thống viễn thông', '0', '', '', ''),
+(202, 200, 'Thông tin vô tuyến', '0', '', '', ''),
+(203, 200, 'Điện tử và kỹ thuật máy tính', '0', '', '', ''),
+(204, 200, 'Vi cơ điện tử và vi cơ hệ thống', '0', '', '', ''),
+(301, 300, 'Vật liệu và linh kiện từ tính Nano', '0', '', '', ''),
+(302, 300, 'Vật liệu và linh kiện bán dẫn Nano', '0', '', '', ''),
+(303, 300, 'Công nghệ Nano sinh học', '0', '', '', ''),
+(304, 300, 'Công nghệ quang tử', '0', '', '', ''),
+(401, 400, 'Công nghệ biển và môi trường', '0', '', '', ''),
+(402, 400, 'Công nghệ cơ điện tử', '0', '', '', ''),
+(403, 400, 'Công nghệ hàng không vũ trụ', '0', '', '', ''),
+(404, 400, 'Thủy khí công nghiệp và môi trường', '0', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faculties`
+-- Cấu trúc bảng cho bảng `faculties`
 --
 
 CREATE TABLE `faculties` (
   `facultyId` int(11) NOT NULL,
   `facultyName` varchar(100) NOT NULL,
-  `facultyDean` int(11) NOT NULL,
+  `facultyDean` varchar(11) NOT NULL,
   `facultyDepartment` varchar(200) NOT NULL,
   `facultyPhone` varchar(50) NOT NULL,
   `facultyUsername` varchar(45) NOT NULL,
-  `facultyPassword` varchar(45) DEFAULT NULL
+  `facultyPassword` varchar(45) DEFAULT NULL,
+  `avatar` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng Khoa (facultyDean: trưởng khoa: lấy id từ giáo viên; facultyDeparment:văn phòng khoa)';
 
 --
--- Dumping data for table `faculties`
+-- Đang đổ dữ liệu cho bảng `faculties`
 --
 
-INSERT INTO `faculties` (`facultyId`, `facultyName`, `facultyDean`, `facultyDepartment`, `facultyPhone`, `facultyUsername`, `facultyPassword`) VALUES
-(100, 'Khoa Công nghệ Thông tin', 1, 'Văn phòng Khoa Công nghệ thông tin – Trường Đại học Công nghệ – ĐHQGHN', '(04)37547064', 'CNTT', '11111111'),
-(200, 'Khoa Điện tử Viễn thông', 2, 'Văn phòng khoa Điện tử – Viễn thông', '(84-4) 3754 9338', 'DTVT', '11111111'),
-(300, 'Khoa Vật lý Kỹ thuật và Công nghệ Nano', 3, 'Khoa Vật lý kỹ thuật và Công nghệ nano, Phòng E2.2 – Nhà E4 144 đường Xuân Thủy, quận Cầu Giấy, Hà Nội', '(04) 3754 9429', 'VLCN', '11111111'),
-(400, 'Khoa Cơ học kỹ thuật và Tự động hóa', 4, 'Văn phòng khoa Cơ học kỹ thuật và Tự động hóa, Trường Đại học Công Nghệ, ĐHQGHN', '04.37549431', 'CHTD', '11111111');
+INSERT INTO `faculties` (`facultyId`, `facultyName`, `facultyDean`, `facultyDepartment`, `facultyPhone`, `facultyUsername`, `facultyPassword`, `avatar`) VALUES
+(100, 'Khoa Công nghệ Thông tin', '1', 'Văn phòng Khoa Công nghệ thông tin – Trường Đại học Công nghệ – ĐHQGHN', '(04)37547064', 'CNTT', '11111111', 'upload/avatar/toneri.jpg'),
+(200, 'Khoa Điện tử Viễn thông', '2', 'Văn phòng khoa Điện tử – Viễn thông', '(84-4) 3754 9338', 'DTVT', '11111111', 'upload/avatar/toneri.jpg'),
+(300, 'Khoa Vật lý Kỹ thuật và Công nghệ Nano', '3', 'Khoa Vật lý kỹ thuật và Công nghệ nano, Phòng E2.2 – Nhà E4 144 đường Xuân Thủy, quận Cầu Giấy, Hà Nội', '(04) 3754 9429', 'VLCN', '11111111', 'upload/avatar/toneri.jpg'),
+(400, 'Khoa Cơ học kỹ thuật và Tự động hóa', '4', 'Văn phòng khoa Cơ học kỹ thuật và Tự động hóa, Trường Đại học Công Nghệ, ĐHQGHN', '04.37549431', 'CHTD', '11111111', 'upload/avatar/toneri.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fields`
+-- Cấu trúc bảng cho bảng `fields`
 --
 
 CREATE TABLE `fields` (
@@ -124,7 +125,7 @@ CREATE TABLE `fields` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng các lĩnh vực';
 
 --
--- Dumping data for table `fields`
+-- Đang đổ dữ liệu cho bảng `fields`
 --
 
 INSERT INTO `fields` (`fieldId`, `fieldName`, `description`) VALUES
@@ -145,31 +146,31 @@ INSERT INTO `fields` (`fieldId`, `fieldName`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `laboratories`
+-- Cấu trúc bảng cho bảng `laboratories`
 --
 
 CREATE TABLE `laboratories` (
   `laboratoryId` int(11) NOT NULL,
   `facultyId` int(11) NOT NULL,
   `laboratoryName` varchar(100) NOT NULL,
-  `laboratoryHead` int(11) NOT NULL,
+  `laboratoryHead` varchar(11) NOT NULL,
   `laboratoryAddress` varchar(200) NOT NULL,
   `laboratoryPhone` varchar(50) NOT NULL,
   `laboratoryWeb` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng các phòng thí nghiệm (tương tự bảng departments)';
 
 --
--- Dumping data for table `laboratories`
+-- Đang đổ dữ liệu cho bảng `laboratories`
 --
 
 INSERT INTO `laboratories` (`laboratoryId`, `facultyId`, `laboratoryName`, `laboratoryHead`, `laboratoryAddress`, `laboratoryPhone`, `laboratoryWeb`) VALUES
-(101, 100, 'Phòng Thí nghiệm An toàn thông tin', 0, '', '', ''),
-(102, 100, 'Phòng Thí nghiệm Công nghệ Tri thức', 0, '', '', ''),
-(103, 100, 'Phòng Thí nghiệm Hệ thống Nhúng', 0, '', '', ''),
-(104, 100, 'Phòng Thí nghiệm Tương tác Người – Máy', 0, '', '', ''),
-(201, 200, 'Phòng Thí nghiệm Tín hiệu và hệ thống', 0, '', '', ''),
-(202, 200, 'Phòng Thực hành Điện tử viễn thông', 0, '', '', ''),
-(401, 400, 'Phòng Thí nghiệm Vật liệu và kết cấu tiên tiến', 0, '', '', '');
+(101, 100, 'Phòng Thí nghiệm An toàn thông tin', '0', '', '', ''),
+(102, 100, 'Phòng Thí nghiệm Công nghệ Tri thức', '0', '', '', ''),
+(103, 100, 'Phòng Thí nghiệm Hệ thống Nhúng', '0', '', '', ''),
+(104, 100, 'Phòng Thí nghiệm Tương tác Người – Máy', '0', '', '', ''),
+(201, 200, 'Phòng Thí nghiệm Tín hiệu và hệ thống', '0', '', '', ''),
+(202, 200, 'Phòng Thực hành Điện tử viễn thông', '0', '', '', ''),
+(401, 400, 'Phòng Thí nghiệm Vật liệu và kết cấu tiên tiến', '0', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -186,21 +187,30 @@ CREATE TABLE `relative_fields` (
 -- Dumping data for table `relative_fields`
 --
 
-INSERT INTO `relative_fields` (`researchDirectionId`, `fieldId`) VALUES
-(8, 2000),
-(8, 10000),
-(9, 2000),
-(9, 1000),
-(1, 4000),
-(1, 1000),
-(2, 5000),
-(2, 1000);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `relative_subfields`
+--
+
+CREATE TABLE `relative_subfields` (
+  `researchDirectionId` int(11) NOT NULL,
+  `fieldId` int(11) NOT NULL,
+  `subfieldId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `relative_subfields`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `request`
+-- Cấu trúc bảng cho bảng `request`
 --
+
+
 
 CREATE TABLE `request` (
   `requestId` int(11) NOT NULL,
@@ -210,78 +220,70 @@ CREATE TABLE `request` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `thesisId` int(11) NOT NULL,
   `thesisName` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `teacherId` int(11) DEFAULT NULL,
-  `coteacherId` int(11) DEFAULT NULL,
+  `teacherId` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `coteacherId` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `thesisDescription` longtext COLLATE utf8_unicode_ci,
   `status` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `request`
+-- Đang đổ dữ liệu cho bảng `request`
 --
 
 INSERT INTO `request` (`requestId`, `studentId`, `requestType`, `facultyId`, `created_at`, `thesisId`, `thesisName`, `teacherId`, `coteacherId`, `thesisDescription`, `status`) VALUES
-(8, 14020752, 2, 100, '2016-12-02 15:50:42', 1, '', 0, 0, '', 3),
-(9, 14020752, 1, 100, '2016-12-02 15:51:55', 2, 'Test', 1, 0, '1', 3),
-(10, 14020752, 1, 100, '2016-12-02 15:52:38', 2, 'Test', 1, 5, '1', 2),
-(11, 14020752, 2, 100, '2016-12-02 15:52:56', 1, '', 0, 0, '', 3),
-(12, 14020752, 2, 100, '2016-12-03 08:10:31', 1, '', 0, 0, '', 3),
-(13, 14020752, 1, 100, '2016-12-03 15:15:14', 2, 'Changed Name', 1, 5, '1', 2),
-(14, 14020752, 2, 100, '2016-12-03 15:21:27', 9, '', 0, 0, '', 2),
-(15, 14020116, 2, 100, '2016-12-06 12:48:50', 7, '', 0, 0, '', 2);
+(8, 14020752, 2, 100, '2016-12-02 15:50:42', 1, '', '0', '0', '', 3),
+(9, 14020752, 1, 100, '2016-12-02 15:51:55', 2, 'Test', '1', '0', '1', 3),
+(10, 14020752, 1, 100, '2016-12-02 15:52:38', 2, 'Test', '1', '5', '1', 2),
+(11, 14020752, 2, 100, '2016-12-02 15:52:56', 1, '', '0', '0', '', 3),
+(12, 14020752, 2, 100, '2016-12-03 08:10:31', 1, '', '0', '0', '', 3),
+(13, 14020752, 1, 100, '2016-12-03 15:15:14', 2, 'Changed Name', '1', '5', '1', 2),
+(14, 14020752, 2, 100, '2016-12-03 15:21:27', 9, '', '0', '0', '', 2),
+(15, 14020116, 2, 100, '2016-12-06 12:48:50', 7, '', '0', '0', '', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `research_directions`
+-- Cấu trúc bảng cho bảng `research_directions`
 --
 
 CREATE TABLE `research_directions` (
   `researchDirectionId` int(11) NOT NULL,
-  `teacherId` int(11) NOT NULL,
+  `teacherId` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `researchDirectionName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `researchDirectionsDescription` longtext COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng các hướng nghiên cứu của các giáo viên';
 
 --
--- Dumping data for table `research_directions`
+-- Đang đổ dữ liệu cho bảng `research_directions`
 --
-
-INSERT INTO `research_directions` (`researchDirectionId`, `teacherId`, `researchDirectionName`, `researchDirectionsDescription`) VALUES
-(1, 1, 'Web Development', NULL),
-(2, 1, 'Game Design', NULL),
-(7, 1, 'Computer Science', NULL),
-(8, 1, 'Computer Science', NULL),
-(9, 1, 'Web Development', NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviewer`
+-- Cấu trúc bảng cho bảng `reviewer`
 --
 
 CREATE TABLE `reviewer` (
   `reviewerId` int(11) NOT NULL,
   `thesisId` int(11) NOT NULL,
-  `teacherId` int(11) NOT NULL,
+  `teacherId` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `reviewer` longtext COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `reviewer`
+-- Đang đổ dữ liệu cho bảng `reviewer`
 --
 
 INSERT INTO `reviewer` (`reviewerId`, `thesisId`, `teacherId`, `reviewer`, `created_at`) VALUES
-(1, 2, 5, NULL, '2016-12-07 15:45:09'),
-(2, 2, 2, NULL, '2016-12-07 16:19:42'),
-(4, 10, 5, NULL, '2016-12-07 16:20:44'),
-(5, 10, 2, NULL, '2016-12-07 16:21:09');
+(1, 2, '5', NULL, '2016-12-07 15:45:09'),
+(2, 2, '2', NULL, '2016-12-07 16:19:42'),
+(4, 10, '5', NULL, '2016-12-07 16:20:44'),
+(5, 10, '2', NULL, '2016-12-07 16:21:09');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `students`
+-- Cấu trúc bảng cho bảng `students`
 --
 
 CREATE TABLE `students` (
@@ -291,7 +293,7 @@ CREATE TABLE `students` (
   `studentGender` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `studentClass` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `studentPhone` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
-  `studentImage` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `consultant` int(11) NOT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `facultyId` int(11) NOT NULL,
@@ -300,10 +302,10 @@ CREATE TABLE `students` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `students`
+-- Đang đổ dữ liệu cho bảng `students`
 --
 
-INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentGender`, `studentClass`, `studentPhone`, `studentImage`, `consultant`, `password`, `facultyId`, `studentMail`, `thesisAllowed`) VALUES
+INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentGender`, `studentClass`, `studentPhone`, `avatar`, `consultant`, `password`, `facultyId`, `studentMail`, `thesisAllowed`) VALUES
 (14020022, 'Nguyễn Hoàng Biên', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B2,"@vnu.edu.vn")', 0),
 (14020025, 'Nguyễn Thanh Bình', '0000-00-00', '', 'K59-CB', '', '', 0, '11111111', 200, '14020025@vnu.edu.vn', 0),
 (14020042, 'Nguyễn Thành Công', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B3,"@vnu.edu.vn")', 0),
@@ -312,7 +314,7 @@ INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentG
 (14020084, 'Trần Đình Dương', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B7,"@vnu.edu.vn")', 0),
 (14020091, 'Nguyễn Văn Đại', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B8,"@vnu.edu.vn")', 0),
 (14020102, 'Trần Xuân Đạt', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B9,"@vnu.edu.vn")', 0),
-(14020116, 'Dương Xuân Đồng', '0000-00-00', '', 'K59-CB', '', '', 0, '11111111', 100, '14020116@vnu.edu.vn', 1),
+(14020116, 'Dương Xuân Đồng', '0000-00-00', '', 'K59-CB', '', 'upload/avatar/toneri.jpg', 0, '11111111', 100, '14020116@vnu.edu.vn', 1),
 (14020123, 'Phạm Minh Đức', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B10,"@vnu.edu.vn")', 0),
 (14020131, 'Đàm Thị Hà', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B11,"@vnu.edu.vn")', 0),
 (14020139, 'Hoàng Văn Hải', '0000-00-00', '', 'K59-CLC', '', '', 0, '11111111', 100, '=CONCATENATE(B12,"@vnu.edu.vn")', 0),
@@ -365,7 +367,7 @@ INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentG
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subfields`
+-- Cấu trúc bảng cho bảng `subfields`
 --
 
 CREATE TABLE `subfields` (
@@ -376,7 +378,7 @@ CREATE TABLE `subfields` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Bảng Các lĩnh vực con của các lĩnh vực khoa học(bảng fields): Mình chỉ xác định 2 mức trong lĩnh vực. Trong cách chia của ACM có chia nhỏ hơn cơ mà chắc không cần.';
 
 --
--- Dumping data for table `subfields`
+-- Đang đổ dữ liệu cho bảng `subfields`
 --
 
 INSERT INTO `subfields` (`subfieldId`, `subfieldName`, `subfieldDescription`, `fieldId`) VALUES
@@ -471,16 +473,16 @@ INSERT INTO `subfields` (`subfieldId`, `subfieldName`, `subfieldDescription`, `f
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teacher`
+-- Cấu trúc bảng cho bảng `teacher`
 --
 
 CREATE TABLE `teacher` (
-  `teacherId` int(11) NOT NULL,
+  `teacherId` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
   `teacherName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `teacherMail` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `departmentId` int(11) DEFAULT NULL,
   `teacherInfo` longtext COLLATE utf8_unicode_ci,
-  `teacherImage` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `avatar` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `teacherPhone` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `facultyId` int(11) NOT NULL,
@@ -488,31 +490,122 @@ CREATE TABLE `teacher` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `teacher`
+-- Đang đổ dữ liệu cho bảng `teacher`
 --
 
-INSERT INTO `teacher` (`teacherId`, `teacherName`, `teacherMail`, `departmentId`, `teacherInfo`, `teacherImage`, `teacherPhone`, `password`, `facultyId`, `laboratoryId`) VALUES
-(1, 'Phạm Minh Hoàng Linh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '', 100, NULL),
-(2, 'Phạm Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
-(3, 'Phạm Minh Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
-(4, 'Phạm Minh Hoàng', '14020752@vnu.edu.vn', 201, NULL, '', '', '11111111', 200, NULL),
-(5, 'Dương Xuân Đồng', 'dongdx96@gmail.com', 301, NULL, '', '', '11111111', 300, NULL),
-(6, 'Nguyễn Thanh Bình', 'thanhbinh7099@gmail.com', 401, NULL, '', '', '11111111', 400, NULL),
-(7, 'Phạm Quang Hưng', '14020225@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
-(8, 'Nguyễn Huy Vinh', '14020557@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL);
+INSERT INTO `teacher` (`teacherId`, `teacherName`, `teacherMail`, `departmentId`, `teacherInfo`, `avatar`, `teacherPhone`, `password`, `facultyId`, `laboratoryId`) VALUES
+('1', 'Phạm Minh Hoàng Linh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '', 100, NULL),
+('2', 'Phạm Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
+('3', 'Phạm Minh Linh', '14020752@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
+('4', 'Phạm Minh Hoàng', '14020752@vnu.edu.vn', 201, NULL, '', '', '11111111', 200, NULL),
+('5', 'Dương Xuân Đồng', 'dongdx96@gmail.com', 301, NULL, 'upload/avatar/toneri.jpg', '', '11111111', 300, NULL),
+('6', 'Nguyễn Thanh Bình', 'thanhbinh7099@gmail.com', 401, NULL, '', '', '11111111', 400, NULL),
+('7', 'Phạm Quang Hưng', '14020225@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
+('8', 'Nguyễn Huy Vinh', '14020557@vnu.edu.vn', 101, NULL, '', '', '11111111', 100, NULL),
+('FEMA401', 'Nguyễn Đông Anh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA402', 'Nguyễn Thị Việt Liên', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA403', 'Nguyễn Đình Đức', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA404', 'Đào Như Mai', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA405', 'Đinh Văn Mạnh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA406', 'Nguyễn Tiến Khiêm', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA407', 'Bùi Hồng Sơn', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA408', 'Lã Đức Việt', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA409', 'Nguyễn Trường Giang', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA410', 'Phạm Mạnh Thắng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA411', 'Trần Dương Trí', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA412', 'Trần Ngọc Hưng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA413', 'Trần Anh Quân', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA414', 'Nguyễn Chỉ Sáng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA415', 'Phan Đăng Phong', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA416', 'Nguyễn Ngọc Linh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA417', 'Đing Trần Hiệp', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA418', 'Nguyễn Cao Sơn', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA419', 'Nguyễn Thị Cẩm Lai', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA420', 'Vũ Thị Thùy Anh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA421', 'Hoàng Văn Mạnh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA422', 'Nguyễn Ngọc Việt', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA423', 'Phạm Anh Tuấn', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA424', 'Lê Thái Hòa', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA425', 'Dương Ngọc Hải', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA426', 'Đặng Thế Ba', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA427', 'Nguyễn Hoàng Quân', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA428', 'Hà Ngọc Hiến', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA429', 'Bùi Đình Trí', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA430', 'Trần Thu Hà', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA431', 'Đoàn Viết Phan', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA432', 'Nguyễn Đình Đức', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA433', 'Đoàn Hồng Đức', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEMA434', 'Trần Quốc Quân', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 400, NULL),
+('FEPN301', 'Nguyễn Văn Hiệu', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN302', 'Lê Trần Bình', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN303', 'Nguyễn Năng Định', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN304', 'Nguyễn Hữu Đức', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN305', 'Nguyễn Đại Hưng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN306', 'Phan Văng Chi', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN307', 'Nông Văn Hải', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN308', 'Lê Thanh Hòa', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN309', 'Nguyễn Thế Hiện', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN310', 'Phạm Văn Hội', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN311', 'Nguyễn Quang Liên', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN312', 'Vũ Doãn Miên', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN313', 'Lê Quốc Minh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN314', 'Phạm Thu Nga', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN315', 'Nguyễn Thị Bảo Ngọc', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN316', 'Trần Thị Tâm', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN317', 'Nguyễn Kiên Cường', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN318', 'Trần Mậu Danh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN319', 'Đỗ Thị Hương Giang', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN320', 'Chu Hoàng Hà', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN321', 'Trần Đăng Khoa', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN322', 'Nguyễn Phương Hoài Nam', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN323', 'Hà Thị Quyến', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN324', 'Phạm Đức Thắng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN325', 'Hoàng Nam Nhật', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN326', 'Lê Thị Hiên', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN327', 'Nguyễn Đức Quang', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FEPN328', 'Nguyên Quốc Trình', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 300, NULL),
+('FET201', 'Chử Đức Trình', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET202', 'Trần Đức Tân', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET203', 'Đinh Triều Dương', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET204', 'Bạch Gia Dương', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET205', 'Trương Vũ Bằng Giang', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET206', 'Nguyễn Linh Trung', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET207', 'Trần Xuân Tú', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET208', 'Trần Quang Vinh ', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET209', 'Trịnh Anh Vũ', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET210', 'Nguyễn Quốc Toàn', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET211', 'Lê Vũ Hà', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET212', 'Nguyễn Nam Hoàng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET213', 'Nguyễn Thăng Long', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET214', 'Trần Cao Quyền', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET215', 'Bùi Thanh Tùng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET216', 'Phùng Mạnh Dương', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET217', 'Nguyễn Hồng Thịnh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET218', 'Vũ Tuấn Anh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET219', 'Hoàng Văn Xiêm', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET220', 'Chu Thị Phương Dung', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET221', 'Đinh Thị Thai Mai', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET222', 'Bùi Trung Ninh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET223', 'Nguyễn Vinh Quang', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET224', 'Trần Thị Thúy Quỳnh', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET225', 'Nguyễn Thị Thanh Vân', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET226', 'Đặng Anh Việt', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET227', 'Phạm Đình Tuấn', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET228', 'Tạ Đức Tuyền', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL),
+('FET229', 'Nguyễn Việt Dũng', 'hlinh0411hd@gmail.com', 101, NULL, '', '', '11111111', 200, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `thesis`
+-- Cấu trúc bảng cho bảng `thesis`
 --
 
 CREATE TABLE `thesis` (
   `thesisId` int(11) NOT NULL,
   `studentId` int(11) NOT NULL,
   `thesisName` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `teacherId` int(11) NOT NULL,
-  `coteacherId` int(11) DEFAULT NULL,
+  `teacherId` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `coteacherId` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `thesisDescription` longtext COLLATE utf8_unicode_ci,
   `accepted` int(11) DEFAULT '0',
   `facultyId` int(11) NOT NULL,
@@ -523,92 +616,86 @@ CREATE TABLE `thesis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `thesis`
+-- Đang đổ dữ liệu cho bảng `thesis`
 --
 
 INSERT INTO `thesis` (`thesisId`, `studentId`, `thesisName`, `teacherId`, `coteacherId`, `thesisDescription`, `accepted`, `facultyId`, `created_at`, `isClosed`, `isSuccess`, `protectionFile`) VALUES
-(2, 14020752, 'Changed Name', 1, 5, '1', 1, 100, '2016-11-30 15:13:35', 0, 0, 1),
-(8, 14020025, 'Ngu quá', 5, 0, 'Ngu', 0, 200, '2016-11-30 15:14:23', 0, 0, 0),
-(9, 14020025, 'Binh ngu qua', 1, 5, 'Ahihi', 1, 200, '2016-12-06 12:45:56', 0, 0, 0),
-(10, 14020116, 'Dong ngu', 1, 6, 'ahihi', 1, 100, '2016-12-06 12:49:19', 0, 0, 1);
+(2, 14020752, 'Changed Name', '1', '5', '1', 1, 100, '2016-11-30 15:13:35', 0, 0, 1),
+(8, 14020025, 'Ngu quá', '5', '0', 'Ngu', 0, 200, '2016-11-30 15:14:23', 0, 0, 0),
+(9, 14020025, 'Binh ngu qua', '1', '5', 'Ahihi', 1, 200, '2016-12-06 12:45:56', 0, 0, 0),
+(10, 14020116, 'Dong ngu', '1', '6', 'ahihi', 1, 100, '2016-12-06 12:49:19', 0, 0, 1);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `council`
+-- Chỉ mục cho bảng `council`
 --
 ALTER TABLE `council`
   ADD PRIMARY KEY (`councilId`);
 
 --
--- Indexes for table `departments`
+-- Chỉ mục cho bảng `departments`
 --
 ALTER TABLE `departments`
   ADD PRIMARY KEY (`departmentId`),
   ADD KEY `fk_faculty` (`facultyId`);
 
 --
--- Indexes for table `faculties`
+-- Chỉ mục cho bảng `faculties`
 --
 ALTER TABLE `faculties`
   ADD PRIMARY KEY (`facultyId`);
 
 --
--- Indexes for table `fields`
+-- Chỉ mục cho bảng `fields`
 --
 ALTER TABLE `fields`
   ADD PRIMARY KEY (`fieldId`);
 
 --
--- Indexes for table `laboratories`
+-- Chỉ mục cho bảng `laboratories`
 --
 ALTER TABLE `laboratories`
   ADD PRIMARY KEY (`laboratoryId`),
   ADD KEY `fk_l_faculty` (`facultyId`);
 
 --
--- Indexes for table `relative_fields`
---
-ALTER TABLE `relative_fields`
-  ADD KEY `fk_f_teacher_idx` (`fieldId`);
-
---
--- Indexes for table `request`
+-- Chỉ mục cho bảng `request`
 --
 ALTER TABLE `request`
   ADD PRIMARY KEY (`requestId`);
 
 --
--- Indexes for table `research_directions`
+-- Chỉ mục cho bảng `research_directions`
 --
 ALTER TABLE `research_directions`
   ADD PRIMARY KEY (`researchDirectionId`),
   ADD KEY `fk_rd_teacher_idx` (`teacherId`);
 
 --
--- Indexes for table `reviewer`
+-- Chỉ mục cho bảng `reviewer`
 --
 ALTER TABLE `reviewer`
   ADD PRIMARY KEY (`reviewerId`);
 
 --
--- Indexes for table `students`
+-- Chỉ mục cho bảng `students`
 --
 ALTER TABLE `students`
   ADD PRIMARY KEY (`studentId`),
   ADD KEY `fd_s_faculty_idx` (`facultyId`);
 
 --
--- Indexes for table `subfields`
+-- Chỉ mục cho bảng `subfields`
 --
 ALTER TABLE `subfields`
   ADD PRIMARY KEY (`subfieldId`),
   ADD KEY `fk_field_idx` (`fieldId`);
 
 --
--- Indexes for table `teacher`
+-- Chỉ mục cho bảng `teacher`
 --
 ALTER TABLE `teacher`
   ADD PRIMARY KEY (`teacherId`),
@@ -616,82 +703,90 @@ ALTER TABLE `teacher`
   ADD KEY `fk_d_faculty_idx` (`facultyId`);
 
 --
--- Indexes for table `thesis`
+-- Chỉ mục cho bảng `thesis`
 --
 ALTER TABLE `thesis`
   ADD PRIMARY KEY (`thesisId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `council`
+-- AUTO_INCREMENT cho bảng `council`
 --
 ALTER TABLE `council`
   MODIFY `councilId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
--- AUTO_INCREMENT for table `request`
+-- AUTO_INCREMENT cho bảng `request`
 --
 ALTER TABLE `request`
   MODIFY `requestId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
--- AUTO_INCREMENT for table `research_directions`
+-- AUTO_INCREMENT cho bảng `research_directions`
 --
 ALTER TABLE `research_directions`
-  MODIFY `researchDirectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `researchDirectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT for table `reviewer`
+-- AUTO_INCREMENT cho bảng `reviewer`
 --
 ALTER TABLE `reviewer`
   MODIFY `reviewerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT for table `thesis`
+-- AUTO_INCREMENT cho bảng `thesis`
 --
 ALTER TABLE `thesis`
   MODIFY `thesisId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `departments`
+-- Các ràng buộc cho bảng `departments`
 --
 ALTER TABLE `departments`
   ADD CONSTRAINT `fk_faculty` FOREIGN KEY (`facultyId`) REFERENCES `faculties` (`facultyId`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `laboratories`
+-- Các ràng buộc cho bảng `laboratories`
 --
 ALTER TABLE `laboratories`
   ADD CONSTRAINT `fk_l_faculty` FOREIGN KEY (`facultyId`) REFERENCES `faculties` (`facultyId`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `relative_fields`
---
-ALTER TABLE `relative_fields`
-  ADD CONSTRAINT `fk_f_teacher` FOREIGN KEY (`fieldId`) REFERENCES `fields` (`fieldId`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Constraints for table `research_directions`
+-- Các ràng buộc cho bảng `research_directions`
 --
 ALTER TABLE `research_directions`
   ADD CONSTRAINT `fk_rd_teacher` FOREIGN KEY (`teacherId`) REFERENCES `teacher` (`teacherId`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `students`
+-- Các ràng buộc cho bảng `students`
 --
 ALTER TABLE `students`
   ADD CONSTRAINT `fd_s_faculty` FOREIGN KEY (`facultyId`) REFERENCES `faculties` (`facultyId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `subfields`
+-- Các ràng buộc cho bảng `subfields`
 --
 ALTER TABLE `subfields`
   ADD CONSTRAINT `fk_field` FOREIGN KEY (`fieldId`) REFERENCES `fields` (`fieldId`) ON UPDATE CASCADE;
 
+  
 --
--- Constraints for table `teacher`
+-- Constraints for table `relative_fields`
+--
+ALTER TABLE `relative_fields`
+  ADD CONSTRAINT `fk_rrd` FOREIGN KEY (`researchDirectionId`) REFERENCES `research_directions` (`researchDirectionId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `relative_subfields`
+--
+ALTER TABLE `relative_subfields`
+  ADD CONSTRAINT `fk_rd` FOREIGN KEY (`researchDirectionId`) REFERENCES `research_directions` (`researchDirectionId`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+  
+--
+-- Các ràng buộc cho bảng `teacher`
 --
 ALTER TABLE `teacher`
   ADD CONSTRAINT `fk_d_faculty` FOREIGN KEY (`facultyId`) REFERENCES `faculties` (`facultyId`) ON UPDATE CASCADE,

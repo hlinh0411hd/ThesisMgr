@@ -31,7 +31,7 @@ function login(){
     var password = $('#password').val();
 
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange=function() {
+    xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             if (this.responseText == "ok"){
                 window.location.replace("mainpage");
