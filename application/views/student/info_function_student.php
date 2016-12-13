@@ -92,7 +92,7 @@
             <center> 
                 <div class="ratio img-responsive img-circle" style="background-image: url(<?= $avatar;?>); width: 270px; height: 270px;"></div>
             </center>
-            <center> <button class="btn btn-success btn-avatar" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
+            <center> <button id="btn-avatar" class="btn btn-success" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
         </div>
     </div>
 </div>
