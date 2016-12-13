@@ -12,7 +12,7 @@
         <h3 class="panel-title">Thông tin cá nhân</h3> 
         <div class="pull-right">
             <button id="chinhsua-info-std" type="button" class="btn btn-primary btn-sm" onclick="enableInput()">Chỉnh sửa</button>
-            <button id="luu-info-std" class="btn btn-primary btn-sm" style="display:none;" >&nbsp;&nbsp;Lưu &nbsp;&nbsp;lại&nbsp;&nbsp;&nbsp; </button>
+            <button id="luu-info-std" class="btn btn-primary btn-sm" style="display:none;" >Lưu</button>
         </div>
     </div>
     <div class="panel-body">
@@ -21,42 +21,66 @@
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Họ và tên:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="name" id="name" disabled>
+                        <input type="text" class="form-control" name="name" id="name" disabled value="<?= $studentName;?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Giới tính:</label>
                     <div class="col-sm-9 radio-inline">
                         <div class="radio">
-                            <label><input type="radio" name="gender" id="gender" checked disabled>Nam</label>
+                            <label><input type="radio" name="gender" id="gender" <?= $studentGender=="nam"? "checked":""?> disabled>Nam</label>
                         </div>
                         <div class="radio">
-                            <label><input type="radio" name="gender" id="gender" disabled>Nữ</label>
+                            <label><input type="radio" name="gender" id="gender" <?= $studentGender=="nam"? "":"checked"?> disabled>Nữ</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Ngày sinh:</label>
                     <div class="col-sm-5">
-                        <input type="date" class="form-control" name="birthday" id="birthday" disabled>
+                        <input type="date" class="form-control" name="birthday" id="birthday" disabled value="<?= $studentBirthday;?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Lớp:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="class" id="class" disabled>
+                        <input type="text" class="form-control" name="class" id="class" disabled value="<?= $studentClass;?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Số điện thoại:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="phone" id="phone" disabled>
+                        <input type="text" class="form-control" name="phone" id="phone" disabled value="<?= $studentPhone;?>">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="control-label col-sm-3">Email:</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" name="mail" id="mail" disabled>
+                        <input type="text" class="form-control" name="mail" id="mail" disabled value="<?= $studentMail;?>">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="control-label col-sm-3">Khoa</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="facultyId" id="facultyId" disabled>
+                            <option value="0"></option>
+                            <?php foreach ($faculties as $faculty){?>
+                                <option value="<?= $faculty['facultyId'];?>" <?= $facultyId == $faculty['facultyId']? "selected":"";?>>
+                                    <?= $faculty['facultyName'];?>
+                                </option>
+                            <?php }?>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row" onfocusout="setTimeout(function(){load('teacherList','index');},100)">
+                    <label class="control-label col-sm-3">Cố vấn học tập:</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" name="consultant" id="consultant" onkeyup="showHint('teacher','teacher')" disabled value="<?= $consultant['teacherName'];?>">
+                    <ul id="teacherList" class="list-group">
+
+                    </ul>
                     </div>
                 </div>
             </form>

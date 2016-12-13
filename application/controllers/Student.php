@@ -9,6 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Student extends CI_Controller{
     public function __construct(){
         parent::__construct();
+        $this->load->model('Student_Model');
+        $this->load->model('Teacher_Model');
+        $this->load->model('Faculty_Model');
+        $this->load->model('Department_Model');
+        $this->load->model('Faculty_Model');
+        $this->load->model('Laboratory_Model');
     }
     public function index(){
         $data = array(
@@ -20,6 +26,13 @@ class Student extends CI_Controller{
         $this->load->view("header_page", $data);
         $this->load->view('student/student_account');
         $this->load->view('footer');
+    }
+
+    public function info(){
+        $data = $this->Student_Model->getById($this->session->userdata("userIdSession"));
+        $data['faculties'] = $this->Faculty_Model->getAll();
+        $data['consultant'] = $this->Teacher_Model->getById($data['consultant']);
+        $this->load->view('student/info_function_student',$data);
     }
 }
 ?>
