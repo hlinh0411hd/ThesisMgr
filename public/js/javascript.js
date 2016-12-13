@@ -242,7 +242,23 @@ function allowStudent(studentId){
         $.get("studentfunctionfaculty/deleteAnAllowedStudent/" + studentId);
     }
 }
-
+function saveTimeRegister(facultyId){
+    var startDate = $('#startDate').val();
+    var endDate = $('#endDate').val();
+    var startTime = $('#startTime').val();
+    var endTime = $('#endTime').val();
+    var data = {
+        'facultyId': facultyId,
+        'startDate': startDate,
+        'startTime': startTime,
+        'endDate': endDate,
+        'endTime': endTime
+    };
+    console.log(JSON.stringify(data));
+    $.get("faculty/saveTimeRegister", data, function(){
+        load('main', 'faculty/thesisregister');
+    })
+}
 function showHint(id, controller){
     var teacherName = $("#" + id).val();
     $("#" + id + "Id").val("0");

@@ -10,6 +10,8 @@ class User extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_Model');
+        $this->load->model('Student_Model');
+        $this->load->model('ThesisRegisterTime_Model');
         $this->load->helper('url');
     }
 
@@ -24,7 +26,19 @@ class User extends CI_Controller {
     }
 
     public function signUpThesis(){
-        $this->load->view('student/sign_up_thesis');
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $date = date('Y-m-d');
+        $time = date('h:i:s');
+        $data = $this->Student_Model->getById($this->session->userdata('userIdSession'));
+        $data = $this->ThesisRegisterTime_Model->getByFaculty($data['facultyId']);
+        $now = strtotime($date . " " . $time);
+        $start = strtotime($data['startDate'] . " " . $data['startTime']);
+        $end = strtotime($data['endDate'] . " " . $data['endTime']);
+        if ($now >= $start && $now <= $end){
+            $this->load->view('student/sign_up_thesis');
+        } else {
+            $this->load->view('tpl/out_of_time_register');
+        }
     }
 
     public function loginForm(){

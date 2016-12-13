@@ -29,7 +29,7 @@
                     <label class="control-label col-sm-3">Khoa</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="facultyId" id="facultyId" disabled>
-                            <option value="0"></option>
+                            <option value=""></option>
                             <?php foreach ($faculties as $faculty){?>
                                 <option value="<?= $faculty['facultyId'];?>" <?= $facultyId == $faculty['facultyId']? "selected":"";?>>
                                     <?= $faculty['facultyName'];?>
@@ -42,7 +42,7 @@
                     <label class="control-label col-sm-3">Bộ môn</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="departmentId" id="departmentId" disabled>
-                            <option value="0"></option>
+                            <option value=""></option>
                             <?php foreach ($departments as $department){?>
                                 <option value="<?= $department['departmentId'];?>" <?= $departmentId == $department['departmentId']? "selected":"";?>>
                                     <?= $department['departmentName'];?>
@@ -55,7 +55,7 @@
                     <label class="control-label col-sm-3">Phòng thí nghiệm</label>
                     <div class="col-sm-9">
                         <select class="form-control" name="laboratoryId" id="laboratoryId" disabled>
-                            <option value="0"></option>
+                            <option value=""></option>
                             <?php foreach ($laboratories as $laboratory){?>
                                 <option value="<?= $laboratory['laboratoryId'];?>" <?= $laboratoryId == $laboratory['laboratoryId']? "selected":"";?>>
                                     <?= $laboratory['laboratoryName'];?>

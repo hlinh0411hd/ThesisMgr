@@ -31,7 +31,7 @@
     <div class="form-group">
         <input type="hidden" class="form-control" name="teacherId" id="teacherId">
     </div>
-    <div class="form-group" onfocusout="setTimeout(function(){load('teacherList','index');},100)">
+    <div class="form-group" onfocusout="setTimeout(function(){load('coteacherList','index');},100)">
         <label class="control-label">Giảng viên đồng hướng dẫn</label>
         <input type="text" class="form-control" onkeyup="showHint('coteacher','teacher')" name="coteacher" id="coteacher">
         <ul id="coteacherList" class="list-group">
