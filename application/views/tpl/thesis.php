@@ -28,7 +28,7 @@
                     <th class="col-md-2">Tên sinh viên</th>
                     <th class="col-md-2">Thời gian đăng ký</th>
                     <th class="col-md-1">Trạng thái</th>
-                    <th class="col-md-1"></th>
+                    <th class="col-md-1">Bảo vệ</th>
                     <th class="col-md-1">Chi tiết</th>
                     <th class="col-md-1">Hồ sơ</th>
                     <th class='col-md-1'>Khác</th>

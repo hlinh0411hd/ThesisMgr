@@ -20,4 +20,10 @@ class Student_Model extends CI_Model {
         $query=$this->db->get('students');
         return $query->result_array();
     }
+
+    public function update($studentId, $data){
+        $this->db->set($data)
+            ->where('studentId', $studentId)
+            ->update('students');
+    }
 }

@@ -61,9 +61,9 @@ function load(content, page){
 
 
 function enableInput(){
-    $(".chinhsua-info").css("display","none");
-    $(".luu-info").css("display","block");
-	$(".btn-avatar").css("display","block");
+    $("#chinhsua-info").css("display","none");
+    $("#luu-info").css("display","block");
+	$("#btn-avatar").css("display","block");
     $("input").prop('disabled', false);
     $("textarea").prop('disabled', false);
     $("select").prop('disabled', false);
@@ -88,6 +88,31 @@ function updateInfoTeacher(){
     };
     $.get("teacher/updateInfo", data, function(){
         load('main','Teacher/info');
+    });
+}
+
+function updateInfoStudent(){
+    var studentName = $('#name').val();
+    var studentGender = $('input#gender:checked').val();
+    var studentBirthday = $('#birthday').val();
+    var studentClass = $('#class').val();
+    var studentPhone = $('#phone').val();
+    var studentMail = $('#mail').val();
+    var facultyId = $('#facultyId').val();
+    var consultant = $('#consultantId').val();
+    var data = {
+        'studentName': studentName,
+        'studentGender': studentGender,
+        'studentBirthday': studentBirthday,
+        'studentClass': studentClass,
+        'studentPhone': studentPhone,
+        'studentMail': studentMail,
+        'facultyId': facultyId,
+        'consultant': consultant
+    };
+    console.log(JSON.stringify(data));
+    $.get("student/updateInfo", data, function(){
+        load('main','Student/info');
     });
 }
 

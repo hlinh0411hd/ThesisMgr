@@ -12,8 +12,8 @@
     <div class="panel-heading">
         <h3 class="panel-title">Thông tin cá nhân</h3>
         <div class="pull-right">
-            <button type="button" class="btn btn-primary btn-sm chinhsua-info" onclick="enableInput()">Chỉnh sửa</button>
-            <button onclick="updateInfoTeacher()" class="btn btn-primary btn-sm luu-info" style="display:none;" >Lưu</button>
+            <button type="button" class="btn btn-primary btn-sm chinhsua-info" id="chinhsua-info" onclick="enableInput()">Chỉnh sửa</button>
+            <button onclick="updateInfoTeacher()" class="btn btn-primary btn-sm luu-info" id="luu-info" style="display:none;" >Lưu</button>
         </div>
     </div>
     <div class="panel-body">
