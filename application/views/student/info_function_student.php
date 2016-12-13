@@ -88,6 +88,12 @@
                 </div>
             </form>
         </div>
+        <div class="col-sm-6" style="border-left: 1px solid #dfdfdf; min-height: 400px;">
+            <center> 
+                <div class="ratio img-responsive img-circle" style="background-image: url(<?= $avatar;?>); width: 270px; height: 270px;"></div>
+            </center>
+            <center> <button class="btn btn-success btn-avatar" style="margin-top: 25px; display: none;">Thay đổi ảnh</button></center>
+        </div>
     </div>
 </div>
 
