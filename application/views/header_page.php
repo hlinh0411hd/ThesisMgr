@@ -106,8 +106,23 @@
                         <li><a onClick="clicked(this);" href="#">Liên hệ</a></li>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm..."> 
+                        <div class="input-group">
+                            <div class="input-group-btn search-panel">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+                                    <span id="search_concept">Lọc</span> <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                  <li><a href="#sv">Sinh Viên</a></li><li class="divider"></li>
+                                  <li><a href="#gv">Giảng Viên</a></li><li class="divider"></li>
+                                  <li><a href="#kh">Khoa</a></li><li class="divider"></li>
+                                  <li><a href="#clgt">Cái gì đó</a></li>
+                                </ul>
+                            </div>
+                            <input type="hidden" name="search_param" value="all" id="search_param">         
+                            <input type="text" class="form-control" name="x" placeholder="Tìm kiếm....">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">Tìm</button>
+                            </span>
                         </div>
                     </form>
                 </div><!-- /.navbar-collapse -->
