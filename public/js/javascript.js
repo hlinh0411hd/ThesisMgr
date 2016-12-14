@@ -80,7 +80,9 @@ function enableInput(){
 
 function findText(){
 	var searchText = $('#searchText').val();
-	load('content','Mainpage/result/' + searchText);
+	if(searchText.toString().length > 0){
+		load('content','Mainpage/result/' + searchText);
+	}
 }
 
 function updateInfoTeacher(){
