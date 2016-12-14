@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2016 at 03:19 PM
+-- Generation Time: Dec 14, 2016 at 09:55 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -187,6 +187,13 @@ CREATE TABLE `mark` (
   `teacherMark` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `mark`
+--
+
+INSERT INTO `mark` (`thesisId`, `reviewerMark`, `councilMark`, `teacherMark`) VALUES
+(2, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -204,7 +211,12 @@ CREATE TABLE `relative_fields` (
 
 INSERT INTO `relative_fields` (`researchDirectionId`, `fieldId`) VALUES
 (17, 2000),
-(17, 1000);
+(17, 1000),
+(18, 4000),
+(18, 8000),
+(19, 1000),
+(20, 1000),
+(20, 11000);
 
 -- --------------------------------------------------------
 
@@ -224,7 +236,13 @@ CREATE TABLE `relative_subfields` (
 
 INSERT INTO `relative_subfields` (`researchDirectionId`, `fieldId`, `subfieldId`) VALUES
 (17, 2000, 2002),
-(17, 1000, 1001);
+(17, 1000, 1001),
+(18, 4000, 4001),
+(18, 8000, 8005),
+(19, 1000, 1001),
+(20, 1000, 1001),
+(20, 1000, 1005),
+(20, 11000, 11003);
 
 -- --------------------------------------------------------
 
@@ -278,7 +296,10 @@ CREATE TABLE `research_directions` (
 --
 
 INSERT INTO `research_directions` (`researchDirectionId`, `teacherId`, `researchDirectionName`, `researchDirectionsDescription`) VALUES
-(17, '1', 'Đồng ngu', NULL);
+(17, '1', 'Đồng ngu', NULL),
+(18, '5', 'hihi', NULL),
+(19, '1', 'Web Development', NULL),
+(20, '1', 'Game Design', NULL);
 
 -- --------------------------------------------------------
 
@@ -302,7 +323,8 @@ INSERT INTO `reviewer` (`reviewerId`, `thesisId`, `teacherId`, `reviewer`, `crea
 (1, 2, '5', 'ngu', '2016-12-07 15:45:09'),
 (2, 2, '2', '', '2016-12-07 16:19:42'),
 (4, 10, '5', NULL, '2016-12-07 16:20:44'),
-(5, 10, '2', NULL, '2016-12-07 16:21:09');
+(5, 10, '2', NULL, '2016-12-07 16:21:09'),
+(9, 2, '6', NULL, '2016-12-14 16:51:04');
 
 -- --------------------------------------------------------
 
@@ -330,7 +352,7 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentGender`, `studentClass`, `studentPhone`, `avatar`, `consultant`, `password`, `facultyId`, `studentMail`, `thesisAllowed`) VALUES
-(14020022, 'Nguyễn Hoàng Biên', '0000-00-00', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B2,"@vnu.edu.vn")', 1),
+(14020022, 'Nguyễn Hoàng Biên', '1996-05-02', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B2,"@vnu.edu.vn")', 1),
 (14020025, 'Nguyễn Thanh Bình', '0000-00-00', 'nu', 'K59-CB', '', 'upload/avatar/none.png', 0, '11111111', 200, '14020025@vnu.edu.vn', 0),
 (14020042, 'Nguyễn Thành Công', '0000-00-00', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B3,"@vnu.edu.vn")', 0),
 (14020056, 'Nguyễn Mạnh Cường', '0000-00-00', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B5,"@vnu.edu.vn")', 1),
@@ -386,7 +408,7 @@ INSERT INTO `students` (`studentId`, `studentName`, `studentBirthday`, `studentG
 (14020669, 'Nguyễn Việt Long', '0000-00-00', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B20,"@vnu.edu.vn")', 0),
 (14020675, 'Trần Minh Quân', '0000-00-00', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B32,"@vnu.edu.vn")', 0),
 (14020685, 'Vũ Nam Tước', '0000-00-00', '', 'K59-CLC', '', 'upload/avatar/none.png', 0, '11111111', 100, '=CONCATENATE(B51,"@vnu.edu.vn")', 0),
-(14020752, 'Phạm Minh Hoàng Linh', '1996-11-04', 'nam', 'K59-CLC', '01665327771', 'upload/avatar/none.png', 5, '11111111', 100, '14020752@vnu.edu.vn', 1);
+(14020752, 'Phạm Minh Hoàng Linh', '1996-11-04', 'nam', 'K59-CLC', '01665327771', 'upload/avatar/none.png', 5, '1', 100, '14020752@vnu.edu.vn', 1);
 
 -- --------------------------------------------------------
 
@@ -518,7 +540,7 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`teacherId`, `teacherName`, `teacherMail`, `departmentId`, `teacherInfo`, `avatar`, `teacherPhone`, `password`, `facultyId`, `laboratoryId`) VALUES
-('1', 'Phạm Minh Hoàng Linh', 'hlinh0411hd@gmail.com', 101, 'Linh Thông Minh quá', 'upload/avatar/hl.jpg', '01665327771', '', 100, 101),
+('1', 'Phạm Minh Hoàng Linh', 'hlinh0411hd@gmail.com', 101, 'Linh Thông Minh quá', 'upload/avatar/hl.jpg', '01665327771', '11111111', 100, 101),
 ('2', 'Phạm Linh', '14020752@vnu.edu.vn', 101, NULL, 'upload/avatar/none.png', '', '11111111', 100, NULL),
 ('3', 'Phạm Minh Linh', '14020752@vnu.edu.vn', 101, NULL, 'upload/avatar/none.png', '', '11111111', 100, NULL),
 ('4', 'Phạm Minh Hoàng', '14020752@vnu.edu.vn', 201, NULL, 'upload/avatar/none.png', '', '11111111', 200, NULL),
@@ -635,7 +657,7 @@ CREATE TABLE `thesis` (
   `accepted` int(11) DEFAULT '0',
   `facultyId` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `isClosed` int(11) NOT NULL DEFAULT '0',
+  `printed` int(11) DEFAULT '0',
   `isSuccess` int(11) DEFAULT '0',
   `protectionFile` int(11) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -644,10 +666,34 @@ CREATE TABLE `thesis` (
 -- Dumping data for table `thesis`
 --
 
-INSERT INTO `thesis` (`thesisId`, `studentId`, `thesisName`, `teacherId`, `coteacherId`, `thesisDescription`, `accepted`, `facultyId`, `created_at`, `isClosed`, `isSuccess`, `protectionFile`) VALUES
-(2, 14020752, 'Changed Name', '1', '5', '1', 1, 100, '2016-11-30 15:13:35', 0, 0, 1),
+INSERT INTO `thesis` (`thesisId`, `studentId`, `thesisName`, `teacherId`, `coteacherId`, `thesisDescription`, `accepted`, `facultyId`, `created_at`, `printed`, `isSuccess`, `protectionFile`) VALUES
+(2, 14020752, 'Changed Name', '1', '5', '1', 1, 100, '2016-11-30 15:13:35', 1, 0, 1),
 (9, 14020025, 'Binh ngu qua', '1', '5', 'Ahihi', 1, 200, '2016-12-06 12:45:56', 0, 0, 1),
 (10, 14020116, 'Dong ngu', '1', '6', 'ahihi', 1, 100, '2016-12-06 12:49:19', 0, 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thesisregistertime`
+--
+
+CREATE TABLE `thesisregistertime` (
+  `facultyId` int(11) NOT NULL,
+  `startDate` date DEFAULT '0000-00-00',
+  `startTime` time DEFAULT '00:00:00',
+  `endDate` date DEFAULT '0000-00-00',
+  `endTime` time DEFAULT '00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `thesisregistertime`
+--
+
+INSERT INTO `thesisregistertime` (`facultyId`, `startDate`, `startTime`, `endDate`, `endTime`) VALUES
+(100, '2016-12-15', '00:00:00', '2016-12-17', '00:00:00'),
+(200, '0000-00-00', '00:00:00', '0000-00-00', '00:00:00'),
+(300, '0000-00-00', '00:00:00', '0000-00-00', '00:00:00'),
+(400, '0000-00-00', '00:00:00', '0000-00-00', '00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -751,6 +797,12 @@ ALTER TABLE `thesis`
   ADD PRIMARY KEY (`thesisId`);
 
 --
+-- Indexes for table `thesisregistertime`
+--
+ALTER TABLE `thesisregistertime`
+  ADD PRIMARY KEY (`facultyId`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -768,12 +820,12 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `research_directions`
 --
 ALTER TABLE `research_directions`
-  MODIFY `researchDirectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `researchDirectionId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `reviewer`
 --
 ALTER TABLE `reviewer`
-  MODIFY `reviewerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `reviewerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `thesis`
 --

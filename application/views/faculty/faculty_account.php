@@ -10,7 +10,6 @@
                         <li class="list-group-item"><a onclick="load('main','pagination?page=teacher')"><span>Giáo viên</span></a></li>
                         <li class="list-group-item"><a onclick="load('main','pagination?page=student')"><span>Sinh viên</span></a></li>
                         <li class="list-group-item"><a onclick="load('main','faculty/thesisRegister')"><span>Đăng ký khóa luận</span></a></li>
-                        <li class="list-group-item"><a onclick="load('main','TeacherFunctionFaculty')"><span>Chương trình đào tạo</span></a></li>
                         <li class="list-group-item"><a onclick="load('main','pagination?page=thesis')"><span>Khóa luận</span></a></li>
                         <li class="list-group-item"><a onclick="load('main','request')"><span>Danh sách yêu cầu</span></a></li>
                         <li class="list-group-item"><a onclick="load('main','council')"><span>Hội đồng bảo vệ</span></a></li>
