@@ -76,11 +76,11 @@ select{
 #bmptn .submenu{
 	display: block;
 }
-
-#search {
-    float: right;
-    margin-top: 9px;
-    width: 250px;
+.input-group-btn ul{
+	border: 1px solid #008acf;
+}
+li.divider{
+	margin: 0px;
 }
 
 .panel{
@@ -94,6 +94,9 @@ select{
 .panel-body{
 	padding-bottom: 0px;
 }
+.panel-default{
+	border: 0px;
+}
 
 /*Student and -account*/
 .box-right{
@@ -102,7 +105,8 @@ select{
 	padding: 0px;
 }
 .glyphicon{
-	margin:0px 5px;
+	margin-left: 5px;
+	margin-right:5px;
 }
 
 #main{
