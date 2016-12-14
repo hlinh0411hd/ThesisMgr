@@ -19,7 +19,7 @@
                 <li class="list-group-item"><a onclick="load('main','student/info')"><span>Thông tin cá nhân</span></a></li>
                 <li class="list-group-item"><a onclick="load('main','StudentFunctionFaculty')"><span>Quá trình học tập</span></a></li>
                 <li class="list-group-item"><a onclick="load('main','pagination?page=thesis&condition=student')"><span>Khóa luận</span></a></li>
-                <li class="list-group-item"><a onclick="load('main','pagination?page=request&condition=student');"><span>Danh sách yêu cầu</span></a></li>
+                <li class="list-group-item"><a onclick="load('main','request');"><span>Danh sách yêu cầu</span></a></li>
             </ul>
         </div>
     </div>

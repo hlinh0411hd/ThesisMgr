@@ -38,6 +38,7 @@ class Thesis extends CI_Controller {
         $studentId = $this->Thesis_Model->getById($thesisId)['studentId'];
         $studentMail = $this->Student_Model->getById($studentId)['studentMail'];
         $this->Mail_Model->send($studentMail, "Test", "Accepted Thesis");
+        return 1;
     }
     public function deny($thesisId){
         $this->Thesis_Model->accept($thesisId);
@@ -45,6 +46,7 @@ class Thesis extends CI_Controller {
         $studentMail = $this->Student_Model->getById($studentId)['studentMail'];
         $this->Thesis_Model->deny($thesisId);
         $this->Mail_Model->send($studentMail, "Test", "Denied Thesis");
+        return 1;
     }
 
     public function checkedProtectionFile($thesisId){

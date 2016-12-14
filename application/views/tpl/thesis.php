@@ -27,7 +27,7 @@
                     <th class="col-sm-3">Tên khóa luận</th>
                     <th class="col-sm-2">Tên sinh viên</th>
                     <th class="col-sm-2">Thời gian đăng ký</th>
-                    <th class="col-sm-1">Tr. thái</th>
+                    <th class="col-sm-1">GV chấp nhận</th>
                     <th class="col-sm-1">Bảo vệ</th>
                     <th class="col-sm-1">Chi tiết</th>
                     <th class="col-sm-1">Hồ sơ</th>
@@ -46,26 +46,29 @@
                         <td><?php echo $sz_User->created_at;?></td>
                         <td><center><input type="checkbox" 
                             <?php echo $sz_User->accepted==0? "":"checked";?>
-                            <?= $this->session->userdata('userTypeSession') != 1? "disabled":"";?>
+                            disabled
                          /></center></td>
                         <td><center><input type="checkbox" 
                             <?php echo $sz_User->isSuccess==0? "":"checked";?> 
-                            <?= $this->session->userdata('userTypeSession') != 1? "disabled":"";?>
+                            <?php if ($this->session->userdata('userTypeSession') != 1 || $sz_User->accepted == 0 ) echo "disabled";?>
                          /></center></td>
                             
                         <td><center><?php echo "<a onclick='load(\"main\",\"Thesis/detail/".$sz_User->thesisId."\")'><span class='glyphicon glyphicon-list-alt'></a>";?></center></td>
                         <td><center><input type="checkbox"
                                 <?= $sz_User->protectionFile!=0? "checked":"";?>
-                                <?= $this->session->userdata('userTypeSession') != 1? "disabled":"onchange='checkedProtectionFile(".$sz_User->thesisId.")'";?>
-                            ></center>
+                                <?php if ($this->session->userdata('userTypeSession') != 1 || $sz_User->accepted == 0 ) echo "disabled";
+                                    else echo "onchange='checkedProtectionFile(".$sz_User->thesisId.")'";
+                                ?>
+
+                                ></center>
                         </td>
                         <?php
                         if ($this->session->userdata('userTypeSession') == 2){
                             echo "<td>";
                             if ($sz_User->accepted==0){
-                                echo "<a onclick='acceptThesis(".$sz_User->thesisId.")'><span style='color:#dfdfdf;' class='glyphicon glyphicon-ok' title='Chấp nhận'> </a> <a onclick='denyThesis(".$sz_User->thesisId.")'><span style='color:red;' class='glyphicon glyphicon-remove' title='Hủy'> </span></a>";
+                                echo "<a onclick='acceptThesis(".$sz_User->thesisId.")'><span style='color:green;' class='glyphicon glyphicon-ok' title='Chấp nhận'> </a> <a onclick='denyThesis(".$sz_User->thesisId.")'><span style='color:red;' class='glyphicon glyphicon-remove' title='Hủy'> </span></a>";
                             } else {
-                                echo "<a onclick='acceptThesis(".$sz_User->thesisId.")'><span style='color:green;' class='glyphicon glyphicon-ok' title='Chấp nhận'> </a> <a onclick='denyThesis(".$sz_User->thesisId.")'><span style='color:#dfdfdf;' class='glyphicon glyphicon-remove' title='Hủy'> </span></a>";
+                                echo "<a><span style='color:green;' class='glyphicon glyphicon-ok' title='Chấp nhận'></span></a>";
                             }
                             echo "</td>";
                         } else 

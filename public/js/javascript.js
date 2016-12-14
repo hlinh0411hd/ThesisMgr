@@ -291,23 +291,41 @@ function addValue(id, value, valueId){
 }
 
 function acceptThesis(thesisId){
-    $.get("thesis/accept/" + thesisId);
+    $.get("thesis/accept/" + thesisId, function (){
+        bootbox.alert({
+            message: "Đã chấp nhận",
+            size: 'small'
+        });
+        load('main','pagination?page=thesis&condition=tethesis');
+    });
 }
 
 function denyThesis(thesisId){
-    $.get("thesis/deny/" + thesisId);
+    $.get("thesis/deny/" + thesisId, function (){
+        bootbox.alert({
+            message: "Đặt không chấp nhận",
+            size: 'small'
+        });
+        load('main','pagination?page=thesis&condition=tethesis');
+    });
 }
 
 function exportRequest(requestId){
-    $.get("request/exportRequest/" + requestId);
+    $.get("request/exportRequest/" + requestId, function(){
+        load('main','request');
+    });
 }
 
 function confirmRequest(requestId){
-    $.get("request/confirmRequest/" + requestId);
+    $.get("request/confirmRequest/" + requestId, function(){
+        load('main','request');
+    });
 }
 
 function denyRequest(requestId){
-    $.get("request/denyRequest/" + requestId);
+    $.get("request/denyRequest/" + requestId, function(){
+        load('main','request');
+    });
 }
 
 function checkedProtectionFile(thesisId){

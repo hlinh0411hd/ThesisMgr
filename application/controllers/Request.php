@@ -16,6 +16,28 @@ class Request extends CI_Controller {
         $this->load->helper('url');
     }
 
+    public function index(){
+        if ($this->session->userdata('userTypeSession') == 1){
+            $facultyId = $this->session->userdata('userIdSession');
+            $condition = array(
+                'facultyId' => $facultyId
+            );
+        } else if ($this->session->userdata('userTypeSession') == 3){
+            $studentId = $this->session->userdata('userIdSession');
+            $condition = array(
+                'studentId' => $studentId
+            );
+        }
+        $data = $this->Request_Model->getList($condition);
+        $list['list']= array();
+        foreach ($data as $datum) {
+            $datum['studentName'] = $this->Student_Model->getById($datum['studentId'])['studentName'];
+            $datum['thesisOldName'] = $this->Thesis_Model->getById($datum['thesisId'])['thesisName'];
+            array_push($list['list'], $datum);
+        }
+        $this->load->view('tpl/request', $list);
+    }
+
     public function addRequest($requestType, $thesisId){
         $thesisName = $teacherId = $coteacherId = $thesisDescription = "";
         if ($requestType == 1)
@@ -58,6 +80,7 @@ class Request extends CI_Controller {
             'status' => 1
         );
         $this->Request_Model->update($requestId, $data);
+        return 1;
     }
 
     public function confirmRequest($requestId){
@@ -78,6 +101,7 @@ class Request extends CI_Controller {
         } else if ($request['requestType'] == 2){
             $this->Thesis_Model->deny($request['thesisId']);
         }
+        return 1;
     }
 
     public function denyRequest($requestId){
@@ -86,5 +110,6 @@ class Request extends CI_Controller {
             'status' => 3
         );
         $this->Request_Model->update($requestId, $data);
+        return 1;
     }
 }
