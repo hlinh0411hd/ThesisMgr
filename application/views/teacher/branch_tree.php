@@ -28,6 +28,8 @@ extract($item);
                         foreach ($relativeFieldList[$researchDirectionId] as $relativeField){
                             $data['relativeField'] = $relativeField;
                             $data['fieldList'] = $fieldList;
+                            $data['researchDirectionId'] = $researchDirectionId;
+                            $data['subfieldList'] = $subfieldList;
                             $this->load->view('teacher/branch_field',$data);
                         }
                     ?>
@@ -60,7 +62,6 @@ extract($item);
         if (!isset($researchDirectionName)){
             echo 'style="display:none"';
         }?>>
-            <button class='btn btn-warning' onclick='enableInputTree("#renew<?php echo $r; ?>")'>Chỉnh sửa</button>
             <button class='btn btn-danger' onclick='deleteBranchTree(<?php echo $researchDirectionId;?>)'>Xóa</button>
         </div>
         <hr/>

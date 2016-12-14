@@ -9,12 +9,12 @@
 class User_Model extends CI_Model {
     public function login($username, $password){
         $query = $this->db->select('*')
-                        ->from('students')
-                        ->where(array(
-                            'studentId' => $username,
-                            'password' => $password
-                        ))
-                        ->get();
+            ->from('students')
+            ->where(array(
+                'studentId' => $username,
+                'password' => $password
+            ))
+            ->get();
         if ($query->num_rows() > 0){
             $result = $query->row_array();
             $this->session->set_userdata(array(
@@ -64,5 +64,46 @@ class User_Model extends CI_Model {
         }
 
         return "error";
+    }
+
+    public function get($username, $password){
+        $data = array(
+            'studentId' => $username,
+            'password' => $password
+        );
+        $query = $this->db->select('*')
+            ->from('students')
+            ->where(array(
+                'studentId' => $username,
+                'password' => $password
+            ))
+            ->get();
+        if ($query->num_rows() > 0){
+            $result = $query->row_array();
+            return $result;
+        }
+
+
+        $query = $this->db->select('*')
+            ->from('teacher')
+            ->where(array(
+                'teacherId' => $username,
+                'password' => $password
+            ))
+            ->get();
+        if ($query->num_rows() > 0){
+            $result = $query->row_array();
+            return $result;
+        }
+    }
+
+
+    public function changePassword($username, $password){
+        $this->db->set('password', $password);
+        $this->db->where('studentId', $username);
+        $this->db->update('students');
+        $this->db->set('password', $password);
+        $this->db->where('teacherId', $username);
+        $this->db->update('teacher');
     }
 }

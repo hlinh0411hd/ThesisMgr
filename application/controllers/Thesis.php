@@ -57,6 +57,22 @@ class Thesis extends CI_Controller {
         $this->Thesis_Model->update($thesisId, $data);
     }
 
+    public function checkPrinted($thesisId){
+        $data = array(
+            'printed' => 1
+        );
+        $this->Thesis_Model->update($thesisId, $data);
+        return 1;
+    }
+
+    public function uncheckPrinted($thesisId){
+        $data = array(
+            'printed' => 0
+        );
+        $this->Thesis_Model->update($thesisId, $data);
+        return 1;
+    }
+
     public function remindProtectionFile(){
         $condition = array(
             'protectionFile' => 0,

@@ -6,6 +6,8 @@
  * Time: 11:49 PM
  */
 $r = rand(0,100000);
+$name = "";
+$sub1 = $subfieldList;
 ?>
 
 <div id="field<?php echo $r; ?>" class="form-group row">
@@ -18,7 +20,10 @@ $r = rand(0,100000);
             <?php
                 foreach ($fieldList as $field){
                     echo '<option value="'.$field['fieldId'].'"';
-                    if (isset($relativeField) && $field['fieldId'] == $relativeField) echo "selected";
+                    if (isset($relativeField) && $field['fieldId'] == $relativeField) {
+                        $name = $field['fieldName'];
+                        echo "selected";
+                    }
                     echo '>'.$field['fieldName'].'</option>';
                 }
             ?>
@@ -32,7 +37,16 @@ $r = rand(0,100000);
     </div>
     <div class="col-sm-4">
         <div id="subfield_branch<?php echo $r; ?>">
-
+            <?php
+                if (isset($relativeSubfieldList))
+                foreach ($relativeSubfieldList[$researchDirectionId][$relativeField] as $item){
+                    $sub = $sub1;
+                    $data['subfield'] = $item;
+                    $data['relativeField'] = $relativeField;
+                    $data['subfieldList'] = $sub[$name];
+                    $this->load->view('teacher/branch_subfield', $data);
+                }
+            ?>
         </div>
         <button onclick="addSubfieldBranch('#subfield_branch<?php echo $r; ?>',1000)" type="button" class="btn btn-info"<?php
         if (isset($relativeField)){

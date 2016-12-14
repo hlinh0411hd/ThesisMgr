@@ -15,4 +15,10 @@ class RelativeSubfield_Model extends CI_Model {
         );
         $this->db->insert('relative_subfields', $data);
     }
+
+    public function getList($data){
+        $this->db->where($data);
+        $query = $this->db->get('relative_subfields');
+        return $query->result_array();
+    }
 }
