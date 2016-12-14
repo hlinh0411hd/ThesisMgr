@@ -6,6 +6,8 @@ class Faculty extends CI_Controller{
 		parent::__construct();
         $this->load->model('Faculty_Model');
         $this->load->model('ThesisRegisterTime_Model');
+        $this->load->model('Mail_Model');
+        $this->load->model('Student_Model');
 	}
 	
 	public function index(){
@@ -44,6 +46,19 @@ class Faculty extends CI_Controller{
             'endTime' => $endTime
         );
         $this->ThesisRegisterTime_Model->update($facultyId, $data);
+        $condition = array(
+            'facultyId' => $facultyId,
+            'thesisAllowed' => 1
+        );
+
+        $studentList = $this->Student_Model->getList($condition);
+        $subject = "MỞ ĐĂNG KÝ KHÓA LUẬN";
+        $message = "Từ ".$startDate." ".$startTime. " đến ". $endDate . " " . $endTime.", ";
+        $message .= "Khoa mở đăng ký khóa luận cho sinh viên có đủ điều kiện đăng ký";
+
+        foreach ($studentList as $item) {
+            $this->Mail_Model->send($item['studentMail'], $subject, $message);
+        }
     }
 }
 ?>

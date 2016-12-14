@@ -264,7 +264,11 @@ function saveTimeRegister(facultyId){
         'endTime': endTime
     };
     console.log(JSON.stringify(data));
-    $.get("faculty/saveTimeRegister", data, function(){
+    $.get("faculty/saveTimeRegister", data, function(data, status){
+        bootbox.alert({
+            message: "Đặt giờ thành công",
+            size: 'small'
+        });
         load('main', 'faculty/thesisregister');
     })
 }
