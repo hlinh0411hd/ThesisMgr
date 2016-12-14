@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2016 at 08:31 AM
+-- Generation Time: Dec 14, 2016 at 03:19 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -59,31 +59,32 @@ CREATE TABLE `departments` (
   `departmentHead` varchar(11) NOT NULL,
   `departmentAddress` varchar(200) NOT NULL,
   `departmentPhone` varchar(50) NOT NULL,
-  `departmentWeb` varchar(100) NOT NULL
+  `departmentWeb` varchar(100) NOT NULL,
+  `departmentDescription` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng các bộ môn (departmentHead: trưởng bộ môn)';
 
 --
 -- Dumping data for table `departments`
 --
 
-INSERT INTO `departments` (`departmentId`, `facultyId`, `departmentName`, `departmentHead`, `departmentAddress`, `departmentPhone`, `departmentWeb`) VALUES
-(101, 100, 'Các Hệ thống thông tin', '0', '305 – E3 – 144 Xuân Thuỷ – Cầu Giấy – Hà Nội', '84 4 37547813', 'http://uet.vnu.edu.vn/httt/'),
-(102, 100, 'Công nghệ phần mềm', '0', '', '', ''),
-(103, 100, 'Khoa học máy tính', '0', '', '', ''),
-(104, 100, 'Khoa học và kỹ thuật tính toán', '0', '', '', ''),
-(105, 100, 'Mạng và truyền thông máy tính', '0', '', '', ''),
-(201, 200, 'Hệ thống viễn thông', '0', '', '', ''),
-(202, 200, 'Thông tin vô tuyến', '0', '', '', ''),
-(203, 200, 'Điện tử và kỹ thuật máy tính', '0', '', '', ''),
-(204, 200, 'Vi cơ điện tử và vi cơ hệ thống', '0', '', '', ''),
-(301, 300, 'Vật liệu và linh kiện từ tính Nano', '0', '', '', ''),
-(302, 300, 'Vật liệu và linh kiện bán dẫn Nano', '0', '', '', ''),
-(303, 300, 'Công nghệ Nano sinh học', '0', '', '', ''),
-(304, 300, 'Công nghệ quang tử', '0', '', '', ''),
-(401, 400, 'Công nghệ biển và môi trường', '0', '', '', ''),
-(402, 400, 'Công nghệ cơ điện tử', '0', '', '', ''),
-(403, 400, 'Công nghệ hàng không vũ trụ', '0', '', '', ''),
-(404, 400, 'Thủy khí công nghiệp và môi trường', '0', '', '', '');
+INSERT INTO `departments` (`departmentId`, `facultyId`, `departmentName`, `departmentHead`, `departmentAddress`, `departmentPhone`, `departmentWeb`, `departmentDescription`) VALUES
+(101, 100, 'Các Hệ thống thông tin', '0', '305 – E3 – 144 Xuân Thuỷ – Cầu Giấy – Hà Nội', '84 4 37547813', 'http://uet.vnu.edu.vn/httt/', NULL),
+(102, 100, 'Công nghệ phần mềm', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(103, 100, 'Khoa học máy tính', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(104, 100, 'Khoa học và kỹ thuật tính toán', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(105, 100, 'Mạng và truyền thông máy tính', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(201, 200, 'Hệ thống viễn thông', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;"><p style="text-align: justify;">Bộ môn có nhiệm vụ giảng dạy lý thuyết và thực hành các môn học cơ sở và chuyên ngành Điện tử – Viễn thông thuộc các bậc Đại học và Sau Đại học (Cao học và Nghiên cứu sinh); tham gia các hoạt động nghiên cứu của Khoa học cơ bản và công nghệ trong lĩnh vực liên quan tới Hệ thống Viễn thông, mạng truyền dữ liệu, thông tin di động,…. Tham gia và chủ trì các đề tài nghiên cứu, các hoạt động ứng dụng cấp Nhà nước, cấp Đại học Quốc Gia và cấp Trường Đại học Công nghệ cũng như các hoạt động khoa học hợp tác quốc tế.</p>\r\n<p style="text-align: justify;">Các hướng nghiên cứu của bộ môn bao gồm:</p>\r\n<ul>\r\n<li>Kỹ thuật truyền thông số và ứng dụng trong hệ thống Viễn thông hiện đại.</li>\r\n<li>Các công nghệ chuyển mạch tiên tiến: ATM, IP/ATM, MPLS,…</li>\r\n<li>Hệ thống thông tin quang với công nghệ ghép kênh theo bước sóng (WDM) và ghép kênh theo bước sóng mật độ cao (DWDM)</li>\r\n<li>Các hệ thống viễn thông thông minh, hội tụ băng rộng cả hữu tuyến và vô tuyến: IN, NGN, Adhoc, Sensor,…</li>\r\n<li>Bài toán định tuyến trong các hệ thống Viễn thông hiện đại.</li>\r\n<li>Công nghệ FPGA và ứng dụng trong phát triển các mạch điện tử tích hợp chương trình hóa cỡ trung bình và lớn dùng cho các mục đích xử lý tín hiệu trong điện tử và viễn thông.</li>\r\n</ul></div>'),
+(202, 200, 'Thông tin vô tuyến', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;"><p>Về giảng dậy, bộ môn thông tin vô tuyến phụ trách các môn học lien quan đế lý thuyết truyền dẫn, lý thuyết anten, thông tin di động và mạng vô tuyến. Các môn giảng dậy bao gồm: Trường điện từ và truyền song (ĐH), Kỹ thuật Siêu cao tần (ĐH), Thông tin số (ĐH và CH), Thông tin di động (ĐH và CH), Thông tin vệ tinh (ĐH), Kỹ thuật anten (ĐH và CH), Mạng vô tuyến WLAN (ĐH), Kỹ thuật Video truyền hình (ĐH).</p><p style="text-align: justify;">&nbsp;<span style="color: #993300;">Các môn giảng dạy chính như sau:</span></p><ul style="text-align: justify;">\r\n<li>Công nghệ truyền dẫn đa song mang</li>\r\n<li>Lý thuyết và kỹ thuật mã hóa</li>\r\n<li>Kỹ thuật siêu cao tần</li>\r\n<li>Anten</li>\r\n<li>Thông tin di động tốc độ cao</li>\r\n<li>Thiết kế FPGA</li>\r\n<li>Mạng không dây</li>\r\n</ul>\r\n</div>'),
+(203, 200, 'Điện tử và kỹ thuật máy tính', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;"><p>Tham gia giảng dạy lý thuyết và thực hành các môn học cơ sở và chuyên ngành Điện tử – Viễn thông thuộc các bậc Đại học và Sau Đại học (Cao học và Nghiên cứu sinh) và các hoạt động nghiên cứu của Khoa học cơ bản và công nghệ trong lĩnh vực liên quan tới Điện tử và Kỹ thuật máy tính. Tham gia và chủ trì các đề tài nghiên cứu, các hoạt động ứng dụng cấp Nhà nước, cấp Đại học Quốc Gia và cấp Trường Đại học Công nghệ cũng như các hoạt động khoa học hợp tác quốc tế.</p><h4><span style="color: #993300;">Các lĩnh vực nghiên cứu trong bộ môn:</span></h4><ul>\n<li>Điện tử ứng dụng trong y sinh và quản lý môi trường.</li>\n<li>Các công nghệ mạch điện tử tích hợp VLSI, FPGA, ASIC,…</li>\n<li>Ứng dụng của sensor, sensor MEMS cho các thiết bị Điện tử – Viễn thông.</li>\n<li>Các thiết bị điện tử cho nghiên cứu ứng dụng Vật lý.</li>\n<li>Các hệ thống điều khiển tự động và ROBOTICs</li>\n</ul><h4><span style="color: #993300;">Phòng thí nghiệm của bộ môn:</span></h4><ul>\n<li>Phòng thí nghiệm điều khiển tự động và robotics: <a href="http://fet.uet.vnu.edu.vn/wp-content/uploads/2012/05/Robotics_Lab_Introduction_2013.pdf" target="_blank">Download giới thiệu về phòng thí nghiệm</a></li>\n</ul>\n</div>'),
+(204, 200, 'Vi cơ điện tử và vi cơ hệ thống', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;"><p>Bộ môn MEMS đảm nhận các môn học liên quân đến các hệ vi cơ điện tử và ứng dụng. Bên cạnh công tác giảng dậy và nghiên cứu, bộ môn còn thiết kế, chế tạo và ứng dụng các hệ vi cơ và hệ thông nhúng.</p><h3><span style="color: #993300;">Hướng nghiên cứu chính của bộ môn là:</span></h3><ul>\n<li>Nghiên cứu thiết kế và tối ưu hoá thiết kế các linh kiện MEMS với tính năng và nguyên lý mới.</li>\n<li>Nghiên cứu chế tạo trong nước hoặc phối hợp với nước ngoài chế tạo các linh kiện MEMS đã được nhóm nghiên cứu tự thiết kế</li>\n<li>Nghiên cứu ứng dụng các linh kiện MEMS trong các lĩnh vực sản xuất, y tế và quốc phòng trên cơ sở phối hợp các linh kiện này với sản phẩm mới nhất của Công nghệ Vi điện tử (các bộ vi xử lý, FPGA, DSP, DsPIC…). và các thuật toán xử lý tín hiệu. Các nghiên cứu ứng dụng này có thể tiến hành đồng thời với các nghiên cứu thiết kế và chế tạo nói trên và chia thành 2 giai đoạn: trước hết sử dụng các vật liệu và linh kiên nhập ngoại, sau đó dần thay thế bằng các kinh kiên tự sản xuất.</li>\n<li>Tiếp cận các hướng nghiên cứu hiện đại của thế giới như MEMS trên cơ sở polymer và các vật liệu mới khác, nano cơ điện tử (NEMS)..v..v.</li>\n</ul>\n</div>'),
+(301, 300, 'Vật liệu và linh kiện từ tính Nano', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\r\n<p style="text-align: justify;">Bộ môn Vật liệu và linh kiện từ tính nano của Khoa VLKT&amp;CNNN có nhiệm vụ đào tạo và nghiên cứu khoa học theo những chuyên ngành mới về KHCN nano, theo các hướng nghiên cứu sau:</p>\r\n<div style="text-align: justify; padding-left: 30px;">- Các hiệu ứng bề mặt trong các vật liệu có cấu trúc Nanô</div>\r\n<div style="text-align: justify; padding-left: 30px;">- Tính chất chuyển trong các hệ thấp chiều</div>\r\n<div style="text-align: justify; padding-left: 30px;">- Kỹ thuật lưu trữ thông tin</div>\r\n<div style="text-align: justify; padding-left: 30px;">- Vi cơ và ứng dụng</div>\r\n<div style="text-align: justify; padding-left: 30px;">- Linh kiện Nano ( linh kiện đơn điện tử, linh kiện spintronics, …)</div>\r\n<p style="text-align: justify;">Sinh viên đăng ký học chuyên ngành Vật liệu và Linh kiện từ tính nano, ngoài các kiến thức chuyên môn bắt buộc như các sinh viên của khoa VLKT-CNNN còn được học các môn chuyên sâu về vật liệu và linh kiện từ tính cấu trúc nano, kỹ thuật lưu trữ thông tin, thiết kế các chip dựa trên nguyên lý ứng dụng vật liệu từ… và thực tập chuyên đề luôn được cập nhật từ nước ngoài.</p>\r\n<p style="text-align: justify;">Kết thúc quá trình học tập, sinh viên được làm khóa luận tốt nghiệp hoặc học các môn học tương đương.</p>\r\n</div>'),
+(302, 300, 'Vật liệu và linh kiện bán dẫn Nano', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\r\n<p style="text-align: justify;">Bộ môn VL&amp;LK BDNN của Khoa VLKT &amp; CNNN đang đào tạo và nghiên cứu khoa học theo những chuyên ngành mới về KHCN nano, trong đó có nano bán dẫn và quang tử.<span id="more-275"></span></p>\r\n<p style="text-align: justify;">Sinh viên đăng ký học chuyên ngành Vật liệu &amp; Linh kiện bán dẫn nano, ngoài các kiến thức chuyên môn bắt buộc như các sinh viên của khoa VLKT-CNNN còn được học các môn chuyên sâu về vật liệu &amp; linh kiện bán dẫn cấu trúc nano, nano quang tử, cấu trúc điện tử của các hệ nano, thông tin quang, … và thực tập chuyên đề luôn được cập nhật từ nước ngoài.</p>\r\n<p style="text-align: justify;">Kết thúc quá trình học tập, sinh viên được làm khóa luận tốt nghiệp hoặc học các môn học tương đương.</p>\r\n</div>'),
+(303, 300, 'Công nghệ Nano sinh học', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\r\n<p style="text-align: justify;">Chuyên ngành đào tạo</p>\r\n<p style="text-align: justify;">- Tên chuyên ngành</p>\r\n<p style="text-align: justify;">+ Tiếng Việt: Công nghệ Nanô Sinh học</p>\r\n<p style="text-align: justify;">+ Tiếng Anh: Nanobiotechnology</p>\r\n<p style="text-align: justify;">-&nbsp; Mã số chuyên ngành: Chuyên ngành đào tạo thí điểm</p>\r\n<p style="text-align: justify;">- Bậc đào tạo: Thạc sĩ</p>\r\n<p style="text-align: justify;">- Tên văn bằng</p>\r\n<p style="text-align: justify;">+ Tiếng Việt: Thạc sĩ chuyên ngành Công nghệ Nanô Sinh học</p>\r\n<p style="text-align: justify;">+ Tiếng Anh: Master in Nanobiotechnology</p>\r\n<p style="text-align: justify;">- Đơn vị đào tạo: Trường Đại học Công nghệ, Đại học Quốc gia Hà Nội</p>\r\n</div>'),
+(304, 300, 'Công nghệ quang tử', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\r\n<p style="text-align: justify;">Sinh viên đăng ký Bộ môn CNQT, ngoài các kiến thức chuyên môn bắt buộc như: Kiến thức về toán lý (Xác suất thống kê, các phương pháp toán lý, phương pháp số, vật lý lượng tử), kiến thức về tin học (Tin học vật lý, cấu trúc máy vi tính và kỹ thuật ghép nối , mô phỏng và mô hình hóa…), các kiến thức về điện tử (nguyên lý kỹ thuật điện tử và đô lường, kỹ thuật số, thông tin quang, quang điện tử, thực tập kỹ thuật điện tử, thực tập kỹ thuật số …), kỹ thuật màng mỏng và <span id="more-112"></span>Công nghệ Nano, Đại cương khoa học vật liệu, Vật lý bán dẫn và linh kiện, Từ học siêu dẫn, các phương pháp phân tích, kỹ thuật hóa học, thực tập chuyên đề và thực hành công nghệ, sinh viên còn được học thêm các kiến thức chuyên sâu bắt bược về Bộ môn CNQT như: Vật lý và công nghệ laser, quang phổ chất rắn, thực, thực tập chuyên đề.</p>\r\n<p style="text-align: justify;">Để hoàn thành chương trình đào tạo, sinh viên cần học thêm một số môn học tự chọn như: Quang phi tuyến, quang tử nano, thiết bị quang tử, quang phổ các vật liệu cấu trúc nano, vật liệu quang tử hữu cơ cấu trúc nano và quang tử học lý thuyết.</p>\r\n<p style="text-align: justify;">Kết thúc quá trình học tập, sinh viên phải hoàn thành bài khóa luận hoặc tương đương.</p>\r\n</div>'),
+(401, 400, 'Công nghệ biển và môi trường', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(402, 400, 'Công nghệ cơ điện tử', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(403, 400, 'Công nghệ hàng không vũ trụ', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>'),
+(404, 400, 'Thủy khí công nghiệp và môi trường', '0', '', '', '', '<div style="margin-left:10px; margin-right:10px;">\n</div>');
 
 -- --------------------------------------------------------
 
@@ -99,18 +100,19 @@ CREATE TABLE `faculties` (
   `facultyPhone` varchar(50) NOT NULL,
   `facultyUsername` varchar(45) NOT NULL,
   `facultyPassword` varchar(45) DEFAULT NULL,
-  `avatar` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci DEFAULT NULL
+  `avatar` varchar(200) CHARACTER SET utf8 COLLATE utf8_unicode_520_ci DEFAULT NULL,
+  `facultyDescription` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Bảng Khoa (facultyDean: trưởng khoa: lấy id từ giáo viên; facultyDeparment:văn phòng khoa)';
 
 --
 -- Dumping data for table `faculties`
 --
 
-INSERT INTO `faculties` (`facultyId`, `facultyName`, `facultyDean`, `facultyDepartment`, `facultyPhone`, `facultyUsername`, `facultyPassword`, `avatar`) VALUES
-(100, 'Khoa Công nghệ Thông tin', '1', 'Văn phòng Khoa Công nghệ thông tin – Trường Đại học Công nghệ – ĐHQGHN', '(04)37547064', 'CNTT', '11111111', 'upload/avatar/toneri.jpg'),
-(200, 'Khoa Điện tử Viễn thông', '2', 'Văn phòng khoa Điện tử – Viễn thông', '(84-4) 3754 9338', 'DTVT', '11111111', 'upload/avatar/toneri.jpg'),
-(300, 'Khoa Vật lý Kỹ thuật và Công nghệ Nano', '3', 'Khoa Vật lý kỹ thuật và Công nghệ nano, Phòng E2.2 – Nhà E4 144 đường Xuân Thủy, quận Cầu Giấy, Hà Nội', '(04) 3754 9429', 'VLCN', '11111111', 'upload/avatar/toneri.jpg'),
-(400, 'Khoa Cơ học kỹ thuật và Tự động hóa', '4', 'Văn phòng khoa Cơ học kỹ thuật và Tự động hóa, Trường Đại học Công Nghệ, ĐHQGHN', '04.37549431', 'CHTD', '11111111', 'upload/avatar/toneri.jpg');
+INSERT INTO `faculties` (`facultyId`, `facultyName`, `facultyDean`, `facultyDepartment`, `facultyPhone`, `facultyUsername`, `facultyPassword`, `avatar`, `facultyDescription`) VALUES
+(100, 'Khoa Công nghệ Thông tin', '1', 'Văn phòng Khoa Công nghệ thông tin – Trường Đại học Công nghệ – ĐHQGHN', '(04)37547064', 'CNTT', '11111111', 'upload/avatar/toneri.jpg', 'Được thành lập vào năm 1995 nhưng Khoa CNTT có truyền thống hơn 50 năm phát triển từ năm 1965 với việc đào tạo chuyên ngành Máy tính tại Khoa Toán Cơ thuộc Trường Đại học Tổng hợp Hà Nội. Với sự nỗ lực cố gắng của tập thể các cán bộ giảng viên, các thế hệ sinh viên, học viên và nghiên cứu sinh; dưới sự chỉ đạo sát sao, ủng hộ và tạo điều kiện của các thế hệ lãnh đạo Trường ĐHCN và ĐHQGHN, Khoa CNTT ngày hôm nay đã đạt được nhiều thành tích nổi bật trong hoạt động đào tạo, bồi dưỡng nhân tài và nghiên cứu khoa học tiếp cận trình độ tiên tiến trong khu vực và thế giới.'),
+(200, 'Khoa Điện tử Viễn thông', '2', 'Văn phòng khoa Điện tử – Viễn thông', '(84-4) 3754 9338', 'DTVT', '11111111', 'upload/avatar/toneri.jpg', 'Khoa Điện tử – Viễn thông (ĐTVT), Trường ĐHCN được thành lập ngày 3 tháng 01 năm 1996 tại Trường Đại học Khoa học Tự nhiên (ĐHKHTN) và được tái thành lập ngày 9 tháng 9 năm 2004. Trải qua các giai đoạn phát triển với nhiều khó khăn, thử thách từ Khoa Công nghệ Điện tử – Viễn thông thuộc Trường ĐHKHTN (giai đoạn 1996-1999), ngành Điện tử – Viễn thông thuộc Khoa Công nghệ – ĐHQGHN (giai đoạn 1999-2004) đến Khoa Điện tử – Viễn thông ngày nay, Khoa đã sớm khẳng định được vị thế là một địa chỉ có uy tín về đào tạo, nghiên cứu, chuyển giao công nghệ thuộc lĩnh vực điện tử  – viễn thông trong cả nước, đang vững bước hội nhập với khu vực và thế giới. Ngành Công nghệ Điện tử Viễn thông là một trong những ngành đào tạo đại học được ĐHQGHN lựa chọn đầu tư chiến lược để phát triển đạt trình độ quốc tế (nhiệm vụ chiến lược của ĐHQGHN – từ 2008).'),
+(300, 'Khoa Vật lý Kỹ thuật và Công nghệ Nano', '3', 'Khoa Vật lý kỹ thuật và Công nghệ nano, Phòng E2.2 – Nhà E4 144 đường Xuân Thủy, quận Cầu Giấy, Hà Nội', '(04) 3754 9429', 'VLCN', '11111111', 'upload/avatar/toneri.jpg', 'Khoa Vật lý kỹ thuật và Công nghệ nano (Khoa VLKT&CNNN) thuộc trường Đại học Công nghệ được thành lập ngày 09/09/2004 theo Quyết định số 556/QĐ-TCCB của Giám đốc Đại học Quốc gia Hà Nội, trên cơ sở Bộ môn Vật lý kỹ thuật và Quang tử của Khoa Công nghệ (nay là Trường Đại học Công nghệ) thuộc ĐHQGHN do GS.VS. Nguyễn Văn Hiệu, Hiệu trưởng đầu tiên của Nhà trường sáng lập. Khoa VLKT&CNNN có nhiệm vụ đào tạo cử nhân ngành Vật lý kỹ thuật, đào tạo thạc sĩ và tiến sĩ chuyên ngành Vật liệu và linh kiện nano và đào tạo thạc sĩ chuyên ngành Công nghệ nano sinh học nhằm đáp ứng nhu cầu về nhân lực khoa học công nghệ chất lượng cao cho các trường đại học, viện nghiên cứu về khoa học tự nhiên, kỹ thuật và công nghệ, cho các doanh nghiệp sản xuất vật liệu tiên tiến, linh kiện và thiết bị điện tử, truyền thông, y tế.'),
+(400, 'Khoa Cơ học kỹ thuật và Tự động hóa', '4', 'Văn phòng khoa Cơ học kỹ thuật và Tự động hóa, Trường Đại học Công Nghệ, ĐHQGHN', '04.37549431', 'CHTD', '11111111', 'upload/avatar/toneri.jpg', 'Khoa Cơ học Kỹ thuật và Tự động hóa được thành lập theo Quyết định số 1279/QĐ-TCCB ngày 04 tháng 7 năm 2005 của Giám đốc Đại học Quốc Gia Hà Nội.');
 
 -- --------------------------------------------------------
 
@@ -171,6 +173,19 @@ INSERT INTO `laboratories` (`laboratoryId`, `facultyId`, `laboratoryName`, `labo
 (201, 200, 'Phòng Thí nghiệm Tín hiệu và hệ thống', '0', '', '', ''),
 (202, 200, 'Phòng Thực hành Điện tử viễn thông', '0', '', '', ''),
 (401, 400, 'Phòng Thí nghiệm Vật liệu và kết cấu tiên tiến', '0', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mark`
+--
+
+CREATE TABLE `mark` (
+  `thesisId` int(11) NOT NULL,
+  `reviewerMark` int(11) DEFAULT '0',
+  `councilMark` int(11) DEFAULT '0',
+  `teacherMark` int(11) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -631,32 +646,8 @@ CREATE TABLE `thesis` (
 
 INSERT INTO `thesis` (`thesisId`, `studentId`, `thesisName`, `teacherId`, `coteacherId`, `thesisDescription`, `accepted`, `facultyId`, `created_at`, `isClosed`, `isSuccess`, `protectionFile`) VALUES
 (2, 14020752, 'Changed Name', '1', '5', '1', 1, 100, '2016-11-30 15:13:35', 0, 0, 1),
-(9, 14020025, 'Binh ngu qua', '1', '5', 'Ahihi', 1, 200, '2016-12-06 12:45:56', 0, 0, 0),
+(9, 14020025, 'Binh ngu qua', '1', '5', 'Ahihi', 1, 200, '2016-12-06 12:45:56', 0, 0, 1),
 (10, 14020116, 'Dong ngu', '1', '6', 'ahihi', 1, 100, '2016-12-06 12:49:19', 0, 0, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `thesisregistertime`
---
-
-CREATE TABLE `thesisregistertime` (
-  `facultyId` int(11) NOT NULL,
-  `startDate` date DEFAULT '0000-00-00',
-  `startTime` time DEFAULT '00:00:00',
-  `endDate` date DEFAULT '0000-00-00',
-  `endTime` time DEFAULT '00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `thesisregistertime`
---
-
-INSERT INTO `thesisregistertime` (`facultyId`, `startDate`, `startTime`, `endDate`, `endTime`) VALUES
-(100, '2016-12-14', '03:00:00', '2017-03-15', '04:45:00'),
-(200, '0000-00-00', '00:00:00', '0000-00-00', '00:00:00'),
-(300, '0000-00-00', '00:00:00', '0000-00-00', '00:00:00'),
-(400, '0000-00-00', '00:00:00', '0000-00-00', '00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -693,6 +684,12 @@ ALTER TABLE `fields`
 ALTER TABLE `laboratories`
   ADD PRIMARY KEY (`laboratoryId`),
   ADD KEY `fk_l_faculty` (`facultyId`);
+
+--
+-- Indexes for table `mark`
+--
+ALTER TABLE `mark`
+  ADD PRIMARY KEY (`thesisId`);
 
 --
 -- Indexes for table `relative_fields`
@@ -754,12 +751,6 @@ ALTER TABLE `thesis`
   ADD PRIMARY KEY (`thesisId`);
 
 --
--- Indexes for table `thesisregistertime`
---
-ALTER TABLE `thesisregistertime`
-  ADD PRIMARY KEY (`facultyId`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -803,6 +794,12 @@ ALTER TABLE `departments`
 --
 ALTER TABLE `laboratories`
   ADD CONSTRAINT `fk_l_faculty` FOREIGN KEY (`facultyId`) REFERENCES `faculties` (`facultyId`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `mark`
+--
+ALTER TABLE `mark`
+  ADD CONSTRAINT `fk_thesis` FOREIGN KEY (`thesisId`) REFERENCES `thesis` (`thesisId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `relative_fields`

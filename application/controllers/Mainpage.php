@@ -11,6 +11,7 @@ class Mainpage extends CI_Controller {
         parent::__construct();
         $this->load->model('Faculty_Model');
 		$this->load->model('Department_Model');
+		$this->load->model('Laboratory_Model');
         $this->load->model('Field_Model');
         $this->load->model('Subfield_Model');
         $this->load->model('Teacher_Model');
@@ -37,6 +38,14 @@ class Mainpage extends CI_Controller {
 		);
 		$this->load->view('mainpage/department_info', $data);
 	}
+	public function infoLaboratory($laboratoryId){
+		$data = array(
+			'laboratoryName' => $this->Laboratory_Model->getName($laboratoryId),
+			'laboratoryDescription' => $this->Laboratory_Model->getDescription($laboratoryId)
+		);
+		$this->load->view('mainpage/laboratory_info', $data);
+	}
+	
 
     public function faculty($faculty){
         $facultyName = $this->Faculty_Model->getName($faculty);

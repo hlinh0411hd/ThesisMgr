@@ -7,7 +7,7 @@
                     <ul class="menu-sidebar list-group">
                         <li class="list-group-item">
                         <a onclick="load('intro','Mainpage/infoFaculty/<?php echo $facultyId;?>')">
-                        	<span>Ban chủ nhiệm</span>
+                        	<span>Giới thiệu</span>
                         </a></li>
                         <li id="bmptn" class="list-group-item"> <a data-toggle="collapse" data-target="#level1"><span>Bộ môn và phòng thí nghiệm</span></a>
                         </li>
@@ -27,8 +27,9 @@
                                 <?php
                                 foreach ($laboratoryList as $laboratory){
                                     echo "<li class='list-group-item'>";
-                                    echo "<a>
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;$laboratory[laboratoryName]</span></a>";
+                                    echo "<a onclick='load(\"intro\",\"mainpage/infoLaboratory/$laboratory[laboratoryId]\")'>
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;
+									$laboratory[laboratoryName]</span></a>";
                                     echo "</li>";
                                 }
                                 ?>
@@ -47,4 +48,6 @@
         </div>
     </div>
 </div>
-
+<script>
+	load('intro','Mainpage/infoFaculty/<?php echo $facultyId;?>');
+</script>
