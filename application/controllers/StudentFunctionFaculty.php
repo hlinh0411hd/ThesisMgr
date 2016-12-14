@@ -18,7 +18,8 @@ class StudentFunctionFaculty extends CI_Controller{
 	}
 
 	public function updateThesisAllowed(){
-        $this->load->view('faculty/update_thesis_allowed');
+	    $list['list'] = $this->Student_Model->getByFaculty($this->session->userdata('userIdSession'));
+        $this->load->view('faculty/update_thesis_allowed', $list);
     }
 	
 	public function updateStudent(){

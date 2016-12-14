@@ -7,7 +7,14 @@
  * Time: 1:59 PM
  */
 class Student_Model extends CI_Model {
-	
+    public function getByFaculty($facutyId){
+        $query = $this->db->select('*')
+            ->from('students')
+            ->where('facultyId', $facutyId)
+            ->get();
+        return $query->result_array();
+    }
+
 	public function getName($studentId){
 		$query = $this->db->select('studentName')
             ->from('students')

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/bootbox.min.js"></script>
     <!-- iCheck -->
     <link rel="stylesheet" href="assets/iCheck/square/blue.css">
     <link rel="stylesheet" href="assets/DataTables/datatables.css">

@@ -235,11 +235,20 @@ function searchStudent(){
 };
 
 function allowStudent(studentId){
-    if ($('#checkAllow').prop("checked") == true){
+    if ($('#checkAllow'+studentId).prop("checked") == true){
         $.get("studentfunctionfaculty/addAnAllowedStudent/" + studentId,function(data,status){
+            bootbox.alert({
+                message: "Đã cho phép đăng ký",
+                size: 'small'
+            });
         });
     } else {
-        $.get("studentfunctionfaculty/deleteAnAllowedStudent/" + studentId);
+        $.get("studentfunctionfaculty/deleteAnAllowedStudent/" + studentId, function(data, status){
+            bootbox.alert({
+                message: "Đã hủy cho phép đăng ký",
+                size: 'small'
+            });
+        });
     }
 }
 function saveTimeRegister(facultyId){

@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <table id="myTable" class="table table-striped table-bordered" style="font-size: 14;">
+            <table id="myTable" class="table table-striped table-bordered" style="font-size: 14px;">
                 <thead>
                 <tr>
                     <th class="col-md-2">Mã Sinh Viên</th>
