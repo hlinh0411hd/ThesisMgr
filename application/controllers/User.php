@@ -44,4 +44,25 @@ class User extends CI_Controller {
     public function loginForm(){
         $this->load->view('login_box.php');
     }
+
+    public function changePassword(){
+        $this->load->view('info_pass');
+    }
+
+    public function checkuser($id, $pass){
+        $data = $this->User_Model->get($id, $pass);
+        if ($data) {
+            $this->session->set_userdata('user', $id);
+            echo $id;
+            return $id;
+        } else return 0;
+    }
+
+    public function changePass(){
+        $this->load->view('change_pass');
+    }
+
+    public function changeNewPassword($pass){
+        $this->User_Model->changePassword($this->session->userdata('user'), $pass);
+    }
 }

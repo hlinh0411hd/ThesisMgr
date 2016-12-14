@@ -36,9 +36,20 @@ class ResearchFunctionTeacher extends CI_Controller {
         $relativeFieldList = array();
         $relativeSubfieldList = array();
         foreach ($researchDirectionList as $researchDirection){
-            $relativeFieldList[$researchDirection['researchDirectionId']] = $this->RelativeField_Model->getByResearchDirectionId($researchDirection['researchDirectionId']);
+            $researchDirectionId =$researchDirection['researchDirectionId'];
+            $relativeFieldList[$researchDirectionId] = $this->RelativeField_Model->getByResearchDirectionId($researchDirectionId);
+            foreach ($relativeFieldList as $item) {
+                foreach ($item as $i) {
+                    $data = array(
+                        'researchDirectionId' =>$researchDirectionId,
+                        'fieldId' => $i
+                    );
+                    $relativeSubfieldList[$researchDirectionId][$i] = $this->RelativeSubfield_Model->getList($data);
+                }
+            }
         }
         $data['relativeFieldList'] = $relativeFieldList;
+        $data['relativeSubfieldList'] = $relativeSubfieldList;
         $arr = $this->Field_Model->getAll();
         foreach ($arr as $b=>$a) {
             $data[$b] = $a;

@@ -265,6 +265,25 @@ function allowStudent(studentId){
         });
     }
 }
+
+
+function checkPrinted(thesisId){
+    if ($('#printed'+thesisId).prop("checked") == true){
+        $.get("thesis/checkprinted/" + thesisId,function(data,status){
+            bootbox.alert({
+                message: "Đã nộp quyển",
+                size: 'small'
+            });
+        });
+    } else {
+        $.get("thesis/uncheckprinted/" + thesisId, function(data, status){
+            bootbox.alert({
+                message: "Đã hủy nộp quyển",
+                size: 'small'
+            });
+        });
+    }
+}
 function saveTimeRegister(facultyId){
     var startDate = $('#startDate').val();
     var endDate = $('#endDate').val();
@@ -427,4 +446,47 @@ function addMark(){
     $.get("mark/add", data, function(){
         load('main','Thesis/detail/'+thesisId);
     })
+}
+
+function checkuser(){
+    var ms = $('#ms').val();
+    var pass = $('#pass').val();
+    $.get('user/checkuser/' + ms + "/" + pass, function(data, status){
+        alert(data);
+        if (data == 0){
+            bootbox.alert({
+                message: "Mật khẩu sai",
+                size: 'small'
+            });
+        } else
+        load('main', 'user/changePass');
+    });
+}
+
+function changePass(){
+    var newpass = $('#newpass').val();
+    if (newpass.length < 8 ) {
+        bootbox.alert({
+            message: "Mật khẩu ít nhất 8 ký tự",
+            size: 'small'
+        });
+    } else {
+
+        var repass = $('#repass').val();
+        if (newpass != repass){
+            bootbox.alert({
+                message: "Nhập lại mật khẩu không trùng",
+                size: 'small'
+            });
+        } else {
+            $.get('user/changeNewPassword/' + newpass, function(data, status){
+                alert(data);
+                bootbox.alert({
+                    message: "Thay đổi thành công",
+                    size: 'small'
+                });
+                window.location.replace("mainpage");
+            });
+        }
+    }
 }

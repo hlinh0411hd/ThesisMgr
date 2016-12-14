@@ -31,11 +31,15 @@
                     <th class="col-sm-1">Bảo vệ</th>
                     <th class="col-sm-1">Chi tiết</th>
                     <th class="col-sm-1">Hồ sơ</th>
+                    <th class="col-sm-1">Nộp quyển</th>
+                    <?php if ($this->session->userdata('userTypeSession')!=1) { ?>
                     <th class='col-sm-1'>
-                        <?php if ($this->session->userdata('userTypeSession') == 2) echo 'Chấp nhận SV';
-                                else echo 'Chỉnh sửa';
+                        <?php if ($this->session->userdata('userTypeSession') == 2) {
+                            echo 'Chấp nhận SV';
+                        } else if ($this->session->userdata('userTypeSession') == 3) echo 'Chỉnh sửa';
                         ?>
                     </th>
+                    <?php }?>
                 </tr>
                 </thead>
                 <tbody>
@@ -63,6 +67,13 @@
                                 ></center>
                         </td>
                         <?php
+                            echo "<td><center><input id='printed".$sz_User->thesisId."' type='checkbox' ";
+                            if ($sz_User->printed == 1) echo "checked";
+                            echo " onchange='checkPrinted(".$sz_User->thesisId.")'";
+                            if ($this->session->userdata('userTypeSession')!=1) echo "disabled";
+                            echo "></center></td>";
+                        ?>
+                        <?php
                         if ($this->session->userdata('userTypeSession') == 2){
                             echo "<td>";
                             if ($sz_User->accepted==0){
@@ -71,10 +82,8 @@
                                 echo "<a><span style='color:green;' class='glyphicon glyphicon-ok' title='Chấp nhận'></span></a>";
                             }
                             echo "</td>";
-                        } else 
-                        if ($this->session->userdata('userTypeSession') == 1){
-                            echo "<td><center><a href='#'><span style='color:green;' class='glyphicon glyphicon-edit' title='Chỉnh sửa'> </span></a> <a href='#'><span style='color:red;' class='glyphicon glyphicon-remove' title='Hủy'></span></a></center></td>";
-                        } else if ($this->session->userdata('userTypeSession') == 3){
+                        }
+                        else if ($this->session->userdata('userTypeSession') == 3){
                             echo "<td><center><a onclick='load(\"main\",\"request/edit/".$sz_User->thesisId."\")'><span style='color:green;' class='glyphicon glyphicon-edit' title='Đề xuất chỉnh sửa'></span></a><a onclick='load(\"main\", \"request/addRequest/2/".$sz_User->thesisId."\")'><span style='color:red;' class='glyphicon glyphicon-remove' title='Đề xuất hủy'></span></a></center></td>";
                         }
                         ?>
