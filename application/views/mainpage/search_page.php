@@ -26,26 +26,26 @@
                 </tbody>
             </table>
         </div>
-         <div class="panel-heading">
+        <div class="panel-heading">
             <h3 class="panel-title"><b>Lĩnh vực</b></h3>
         </div>
         <div class="panel-body">
             <?php foreach ($field as $item) {?>
-                    <tr>
-                        <td><?php echo $item['fieldName'];?></td>
-                    </tr>
+            	<a onclick="load('content','Mainpage/infoFieldSearch/<?php echo $item['fieldId'];?>')">
+                	<div><span><?php echo $item['fieldName'];?></span></div>
+                </a>
             <?php }?>
             </div>
              <div class="panel-heading">
             <h3 class="panel-title"><b>Lĩnh vực con</b></h3>
         </div>
-            <div class="panel-body">
-            <?php foreach ($subfield as $item) {?>
-                    <tr>
-                        <td><?php echo $item['subfieldName'];?></td>
-                    </tr>
+        <div class="panel-body">
+			<?php foreach ($subfield as $item) {?>
+            	<a onclick="load('content','Mainpage/infoSubfieldSearch/<?php echo $item['subfieldId'];?>')">
+            		<div><span><?php echo $item['subfieldName'];?></span></div>
+                </a>
             <?php }?>
-            </div>
+        </div>
 
     </div>
 

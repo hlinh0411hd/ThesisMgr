@@ -83,6 +83,18 @@ class Mainpage extends CI_Controller {
         $this->load->view('mainpage/subfield_info', $data);
     }
 	
+	public function infoFieldSearch($fieldId){
+        $data = $this->Field_Model->getById($fieldId);
+        $data['field'] = $this->Teacher_Model->getByField($fieldId);
+        $this->load->view('mainpage/field_search_info', $data);
+    }
+	
+	public function infoSubfieldSearch($subfieldId){
+        $data = $this->Subfield_Model->getById($subfieldId);
+        $data['subfield'] = $this->Teacher_Model->getBySubfield($subfieldId);
+        $this->load->view('mainpage/subfield_search_info', $data);
+    }
+	
 	public function thesis(){
 		$data = $this->Thesis_Model->getList("1=1");
 		$array['list'] = array();
@@ -97,7 +109,6 @@ class Mainpage extends CI_Controller {
 				'protectionFile' => $item['protectionFile']
 			);
 			array_push($array['list'], $temp);
-			
 		}
 		$this->load->View('mainpage/thesis_mainpage',$array);
 	}
@@ -115,7 +126,7 @@ class Mainpage extends CI_Controller {
 		//var_dump($data['data']);
 		//$this->load->view('mainpage/teacher_search_page',$data);
 		$data['subfield'] = $this->Subfield_Model->getSearch($word);
-		$this->load->view('mainpage/teacher_search_page',$data);
+		$this->load->view('mainpage/search_page',$data);
 	}
 	
 }
