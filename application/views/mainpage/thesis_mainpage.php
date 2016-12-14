@@ -25,10 +25,10 @@
                         <td><?php echo $item["created_at"]?></td>
                         <td><?php echo $item["accepted"]==0? "chưa":"chấp nhận";?></td>
                         <td><?php echo $item["isSuccess"]==0? "chưa bảo vệ":"đã bảo vệ";?></td>
-                        <td><?php echo "<a onclick='load(\"main\",\"Thesis/detail/".$item['thesisId']."\")'><span class='glyphicon glyphicon-list-alt'></a>";?></td>
+                        <td><?php echo "<a onclick='load(\"content\",\"Thesis/detail/".$item['thesisId']."\")'><span class='glyphicon glyphicon-list-alt'></a>";?></td>
                         <td><input type="checkbox"
                                 <?= $item['protectionFile']!=0? "checked":"";?>
-                                <?= $this->session->userdata('userTypeSession') != 1? "disabled":"onchange='checkedProtectionFile(".$item['thesisId'].")'";?>
+                                disabled
                             >
                         </td>
                     </tr>
