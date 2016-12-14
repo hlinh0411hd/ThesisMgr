@@ -78,6 +78,11 @@ function enableInput(){
     $("select").prop('disabled', false);
 }
 
+function findText(){
+	var searchText = $('#searchText').val();
+	load('content','Mainpage/result/' + searchText);
+}
+
 function updateInfoTeacher(){
     var teacherName = $('#name').val();
     var facultyId = $('#facultyId').val();

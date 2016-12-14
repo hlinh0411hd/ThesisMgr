@@ -40,5 +40,12 @@ class Field_Model extends CI_Model {
             ->get();
         return $query->row_array()['fieldName'];
     }
+	
+	public function getSearch($keyWord){
+		$this->db->select('*');
+		$this->db->like('fieldName', $keyWord);
+		$query = $this->db->get('fields');
+		return $query->result_array();
+	}
 }
 ?>

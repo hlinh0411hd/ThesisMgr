@@ -77,4 +77,11 @@ class Teacher_Model extends CI_Model {
             ->where('teacherId', $teacherId)
             ->update('teacher');
     }
+	
+	public function getSearch($keyWord){
+		$this->db->select('*');
+		$this->db->like('teacherName', $keyWord);
+		$query = $this->db->get('teacher');
+		return $query->result_array();
+	}
 }

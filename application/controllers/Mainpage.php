@@ -106,4 +106,16 @@ class Mainpage extends CI_Controller {
         $data['data'] = $this->Teacher_Model->getByFaculty($facultyId);
         $this->load->view('mainpage/teacher_mainpage',$data);
     }
+	
+	
+	public function result($word){
+		$data['teacher'] = $this->Teacher_Model->getSearch($word);
+		//$this->load->view('mainpage/teacher_search_page',$data);
+		$data['field'] = $this->Field_Model->getSearch($word);
+		//var_dump($data['data']);
+		//$this->load->view('mainpage/teacher_search_page',$data);
+		$data['subfield'] = $this->Subfield_Model->getSearch($word);
+		$this->load->view('mainpage/teacher_search_page',$data);
+	}
+	
 }

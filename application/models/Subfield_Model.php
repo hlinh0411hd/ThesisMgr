@@ -14,4 +14,10 @@ class Subfield_Model extends CI_Model {
             ->get();
         return $query->row_array();
     }
+	public function getSearch($keyWord){
+		$this->db->select('*');
+		$this->db->like('subfieldName', $keyWord);
+		$query = $this->db->get('subfields');
+		return $query->result_array();
+	}
 }
