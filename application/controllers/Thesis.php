@@ -14,6 +14,7 @@ class Thesis extends CI_Controller {
         $this->load->model('Teacher_Model');
         $this->load->model('Reviewer_Model');
         $this->load->model('Mail_Model');
+        $this->load->model('Mark_Model');
         $this->load->helper('url');
     }
 
@@ -82,6 +83,7 @@ class Thesis extends CI_Controller {
         $listReviewer = $this->Reviewer_Model->getList($condition);
         $data['thesis'] = $thesis;
         $data['reviewers'] = array();
+        $data['mark'] = $this->Mark_Model->getById($thesisId);
         foreach ($listReviewer as $item) {
             $item['teacherName'] = $this->Teacher_Model->getById($item['teacherId'])['teacherName'];
             array_push($data['reviewers'],$item);

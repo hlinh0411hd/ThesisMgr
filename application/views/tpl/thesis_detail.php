@@ -49,7 +49,7 @@
     <p><?= $thesis['thesisDescription'];?></p>
     <h4>Phản biện</h4>
     <div id="reviewer">
-    <table class="table table-bordered">
+    <table class="table table-bordered table-responsive">
         <thead>
             <th class="col-sm-4">Giảng viên phản biện</th>
             <th class="col-sm-8">Ý kiến</th>
@@ -67,4 +67,25 @@
         echo "<button onclick='load(\"reviewer\",\"reviewer/edit/".$thesis['thesisId']."\");$(this).hide();' class='btn'>Thêm ý kiến phản biện</button>";
     }
     ?>
+
+    <h3>Điểm đánh giá</h3>
+    <div id="mark">
+        <table class="table table-bordered table-responsive">
+            <thead>
+            <th>Điểm phản biện</th>
+            <th>Điểm hội đồng</th>
+            <th>Điểm giá viên hướng dẫn</th>
+            </thead>
+            <tbody>
+            <td><?= $mark['reviewerMark']?></td>
+            <td><?= $mark['councilMark']?></td>
+            <td><?= $mark['teacherMark']?></td>
+            </tbody>
+        </table>
+        <?php
+        if ($this->session->userdata('userTypeSession') == 1){
+            echo "<button onclick='load(\"mark\",\"mark/editView/".$thesis['thesisId']."\");' class='btn'>Thêm điểm</button>";
+        }
+        ?>
+    </div>
 </div>

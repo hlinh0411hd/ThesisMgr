@@ -398,3 +398,19 @@ function editReviewer(thesisId){
     }
     load('main','Thesis/detail/'+thesisId);
 }
+
+function addMark(){
+    var thesisId = $('#thesisId').val();
+    var reviewerMark = $('#reviewerMark').val();
+    var councilMark = $('#councilMark').val();
+    var teacherMark = $('#teacherMark').val();
+    var data = {
+        'thesisId': thesisId,
+        'reviewerMark': reviewerMark,
+        'councilMark': councilMark,
+        'teacherMark': thesisId
+    };
+    $.get("mark/add", data, function(){
+        load('main','Thesis/detail/'+thesisId);
+    })
+}
