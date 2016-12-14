@@ -15,6 +15,47 @@ class Teacher_Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function getByField($fieldId){
+        $query = $this->db->select('*')
+                        ->from('relative_fields')
+                        ->where('fieldId', $fieldId)
+                        ->get();
+        $list = array();
+        if ($query->num_rows() > 0){
+            foreach ($query->result_array() as $item) {
+                $rd = $this->db->select('*')
+                    ->from('research_directions')
+                    ->where('researchDirectionId', $item['researchDirectionId'])
+                    ->get();
+                $teacher = $this->getById($rd->row_array()['teacherId']);
+                $teacher['researchDirectionName'] = $rd->row_array()['researchDirectionName'];
+                array_push($list, $teacher);
+            }
+        }
+        return $list;
+    }
+
+
+    public function getBySubfield($subfieldId){
+        $query = $this->db->select('*')
+            ->from('relative_subfields')
+            ->where('subfieldId', $subfieldId)
+            ->get();
+        $list = array();
+        if ($query->num_rows() > 0){
+            foreach ($query->result_array() as $item) {
+                $rd = $this->db->select('*')
+                    ->from('research_directions')
+                    ->where('researchDirectionId', $item['researchDirectionId'])
+                    ->get();
+                $teacher = $this->getById($rd->row_array()['teacherId']);
+                $teacher['researchDirectionName'] = $rd->row_array()['researchDirectionName'];
+                array_push($list, $teacher);
+            }
+        }
+        return $list;
+    }
+
     public function getById($teacherId){
         $query = $this->db->select('*')
                         ->from('teacher')

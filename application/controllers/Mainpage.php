@@ -11,6 +11,7 @@ class Mainpage extends CI_Controller {
         parent::__construct();
         $this->load->model('Faculty_Model');
         $this->load->model('Field_Model');
+        $this->load->model('Subfield_Model');
         $this->load->model('Teacher_Model');
 		$this->load->model('Student_Model');
 		$this->load->model('Thesis_Model');
@@ -42,6 +43,18 @@ class Mainpage extends CI_Controller {
     public function field(){
         $data = $this->Field_Model->getAll();
         $this->load->view('mainpage/field_mainpage',$data);
+    }
+
+    public function infoField($fieldId){
+        $data = $this->Field_Model->getById($fieldId);
+        $data['teacherList'] = $this->Teacher_Model->getByField($fieldId);
+        $this->load->view('mainpage/field_info', $data);
+    }
+
+    public function infoSubfield($subfieldId){
+        $data = $this->Subfield_Model->getById($subfieldId);
+        $data['teacherList'] = $this->Teacher_Model->getBySubfield($subfieldId);
+        $this->load->view('mainpage/subfield_info', $data);
     }
 	
 	public function thesis(){

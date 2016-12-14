@@ -33,7 +33,6 @@
     </div>
     <div class="form-group row">
         <button class="btn" onclick="saveTimeRegister(<?= $facultyId;?>)" type="button">Lưu</button>
-        <button class="btn" type="button">Hủy</button>
     </div>
 </form>
 </div>

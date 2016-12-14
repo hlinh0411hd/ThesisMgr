@@ -24,14 +24,18 @@
             <table id="myTable" class="table table-striped table-bordered" style="font-size: 13px;">
                 <thead>
                 <tr>
-                    <th class="col-md-3">Tên khóa luận</th>
-                    <th class="col-md-2">Tên sinh viên</th>
-                    <th class="col-md-2">Thời gian đăng ký</th>
-                    <th class="col-md-1">Tr. thái</th>
-                    <th class="col-md-1">Bảo vệ</th>
-                    <th class="col-md-1">Chi tiết</th>
-                    <th class="col-md-1">Hồ sơ</th>
-                    <th class='col-md-1'>Chấp nhận sinh viên</th>
+                    <th class="col-sm-3">Tên khóa luận</th>
+                    <th class="col-sm-2">Tên sinh viên</th>
+                    <th class="col-sm-2">Thời gian đăng ký</th>
+                    <th class="col-sm-1">Tr. thái</th>
+                    <th class="col-sm-1">Bảo vệ</th>
+                    <th class="col-sm-1">Chi tiết</th>
+                    <th class="col-sm-1">Hồ sơ</th>
+                    <th class='col-sm-1'>
+                        <?php if ($this->session->userdata('userTypeSession') == 2) echo 'Chấp nhận SV';
+                                else echo 'Chỉnh sửa';
+                        ?>
+                    </th>
                 </tr>
                 </thead>
                 <tbody>
