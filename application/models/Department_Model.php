@@ -14,6 +14,14 @@ class Department_Model extends CI_Model {
                         ->get();
         return $query->row_array()['departmentName'];
     }
+	
+	public function getDescription($departmentId){
+        $query = $this->db->select('departmentDescription')
+                        ->from('departments')
+                        ->where('departmentId',$departmentId)
+                        ->get();
+        return $query->row_array()['departmentDescription'];
+    }
 
     public function getByFaculty($facutyId){
         $query = $this->db->select('*')

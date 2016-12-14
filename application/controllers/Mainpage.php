@@ -10,6 +10,7 @@ class Mainpage extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Faculty_Model');
+		$this->load->model('Department_Model');
         $this->load->model('Field_Model');
         $this->load->model('Subfield_Model');
         $this->load->model('Teacher_Model');
@@ -28,6 +29,14 @@ class Mainpage extends CI_Controller {
         $this->load->view("mainpage/mainpage");
         $this->load->view("footer");
     }
+	
+	public function infoDepartment($departmentId){
+		$data = array(
+			'departmentName' => $this->Department_Model->getName($departmentId),
+			'deparmentDescription' => $this->Department_Model->getDescription($departmentId)
+		);
+		$this->load->view('mainpage/department_info', $data);
+	}
 
     public function faculty($faculty){
         $facultyName = $this->Faculty_Model->getName($faculty);
@@ -35,10 +44,18 @@ class Mainpage extends CI_Controller {
             'departmentList' => $this->Faculty_Model->getDepartment($faculty),
             'laboratoryList' => $this->Faculty_Model->getLaboratory($faculty),
             'facultyId' => $faculty,
-            'facultyName' => $facultyName
+            'facultyName' => $facultyName,
+			'facultyDescription' => $this->Faculty_Model->getDescription($faculty)
         );
         $this->load->view("mainpage/faculty_mainpage", $data);
     }
+	public function infoFaculty($facultyId){
+		$data = array(
+			'facultyName' => $this->Faculty_Model->getName($facultyId),
+			'facultyDescription' =>  $this->Faculty_Model->getDescription($facultyId)
+		);
+		$this->load->view('mainpage/faculty_info', $data);
+	}
 
     public function field(){
         $data = $this->Field_Model->getAll();
