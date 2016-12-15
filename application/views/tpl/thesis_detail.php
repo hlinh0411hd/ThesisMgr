@@ -6,32 +6,38 @@
  * Time: 8:02 PM
  */
 ?>
+<div style="margin:30px; background: white">
 <div id="thesisDetail">
     <input type="hidden" class="form-control" name="thesisId" id="thesisId" value="<?= $thesis['thesisId']?>">
     <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
-            <h2 class="panel-title">Khoá luận: <?= $thesis['thesisName']?></h2>
+            <h1 class="panel-title"><strong>Khoá luận: <?= $thesis['thesisName']?></strong></h1>
+            <?php if ($this->session->userdata('userTypeSession')==1) {?>
+            <div class="pull-right"><button  onclick="exportThesisList()" type="button" class="btn btn-primary btn-xs">Xuất biên bản bảo vệ</button></div>
+            <?php }?>
         </div>
         <div class="panel-body">
-            <h3>Sinh viên: <?= $thesis['studentName']?></h3>
+            <h4><strong>Sinh viên:</strong> <?= $thesis['studentName']?></h4>
         </div>
 
     </div>
 </div>
-    <div class="row">
+    <div class="row" style="margin: 20px;">
         <div class="col-sm-6">
-            <h4>Giảng viên hướng dẫn:</h4>
-            <p><?= $thesis['teacherName'];?></p>
-            <p><?= $thesis['coteacherName'];?></p>
+            <table class="table table-bordered">
+                <tr><th>Giảng viên hướng dẫn</th></tr>
+                <tr><td><p><?= $thesis['teacherName'];?></p></td></tr>
+                <tr><td><p><?= $thesis['coteacherName'];?></p></td></tr>
+            </table>
         </div>
         <div class="col-sm-6">
-            <h4>Giảng viên phản biện</h4>
+            <h5><strong>Giảng viên phản biện</strong></h5>
             <div id="listTeacher" class="col-sm-12">
                 <ul class="list-group">
                     <?php foreach ($reviewers as $reviewer) {?>
-                        <li class="list-group-item row"><a class="col-sm-8"><?= $reviewer['teacherName'];?></a>
+                        <li class="list-group-item row" style="border:none"><a class="col-sm-8"><?= $reviewer['teacherName'];?></a>
                             <?php if ($this->session->userdata('userTypeSession') == 1) {?>
-                            <button class="btn col-sm-4" onclick="deleteReviewer(<?= $reviewer['reviewerId'];?>,<?=$thesis['thesisId'];?>)">Xóa</button>
+                            <button class="btn btn-danger col-sm-2" onclick="deleteReviewer(<?= $reviewer['reviewerId'];?>,<?=$thesis['thesisId'];?>)">Xóa</button>
                             <?php }?>
                         </li>
                     <?php } ?>
@@ -39,15 +45,15 @@
             </div>
             <?php
             if ($this->session->userdata('userTypeSession') == 1){
-                echo "<button onclick='addReviewerBranch()' class='btn'>Thêm phản biện</button>";
+                echo "<button onclick='addReviewerBranch()' class='btn btn-success'>Thêm phản biện</button>";
             }
             ?>
         </div>
     </div>
-
-    <h5>Tóm tắt</h5>
+    <div style="margin:30px">
+    <h3>Tóm tắt</h3>
     <p><?= $thesis['thesisDescription'];?></p>
-    <h4>Phản biện</h4>
+    <h4 style="margin-top:20px">Phản biện</h4>
     <div id="reviewer">
     <table class="table table-bordered table-responsive">
         <thead>
@@ -64,11 +70,11 @@
     </div>
     <?php
     if ($this->session->userdata('userTypeSession') == 1){
-        echo "<button onclick='load(\"reviewer\",\"reviewer/edit/".$thesis['thesisId']."\");$(this).hide();' class='btn'>Thêm ý kiến phản biện</button>";
+        echo "<button onclick='load(\"reviewer\",\"reviewer/edit/".$thesis['thesisId']."\");$(this).hide();' class='btn btn-success'>Thêm ý kiến phản biện</button>";
     }
     ?>
 
-    <h3>Điểm đánh giá</h3>
+    <h4>Điểm đánh giá</h4>
     <div id="mark">
         <table class="table table-bordered table-responsive">
             <thead>
@@ -84,8 +90,10 @@
         </table>
         <?php
         if ($this->session->userdata('userTypeSession') == 1){
-            echo "<button onclick='load(\"mark\",\"mark/editView/".$thesis['thesisId']."\");' class='btn'>Thêm điểm</button>";
+            echo "<button onclick='load(\"mark\",\"mark/editView/".$thesis['thesisId']."\");' class='btn btn-success'>Thay đổi điểm</button>";
         }
         ?>
     </div>
+    </div>
+</div>
 </div>

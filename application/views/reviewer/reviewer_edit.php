@@ -20,5 +20,5 @@
         </tr>
     <?php } ?>
 </table>
-<button onclick="editReviewer(<?= $thesis['thesisId'];?>)" class="btn">Lưu</button>
-<button onclick="load('main','thesis/detail/<?= $thesis['thesisId'];?>');" class="btn">Hủy</button>
+<button onclick="editReviewer(<?= $thesis['thesisId'];?>)" class="btn btn-success">Lưu</button>
+<button onclick="load('main','thesis/detail/<?= $thesis['thesisId'];?>');" class="btn btn-info">Hủy</button>

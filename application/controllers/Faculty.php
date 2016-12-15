@@ -7,7 +7,10 @@ class Faculty extends CI_Controller{
         $this->load->model('Faculty_Model');
         $this->load->model('ThesisRegisterTime_Model');
         $this->load->model('Mail_Model');
+        $this->load->model('Thesis_Model');
+        $this->load->model('Teacher_Model');
         $this->load->model('Student_Model');
+        $this->load->model('Export_Model');
 	}
 	
 	public function index(){
@@ -59,6 +62,43 @@ class Faculty extends CI_Controller{
         foreach ($studentList as $item) {
             $this->Mail_Model->send($item['studentMail'], $subject, $message);
         }
+    }
+
+    public function exportThesis(){
+        $condition = array(
+            'facultyId' => $this->session->userdata('userIdSession'),
+            'accepted' => 1
+        );
+        $data = $this->Thesis_Model->getList($condition);
+        $data1 = array();
+        foreach ($data as $datum) {
+            $datum['studentName'] = $this->Student_Model->getById($datum['studentId'])['studentName'];
+            $datum['teacherName'] = $this->Teacher_Model->getById($datum['teacherId'])['teacherName'];
+            $datum['coteacherName'] = $this->Teacher_Model->getById($datum['coteacherId'])['teacherName'];
+            array_push($data1, $datum);
+        }
+        $this->Export_Model->studentAndThesis($data1);
+    }
+
+    public function exportThesisList(){
+        $this->Export_Model->editThesis();
+    }
+
+    public function protect(){
+        $condition = array(
+            'facultyId' => $this->session->userdata('userIdSession'),
+            'accepted' => 1
+        );
+
+        $thesis = $this->Thesis_Model->getList($condition);
+        $subject = "Đăng ký bảo vệ";
+        $message = "Khoa mở đăng ký bảo vệ khóa luận cho sinh viên đã đăng ký khóa luận";
+
+        foreach ($thesis as $item) {
+            $student = $this->Student_Model->getById($item['studentId']);
+            $this->Mail_Model->send($student['studentMail'], $subject, $message);
+        }
+        return 1;
     }
 }
 ?>

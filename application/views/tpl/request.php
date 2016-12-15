@@ -53,9 +53,11 @@
                             }
                         ?></td>
                         <td>
+                            <?php if ($this->session->userdata('userTypeSession') == 1 && $request['status']==0) {?>
                             <button onclick='exportRequest(<?=$request['requestId']?>)' class='btn'>Xuất Đề nghị</button>
                             <button onclick='confirmRequest(<?=$request['requestId']?>)' class='btn'>Xác nhận</button>
                             <button  onclick='denyRequest(<?=$request['requestId']?>)'class='btn'>Hủy</button>
+                            <?php }?>
                         </td>
                     </tr>
                 <?php }?>

@@ -49,5 +49,7 @@
     </div>
 </div>
 <script>
-	load('intro','Mainpage/infoFaculty/<?php echo $facultyId;?>');
+    $(document).ready( function(){
+        load('intro','Mainpage/infoFaculty/<?php echo $facultyId;?>');
+    });
 </script>

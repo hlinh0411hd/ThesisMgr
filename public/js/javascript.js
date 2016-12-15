@@ -347,6 +347,7 @@ function denyThesis(thesisId){
 
 function exportRequest(requestId){
     $.get("request/exportRequest/" + requestId, function(){
+        window.location.replace("faculty/exportThesis");
         load('main','request');
     });
 }
@@ -368,7 +369,12 @@ function checkedProtectionFile(thesisId){
 }
 
 function remindProtectionFile(){
-    $.get("thesis/remindProtectionFile");
+    $.get("thesis/remindProtectionFile", function(){
+        bootbox.alert({
+            message: "Đã thông báo",
+            size: 'small'
+        });
+    });
 }
 
 function addCouncilRow(){
@@ -443,7 +449,7 @@ function addMark(){
         'thesisId': thesisId,
         'reviewerMark': reviewerMark,
         'councilMark': councilMark,
-        'teacherMark': thesisId
+        'teacherMark': teacherMark
     };
     $.get("mark/add", data, function(){
         load('main','Thesis/detail/'+thesisId);
@@ -482,7 +488,6 @@ function changePass(){
             });
         } else {
             $.get('user/changeNewPassword/' + newpass, function(data, status){
-                alert(data);
                 bootbox.alert({
                     message: "Thay đổi thành công",
                     size: 'small'
@@ -491,4 +496,20 @@ function changePass(){
             });
         }
     }
+}
+
+function exportThesis(){
+    window.location.replace("faculty/exportThesis");
+}
+function exportThesisList(){
+    window.location.replace("faculty/exportThesis");
+}
+
+function protect(){
+    $.get('faculty/protect', function(){
+        bootbox.alert({
+            message: "Đã gửi thông báo",
+            size: 'small'
+        });
+    });
 }

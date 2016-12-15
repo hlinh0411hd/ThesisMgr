@@ -13,10 +13,12 @@
             <h3 class="panel-title">Danh sách Khóa luận</h3>
             <div class="pull-right">
                 <?php if ($this->session->userdata("userTypeSession") == 1) { ?>
-                <button  onclick="" type="button" class="btn btn-primary btn-xs">Xuất đề nghị khóa luận</button>
+                <button  onclick="exportThesis()" type="button" class="btn btn-primary btn-xs">Xuất đề nghị khóa luận</button>
+                <button  onclick="protect()" type="button" class="btn btn-primary btn-xs">Thông báo bảo vệ</button>
                 <button  onclick="remindProtectionFile()" type="button" class="btn btn-primary btn-xs">Nhắc nộp hồ sơ</button>
-                <button  onclick="" type="button" class="btn btn-primary btn-xs">Xuất danh sách sinh viên</button>
-                <button  onclick="" type="button" class="btn btn-primary btn-xs">Xuất đề nghị bảo vệ</button>
+                <button  onclick="exportThesisList()" type="button" class="btn btn-primary btn-xs">Xuất danh sách sinh viên</button>
+                <button  onclick="exportThesisList()" type="button" class="btn btn-primary btn-xs">Xuất đề nghị bảo vệ</button>
+                <button  onclick="exportThesisList()" type="button" class="btn btn-primary btn-xs">Xuất báo cáo</button>
                 <?php } ?>
             </div>
         </div>

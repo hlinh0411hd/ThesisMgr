@@ -27,3 +27,8 @@
      </div>
     </div>
 </body>
+<script>
+    $(document).ready( function(){
+        load('main','teacher/info');
+    });
+</script>

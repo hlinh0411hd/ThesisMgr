@@ -29,4 +29,9 @@
  </div>
 </div>
 </body>
+<script>
+    $(document).ready( function(){
+        load('main','student/info');
+    });
+</script>
 </html>

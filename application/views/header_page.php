@@ -103,7 +103,6 @@
                                     if (!isset($userTypeSession) || $userTypeSession != 3) echo "<del>Đăng ký đề tài</del>";
                                         else echo "Đăng ký đề tài";
                                     ?></span></a></li>
-                        <li><a onClick="clicked(this);" href="#">Liên hệ</a></li>
                     </ul>
                     <form onsubmit="findText();return false;" class="navbar-form navbar-right" role="search">
                         <div class="input-group">

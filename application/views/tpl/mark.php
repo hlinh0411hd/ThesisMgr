@@ -31,5 +31,5 @@
     </div>
 
 </div>
-<button onclick="addMark()" class="btn">Lưu</button>
-<button class="btn">Hủy</button>
+<button onclick="addMark()" class="btn btn-success">Lưu</button>
+<button class="btn btn-info">Hủy</button>

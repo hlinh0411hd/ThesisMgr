@@ -84,7 +84,7 @@ class Thesis extends CI_Controller {
             $studentId = $thesis['studentId'];
             array_push($listMail, $this->Student_Model->getById($studentId)['studentMail']);
         }
-        $subject = "Test";
+        $subject = "Nộp bảo vệ";
         $message = "Remind submit protection file";
         $this->Mail_Model->send($listMail, $subject, $message);
     }

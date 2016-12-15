@@ -10,6 +10,7 @@
 <div id="bang-thong-tin" class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Hội đồng bảo vệ</h3>
+            <div class="pull-right"><button  onclick="exportThesisList()" type="button" class="btn btn-primary btn-xs">Xuất đề nghị hội đồng</button></div>
         </div>
         <div class="panel-body">
             <table id="myTable" class="table">

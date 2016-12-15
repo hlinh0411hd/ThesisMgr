@@ -15,5 +15,5 @@ $num = rand(1, 100000);
         </ul>
     </div>
     <input type="hidden" class="form-control" name="teacherId" id="teacherId">
-    <div class="col-sm-4"><button type="button" onclick="addReviewer('form<?= $num;?>');" class="btn">Lưu</button><button type="button" class="btn">Hủy</button></div>
+    <div class="col-sm-4"><button type="button" onclick="addReviewer('form<?= $num;?>');" class="btn btn-success">Lưu</button><button type="button" class="btn btn-info">Hủy</button></div>
 </div>
